@@ -1,5 +1,6 @@
 .nav-container {
     @include flex (space-between, center, row, 0px);
+    padding: 10px 35px 10px 15px;
 
     &_left {
         @include flex (center, center, row, 10px);
@@ -12,4 +13,20 @@
             font-weight: 600;
         }
     }
+
+    &_middle {
+       ul { 
+        @include flex (center, center, row, 60px);
+        list-style: none;
+        cursor: pointer;
+       }
+    }
+
+    &_right {
+        ul { 
+         @include flex (center, center, row, 60px);
+         list-style: none;
+         cursor: pointer;
+        }
+     }
 }
