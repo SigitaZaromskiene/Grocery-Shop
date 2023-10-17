@@ -1,10 +1,13 @@
 .nav_container {
     @include flex (space-between, center, row, 0px);
-    padding: 10px 35px 0px 15px;
+    padding:  0px 40px;
     background-color: $lightGreen;
+    font-size: 1.2rem;
+    
 
     &_left {
         @include flex (center, center, row, 10px);
+        padding: 5px 10px;
 
         &-title {
             font-size: 1.6rem;
@@ -16,6 +19,7 @@
     }
 
     &_middle {
+        padding: 5px 25px;
        ul { 
         @include flex (center, center, row, 60px);
         list-style: none;
@@ -24,6 +28,7 @@
     }
 
     &_right {
+        padding: 5px 12px;
         ul { 
          @include flex (center, center, row, 40px);
          list-style: none;

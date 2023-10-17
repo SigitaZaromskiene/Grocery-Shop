@@ -1,11 +1,13 @@
 import './UI/App.scss' 
-import Hero from './components/Hero';
+import Nav from './components/Nav';
+import PageRoutes from './components/PageRoutes';
 
 
 function App() {
   return (
     <div className="app_container">
-      <Hero/>
+      <Nav/>
+      <PageRoutes/>
   </div>
   );
 }

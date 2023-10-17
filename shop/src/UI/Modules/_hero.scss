@@ -1,10 +1,15 @@
 .hero_container {
   background-color: $lightGreen;
   color: $mainFontColor;
-  @include flex(center, center, row, 80px);
-  padding-bottom: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  row-gap: 40px;
+  padding-bottom: 30px;
 
   &_left {
+    
     margin-left: 90px;
     h1 {
       font-size: 3rem;
@@ -23,6 +28,7 @@
   }
 
   &_right {
+    @include flex (center, center, row, 0px);
     img {
       height: 35rem;
       width: 40rem;

@@ -19,7 +19,16 @@ code {
     monospace;
 }
 
-
 .app_container {
   min-height: 100vh;
+}
+
+
+.custom_link {
+  text-decoration: none;
+  color:#333;
+}
+
+.active {
+  color: #03C03C;
   }

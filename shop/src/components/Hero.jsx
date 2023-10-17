@@ -1,11 +1,9 @@
 import Btn from "./Btn";
-import Nav from "./Nav";
 import heroImg from "../UI/Img/salad.png"
 
 function Hero() {
   return (
-    <>
-      <Nav />
+
       <div className="hero_container">
         <div className="hero_container_left">
             <h1>Make Healthy Life With <span>Fresh</span> Grocery Products</h1>
@@ -16,7 +14,7 @@ function Hero() {
             <img src={heroImg} alt='Vegetables'/>
         </div>
       </div>
-    </>
+  
   );
 }
 

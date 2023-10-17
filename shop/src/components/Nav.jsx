@@ -1,7 +1,7 @@
 import logo from "../UI/Img/logo.png";
-import ReactDOM from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { NavLink } from "react-router-dom";
 
 function Nav() {
   return (
@@ -14,10 +14,10 @@ function Nav() {
       </div>
       <div className="nav_container_middle">
         <ul>
-          <li>Home</li>
-          <li>About us</li>
-          <li>Products</li>
-          <li>Shop</li>
+          <NavLink className="custom_link" to="/">Home</NavLink>
+          <NavLink className="custom_link" to='/about'>About us</NavLink>
+          <NavLink className="custom_link" to='/products'>Products</NavLink>
+          <NavLink className="custom_link" to='/shop'>Shop</NavLink>
         </ul>
       </div>
       <div className="nav_container_right">
@@ -27,7 +27,7 @@ function Nav() {
             <li>Cart</li>
             <div>0</div>
           </div>
-          <li>Login</li>
+          <NavLink className="custom_link"to='/login'>Login</NavLink>
         </ul>
       </div>
     </nav>
