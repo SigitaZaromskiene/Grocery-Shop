@@ -1,0 +1,52 @@
+.nav_container {
+    @include flex (space-between, center, row, 0px);
+    padding:  0px 40px;
+    background-color: $lightGreen;
+    font-size: 1.2rem;
+    
+
+    &_left {
+        @include flex (center, center, row, 10px);
+        padding: 5px 10px;
+
+        &-title {
+            font-size: 1.6rem;
+        }
+        span {
+            color: $mainOrange;
+            font-weight: 600;
+        }
+    }
+
+    &_middle {
+        padding: 5px 25px;
+       ul { 
+        @include flex (center, center, row, 60px);
+        list-style: none;
+        cursor: pointer;
+       }
+    }
+
+    &_right {
+        padding: 5px 12px;
+        ul { 
+         @include flex (center, center, row, 40px);
+         list-style: none;
+         cursor: pointer;
+        }
+
+        &_cart {
+            border: 2px solid $mainGreen;
+            padding: 5px 20px;
+            border-radius: 25px;
+            @include flex (center, center, row, 15px);
+            cursor: pointer;
+
+             div {
+                color: $mainOrange;
+                font-size: 1.2rem;
+                padding:  0px 5px
+             }
+        }
+     }
+}

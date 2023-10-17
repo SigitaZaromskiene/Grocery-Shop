@@ -1,0 +1,15 @@
+.btn {
+    border: 1px solid $mainGreen;
+    padding: 10px 30px;
+    background-color: $mainGreen;
+    border-radius: 25px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+        background-color: white;
+        color: $mainOrange;
+        border: 1px solid $mainOrange;
+    }
+}

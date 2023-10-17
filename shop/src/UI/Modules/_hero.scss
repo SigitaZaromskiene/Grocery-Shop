@@ -1,0 +1,37 @@
+.hero_container {
+  background-color: $lightGreen;
+  color: $mainFontColor;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  row-gap: 40px;
+  padding-bottom: 30px;
+
+  &_left {
+    
+    margin-left: 90px;
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      line-height: 1.3;
+      
+    }
+
+    span {
+      color: $mainOrange;
+    }
+    p {
+      margin-bottom: 25px;
+      font-weight: 300;
+    }
+  }
+
+  &_right {
+    @include flex (center, center, row, 0px);
+    img {
+      height: 35rem;
+      width: 40rem;
+    }
+  }
+}

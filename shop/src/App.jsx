@@ -1,11 +1,14 @@
 import './UI/App.scss' 
+import Nav from './components/Nav';
+import PageRoutes from './components/PageRoutes';
 
 
 function App() {
   return (
-    <div className="App">
-      <p style={{color: 'green'}}>Hello</p>
-    </div>
+    <div className="app_container">
+      <Nav/>
+      <PageRoutes/>
+  </div>
   );
 }
 
