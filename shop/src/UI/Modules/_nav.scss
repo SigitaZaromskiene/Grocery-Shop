@@ -1,0 +1,15 @@
+.nav-container {
+    @include flex (space-between, center, row, 0px);
+
+    &_left {
+        @include flex (center, center, row, 10px);
+
+        &-title {
+            font-size: 1.6rem;
+        }
+        span {
+            color: $mainOrange;
+            font-weight: 600;
+        }
+    }
+}

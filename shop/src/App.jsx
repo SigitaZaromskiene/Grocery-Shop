@@ -1,11 +1,12 @@
 import './UI/App.scss' 
+import Hero from './components/Hero';
 
 
 function App() {
   return (
-    <div className="App">
-      <p style={{color: 'green'}}>Hello</p>
-    </div>
+    <div className = "app-container">
+      <Hero/>
+  </div>
   );
 }
 
