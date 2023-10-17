@@ -4,7 +4,7 @@ import Hero from './components/Hero';
 
 function App() {
   return (
-    <div className = "app-container">
+    <div className="app_container">
       <Hero/>
   </div>
   );
