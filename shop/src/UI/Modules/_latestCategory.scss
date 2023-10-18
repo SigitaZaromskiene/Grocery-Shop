@@ -1,0 +1,9 @@
+.category_container_about_tables {
+    @include flex (center, center, row, 45px);
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+
+    .category_container_table_stars {
+        color: $mainOrange;
+    }
+}

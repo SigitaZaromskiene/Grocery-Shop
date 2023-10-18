@@ -1,8 +1,29 @@
-function About (){
+import pic from "../../UI/Img/veg.png";
+import Btn from "../Buttons/Btn";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck} from "@fortawesome/free-solid-svg-icons";
 
-    return (
-        <div>ABOUT PAGE</div>
-    )
+function About() {
+  return (
+    <div className="about_us">
+      <div className="about_us_right">
+        <img src={pic} alt="Vegetables" />
+      </div>
+      <div className="about_us_left">
+        <h2>Best Quality <span>Natural</span> And Fresh Grocery</h2>
+        <p className="about_us_left_paragraph">
+          From the farm directly, fresh organic products are delivered weekly.
+        </p>
+        <ul>
+          <li><FontAwesomeIcon icon={faCheck} className='about_us_left_icon'/><p>100% organic & natural products</p></li>
+          <li><FontAwesomeIcon icon={faCheck} className='about_us_left_icon'/><p>Free returns</p></li>
+          <li><FontAwesomeIcon icon={faCheck} className='about_us_left_icon'/><p>Fast delivery</p></li>
+          <li><FontAwesomeIcon icon={faCheck} className='about_us_left_icon'/><p>Competitive price</p></li>
+        </ul>
+        <Btn text='Order now' to='/shop'/>
+      </div>
+    </div>
+  );
 }
 
-export default About
+export default About;

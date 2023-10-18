@@ -18,27 +18,27 @@ function Category (){
                 <div className='category_container_table'>
                     <p>Vegetables</p>
                     <img></img>
-                    <Btn text="Shop now"/>
+                    <Btn to='/category' text="Shop now"/>
                 </div>
                 <div className='category_container_table'>
                     <p>Fruits</p>
                     <img></img>
-                    <Btn text="Shop now"/>
+                    <Btn to='/category' text="Shop now"/>
                 </div>
                 <div className='category_container_table'>
                     <p>Meat</p>
                     <img></img>
-                    <Btn text="Shop now"/>
+                    <Btn to='/category' text="Shop now"/>
                 </div>
                 <div className='category_container_table'>
                     <p>Juices</p>
                     <img></img>
-                    <Btn text="Shop now"/>
+                    <Btn to='/category' text="Shop now"/>
                 </div>
                 </div>
                 <FontAwesomeIcon icon={faArrowRight} className='category_container_icon'/>
             </div>
-            <TransparentBtn text='See all'/>
+            <TransparentBtn text='See all' to='/category'/>
             
         </div>
     )

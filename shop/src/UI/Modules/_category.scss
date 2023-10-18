@@ -1,5 +1,6 @@
 .category_container {
   margin: 50px;
+  color: $mainFontColor;
   @include flex(center, center, column, 20px);
 
   &_heading {
