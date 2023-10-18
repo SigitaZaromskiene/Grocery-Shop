@@ -1,0 +1,23 @@
+.footer_container {
+    background-color: darken($mainGreen, 15%);
+    @include flex (center, center, row, 50px);
+  
+
+   h4 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+   }
+
+    
+
+    span {
+        color: $mainOrange;
+    }
+
+
+    &_logo {
+        @include flex (flex-start, center, row, 25px);
+        
+
+    }
+}

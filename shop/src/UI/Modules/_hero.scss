@@ -1,12 +1,8 @@
 .hero_container {
   background-color: $lightGreen;
   color: $mainFontColor;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  align-items: center;
-  row-gap: 40px;
-  padding-bottom: 30px;
+  @include flex (center, center, row, 50px);
+ 
 
   &_left {
     

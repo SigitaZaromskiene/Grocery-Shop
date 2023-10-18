@@ -5,8 +5,8 @@ function Error404 () {
 
     const navigate = useNavigate()
 
-    useEffect(()=>{
-        setTimeout(()=>{
+    useEffect(() => {
+        setTimeout(() => {
             navigate('/')
         }, 4000)
         

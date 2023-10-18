@@ -4,10 +4,10 @@ import face6 from "../../UI/Img/face6.jpg"
 import face7 from "../../UI/Img/face7.jpg"
 import face3 from "../../UI/Img/face3.jpg"
 
-function Testimonials (){
+function Testimonials () {
 
     return (
-        <div className='testimonials'>
+        <div className='testimonials wrapper'>
             <h2>What our beloved customers say about us</h2>
             <div className='testimonials_container'>
                 <div className='testimonials_container_feedback'>

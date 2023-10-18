@@ -1,9 +1,9 @@
 import Btn from "../Buttons/Btn";
 import heroImg from "../../UI/Img/salad.png"
 
-function Hero() {
+function Hero () {
   return (
-      <div className="hero_container">
+      <div className="hero_container wrapper">
         <div className="hero_container_left">
             <h1>Make Healthy Life With <span>Fresh</span> Grocery Products</h1>
             <p>Get the best quality and most delicious grocery food in the country! Eat well. Live well.</p>
