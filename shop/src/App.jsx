@@ -1,5 +1,5 @@
 import './UI/App.scss' 
-import Nav from './components/Nav';
+import Nav from './components/Sections/Nav';
 import PageRoutes from './components/PageRoutes';
 
 

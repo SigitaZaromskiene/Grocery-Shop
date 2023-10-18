@@ -1,9 +1,8 @@
-import Btn from "./Btn";
-import heroImg from "../UI/Img/salad.png"
+import Btn from "../Buttons/Btn";
+import heroImg from "../../UI/Img/salad.png"
 
 function Hero() {
   return (
-
       <div className="hero_container">
         <div className="hero_container_left">
             <h1>Make Healthy Life With <span>Fresh</span> Grocery Products</h1>
