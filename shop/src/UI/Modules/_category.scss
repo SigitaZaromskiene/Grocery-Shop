@@ -1,0 +1,53 @@
+.category_container {
+  margin: 50px;
+  color: $mainFontColor;
+  @include flex(center, center, column, 20px);
+
+  &_heading {
+    @include flex(center, center, row, 20px);
+    margin-bottom: 50px;
+  }
+
+  &_buttons {
+    @include flex(center, center, row, 20px);
+  }
+
+  &_icon {
+    border-radius: 50%;
+    padding: 15px;
+    background-color: $mainOrange;
+    border: 1px solid transparent;
+    cursor: pointer;
+
+    &:hover {
+        background-color: white;
+        border: 1px solid $lightOrange;
+
+    }
+  }
+
+  &_border {
+    border-bottom: 3px solid $mainGreen;
+    width: 150px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    
+  }
+
+  &_tables {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    column-gap: 50px;
+    margin: 0px 40px 40px 50px;
+  }
+  &_table {
+    @include flex(center, center, column, 15px);
+    border: 1px solid $lightGreen;
+    padding: 15px 25px;
+    border-radius: 25px;
+  }
+}

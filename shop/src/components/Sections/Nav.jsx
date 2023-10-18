@@ -1,4 +1,4 @@
-import logo from "../UI/Img/logo.png";
+import logo from "../../UI/Img/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
@@ -16,7 +16,7 @@ function Nav() {
         <ul>
           <NavLink className="custom_link" to="/">Home</NavLink>
           <NavLink className="custom_link" to='/about'>About us</NavLink>
-          <NavLink className="custom_link" to='/products'>Products</NavLink>
+          <NavLink className="custom_link" to='/category'>Category</NavLink>
           <NavLink className="custom_link" to='/shop'>Shop</NavLink>
         </ul>
       </div>

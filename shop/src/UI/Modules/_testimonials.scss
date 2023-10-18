@@ -1,0 +1,59 @@
+.testimonials {
+    background-color: $lightGreen;
+    color: $mainFontColor;
+   padding: 0px 70px 50px;
+    
+
+     h2 {
+        text-align: center;
+        font-size: 1.8rem;
+        padding: 65px;
+     }
+
+
+    &_container {
+        @include flex (center, center, row, 45px);
+        margin-bottom: 30px;
+        
+        &_feedback {
+            background-color: white;
+            padding: 15px;
+            border-radius: 25px;
+
+            &_text {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+        }
+
+
+        &_feedback_info {
+            @include flex (flex-start, center, row, 25px);
+            margin-bottom: 25px;
+
+            img {
+                height: 8rem;
+                width: 8em;
+                border-radius: 50%;
+                object-fit: cover;
+                }
+
+                p {
+                    font-size: 1.4rem;
+                }
+        }
+    }
+}
+
+.dot_container {
+  @include flex (center, center, row, 5px);
+  
+  .dot {
+    background-color: white;
+    height: .8rem;
+    width: .8rem;
+    border-radius: 50%;
+    border: 1px solid $lightGreen;
+
+  }
+}
