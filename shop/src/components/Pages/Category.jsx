@@ -6,7 +6,7 @@ import TransparentBtn from "../Buttons/TransparentBtn";
 function Category (){
 
     return (
-        <div className='category_container'>
+        <section className='category_container'>
             <div className='category_container_heading'>
             <div className='category_container_border'></div>
             <h2>Shop by category</h2>
@@ -40,7 +40,7 @@ function Category (){
             </div>
             <TransparentBtn text='See all' to='/category'/>
             
-        </div>
+        </section>
     )
 }
 
