@@ -1,6 +1,8 @@
+import ContactUs from "../Sections/ContactUs";
+
 function Shop (){
     return (
-        <div>Shop PAGE</div>
+        <ContactUs/>
     )
 }
 

@@ -1,4 +1,4 @@
-function Products (){
+function Products () {
 
     return (
         <div>Products PAGE</div>

@@ -5,7 +5,7 @@ import { faCheck} from "@fortawesome/free-solid-svg-icons";
 
 function About() {
   return (
-    <div className="about_us">
+    <div className="about_us wrapper">
       <div className="about_us_right">
         <img src={pic} alt="Vegetables" />
       </div>

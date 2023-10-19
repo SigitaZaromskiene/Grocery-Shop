@@ -6,7 +6,7 @@ import { faStar} from "@fortawesome/free-solid-svg-icons";
 function LatestProducts () {
 
     return (
-        <section className='category_container'>
+        <section className='category_container wrapper'>
         <div className='category_container_heading'>
         <div className='category_container_border'></div>
         <h2>Latest Products</h2>

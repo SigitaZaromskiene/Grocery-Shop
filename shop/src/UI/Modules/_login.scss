@@ -1,0 +1,65 @@
+.login_container {
+  @include flex(center, center, column, 50px);
+  background-color: #fff;
+  height: 100vh;
+
+   &_heading {
+    width: 100%;
+   }
+
+
+  h2 {
+    font-size: 30px;
+    color: #fff;
+    line-height: 1.2;
+    text-align: center;
+    background-color: $mainGreen;
+    padding: 25px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+  }
+  
+
+  &_input {
+    font-size: 18px;
+    color: $mainGreen;
+    line-height: 1.2;
+    width: 300px;
+    height: 55px;
+    background: #ebebeb;
+    border-radius: 27px;
+    padding: 0 35px;
+    border: none;
+
+    &::placeholder {
+      color: black;
+    }
+
+
+     &_register {
+        margin-top: 50px;
+        font-size: 1rem;
+        text-align: center;
+
+         &_now {
+            text-align: center;
+            text-decoration: none;
+            color: $mainGreen;
+            cursor: pointer;
+         }
+     }
+  }
+
+  &_form {
+    @include flex(center, center, column, 50px);
+    width: 500px;
+    border-radius: 25px;
+    box-shadow: 0 3px 20px 0 rgba(0,0,0,.1);
+    padding-bottom: 50px;
+    
+  }
+  &_inputs {
+    @include flex(center, center, column, 30px);
+    
+  }
+}

@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import TransparentBtn from "../Buttons/TransparentBtn";
 
-function Category (){
+function Category () {
 
     return (
-        <section className='category_container'>
+        <section className='category_container wrapper'>
             <div className='category_container_heading'>
             <div className='category_container_border'></div>
             <h2>Shop by category</h2>
