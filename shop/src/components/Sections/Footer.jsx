@@ -41,8 +41,8 @@ function Footer () {
       </div>
       <div className="footer_container_right_container">
         <h4>Help</h4>
-        <NavLink className="footer_container_right_link" to={'/register'}>Register</NavLink>
-        <NavLink className="footer_container_right_link" to={'/login'}>Login</NavLink>
+        <NavLink className="footer_container_right_link" to={'/register'}>Sign Up</NavLink>
+        <NavLink className="footer_container_right_link" to={'/login'}>Sign In</NavLink>
         <NavLink className="footer_container_right_link" to={'/contactus'}>Contact us</NavLink>
         <NavLink className="footer_container_right_link">+370674393434</NavLink>
       </div>

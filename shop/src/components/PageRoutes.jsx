@@ -7,6 +7,7 @@ import Products from "./Pages/Products";
 import About from "./Sections/About";
 import Error404 from "./Pages/Error404";
 import ContactUs from "./Sections/ContactUs";
+import Register from "./Pages/Register";
 
 function PageRoutes() {
   return (
@@ -16,6 +17,7 @@ function PageRoutes() {
       <Route path="/category" element={<Products />}></Route>
       <Route path="/shop" element={<Shop />}></Route>
       <Route path="/login" element={<Login />}></Route>
+      <Route path="/register" element={<Register/>}></Route>
       <Route path="/contactus" element={<ContactUs />}></Route>
       <Route path="*" element={<Error404 />}></Route>
     </Routes>
