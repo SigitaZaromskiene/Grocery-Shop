@@ -1,11 +1,5 @@
 import logo from "../../UI/Img/logo.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebookF,
-  faInstagram,
-  faTwitter,
-  faTiktok,
-} from "@fortawesome/free-solid-svg-icons";
+import { SocialIcon } from "react-social-icons";
 
 function Footer() {
   return (
@@ -22,18 +16,13 @@ function Footer() {
           voluptatum obcaecati doloremque deserunt, odit nemo ab repellendus!
           Hic, corrupti possimus?
         </p>
-        <div>
-          <div>
-            <FontAwesomeIcon icon={faFacebookF} />{" "}
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faInstagram} />
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faTwitter} />
-          </div>
+
+        <div className="footer_container_icons">
+          <SocialIcon className="footer_container_icons_icon" url="https://facebook.com" />
+          <SocialIcon className="footer_container_icons_icon" url="https://instagram.com" />
+          <SocialIcon className="footer_container_icons_icon" url="https://twitter.com" />
+          <SocialIcon className="footer_container_icons_icon" url="https://tiktok.com" />
         </div>
-        <FontAwesomeIcon icon={faTiktok} />
       </div>
       <div>
         <h4>About</h4>

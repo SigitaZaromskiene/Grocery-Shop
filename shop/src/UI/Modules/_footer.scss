@@ -17,7 +17,19 @@
 
     &_logo {
         @include flex (flex-start, center, row, 25px);
-        
+    }
+
+    &_icons {
+        @include flex (flex-start, center, row, 15px);
+        margin-top: 40px;
+        cursor: pointer;
+&_icon {
+    border: 1px solid transparent;
+
+    &:hover {
+        transform:scale(1.2)
+    }
+}
 
     }
 }
