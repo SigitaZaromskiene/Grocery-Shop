@@ -1,22 +1,22 @@
+import { NavLink } from "react-router-dom";
 import logo from "../../UI/Img/logo.png";
 import { SocialIcon } from "react-social-icons";
 
-function Footer() {
+function Footer () {
   return (
     <div className="footer_container wrapper">
       <div>
         <div className="footer_container_logo">
           <img src={logo} alt="Logo leaf" />
-          <h4>
+          <h3>
             Nature<span>Fresh</span>
-          </h4>
+          </h3>
         </div>
         <p className="footer_container_about">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi
           voluptatum obcaecati doloremque deserunt, odit nemo ab repellendus!
           Hic, corrupti possimus?
         </p>
-
         <div className="footer_container_icons">
           <SocialIcon className="footer_container_icons_icon" url="https://facebook.com" />
           <SocialIcon className="footer_container_icons_icon" url="https://instagram.com" />
@@ -24,27 +24,29 @@ function Footer() {
           <SocialIcon className="footer_container_icons_icon" url="https://tiktok.com" />
         </div>
       </div>
-      <div>
+      <div className="footer_container_right">
+      <div className="footer_container_right_container">
         <h4>About</h4>
-        <p>About us</p>
-        <p>Testimonials</p>
-        <p>Shop</p>
-        <p>Home</p>
+        <NavLink className="footer_container_right_link" to={'/about'}>About us</NavLink>
+        <NavLink className="footer_container_right_link" to={'/products'}>Testimonials</NavLink>
+        <NavLink className="footer_container_right_link" to={'/products'}>Shop</NavLink>
+        <NavLink className="footer_container_right_link" to={'/'}>Home</NavLink>
       </div>
-      <div>
+      <div className="footer_container_right_container">
         <h4>Categories</h4>
-        <p>Fruits</p>
-        <p>Vegetables</p>
-        <p>Dairy products</p>
-        <p>Soft drinks</p>
+        <NavLink className="footer_container_right_link">Fruits</NavLink>
+        <NavLink className="footer_container_right_link">Vegetables</NavLink>
+        <NavLink className="footer_container_right_link">Dairy products</NavLink>
+        <NavLink className="footer_container_right_link">Soft drinks</NavLink>
       </div>
-      <div>
+      <div className="footer_container_right_container">
         <h4>Help</h4>
-        <p>Account</p>
-        <p>Login</p>
-        <p>Contact us</p>
-        <p>+370674393434</p>
+        <NavLink className="footer_container_right_link" to={'/register'}>Register</NavLink>
+        <NavLink className="footer_container_right_link" to={'/login'}>Login</NavLink>
+        <NavLink className="footer_container_right_link" to={'/contactus'}>Contact us</NavLink>
+        <NavLink className="footer_container_right_link">+370674393434</NavLink>
       </div>
+    </div>
     </div>
   );
 }

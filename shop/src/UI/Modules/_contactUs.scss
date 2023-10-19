@@ -1,0 +1,50 @@
+.contact_modal {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(128, 128, 128, 0.697);
+  top: 0px;
+  right: 0px;
+  flex-direction: column;
+  
+
+  &_form {
+    background-color: white;
+    margin-bottom: 50px;
+    padding: 35px;
+    border-radius: 25px;
+    @include flex(center, center, column, 30px);
+    border: 2px solid $mainGreen;
+    position: relative;
+
+    textarea {
+      width: 100%;
+      height: 250px;
+      padding: 10px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 1.2rem;
+
+      &::placeholder {
+        color: rgba(128, 128, 128, 0.686);
+      }
+    }
+    &_inputs {
+      @include flex(center, center, row, 50px);
+
+      input {
+        height: 50px;
+        width: 350px;
+        padding: 10px;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1.2rem;
+
+        &::placeholder {
+          color: rgba(128, 128, 128, 0.686);
+        }
+      }
+    }
+  }
+}

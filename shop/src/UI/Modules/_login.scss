@@ -1,0 +1,24 @@
+.login_container {
+  @include flex(center, center, column, 50px);
+  background-color: $lightGreen;
+  height: 100vh;
+
+  &_input {
+    height: 50px;
+    width: 350px;
+    padding: 10px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1.2rem;
+
+    &::placeholder {
+      color: rgba(128, 128, 128, 0.686);
+    }
+  }
+
+  &_form {
+    @include flex(center, center, column, 0px);
+  }
+  &_inputs {
+    @include flex(center, center, column, 30px);
+  }
+}

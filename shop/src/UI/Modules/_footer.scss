@@ -1,35 +1,53 @@
 .footer_container {
-    background-color: darken($mainGreen, 15%);
-    @include flex (center, center, row, 50px);
-  
+  background-color: darken($mainGreen, 15%);
+  @include flex(center, center, row, 50px);
 
-   h4 {
+  h3 {
+    font-size: 1.8rem;
+  }
+
+  h4 {
     font-size: 1.5rem;
-    margin-bottom: 15px;
-   }
+    margin-bottom: 10px;
+  }
 
-    
+  &_right {
+    @include flex(center, center, row, 70px);
 
-    span {
-        color: $mainOrange;
+    &_container {
+        @include flex(center, flex-start, column, 15px);
     }
 
-
-    &_logo {
-        @include flex (flex-start, center, row, 25px);
-    }
-
-    &_icons {
-        @include flex (flex-start, center, row, 15px);
-        margin-top: 40px;
+    &_link {
+        @include flex(flex-start, center, column, 10px);
         cursor: pointer;
-&_icon {
-    border: 1px solid transparent;
+        text-decoration: none;
+        color: black;
 
-    &:hover {
-        transform:scale(1.2)
+        &:hover {
+            color: white;
+        }
     }
-}
+  }
 
+  span {
+    color: $mainOrange;
+  }
+
+  &_logo {
+    @include flex(flex-start, center, row, 25px);
+  }
+
+  &_icons {
+    @include flex(flex-start, center, row, 15px);
+    margin-top: 40px;
+    cursor: pointer;
+    &_icon {
+      border: 1px solid transparent;
+
+      &:hover {
+        transform: scale(1.2);
+      }
     }
+  }
 }
