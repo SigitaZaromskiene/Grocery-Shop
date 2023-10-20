@@ -1,8 +1,9 @@
-import ContactUs from "../Sections/ContactUs";
+
+import Products from "../Sections/Products"
 
 function Shop (){
     return (
-        <ContactUs/>
+       <Products/>
     )
 }
 

@@ -1,7 +1,5 @@
 import Btn from "../Buttons/Btn"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight} from "@fortawesome/free-solid-svg-icons";
-import TransparentBtn from "../Buttons/TransparentBtn";
+
 
 function Category () {
 
@@ -12,8 +10,6 @@ function Category () {
             <h2>Shop by category</h2>
             <div className='category_container_border'></div>
             </div>
-            <div className='category_container_buttons'>
-            <FontAwesomeIcon icon={faArrowLeft} className='category_container_icon'/>
             <div className='category_container_tables'>
                 <div className='category_container_table'>
                     <p>Vegetables</p>
@@ -31,14 +27,40 @@ function Category () {
                     <Btn to='/category' text="Shop now"/>
                 </div>
                 <div className='category_container_table'>
-                    <p>Juices</p>
+                    <p>Drinks</p>
                     <img></img>
                     <Btn to='/category' text="Shop now"/>
                 </div>
+                <div className='category_container_table'>
+                    <p>Baked goods</p>
+                    <img></img>
+                    <Btn to='/category' text="Shop now"/>
                 </div>
-                <FontAwesomeIcon icon={faArrowRight} className='category_container_icon'/>
-            </div>
-            <TransparentBtn text='See all' to='/category'/>
+                <div className='category_container_table'>
+                    <p>Dairy</p>
+                    <img></img>
+                    <Btn to='/category' text="Shop now"/>
+                </div>
+                <div className='category_container_table'>
+                    <p>Snacks</p>
+                    <img></img>
+                    <Btn to='/category' text="Shop now"/>
+                </div>
+                <div className='category_container_table'>
+                    <p>Cans & Jars</p>
+                    <img></img>
+                    <Btn to='/category' text="Shop now"/>
+                </div>
+                <div className='category_container_table'>
+                    <p>Sauces</p>
+                    <img></img>
+                    <Btn to='/category' text="Shop now"/>
+                </div>
+              
+            
+                </div>
+         
+          
             
         </section>
     )
