@@ -1,6 +1,7 @@
 .footer_container {
   background-color: darken($mainGreen, 15%);
   @include flex(center, center, row, 50px);
+  color: black;
 
   h3 {
     font-size: 1.8rem;

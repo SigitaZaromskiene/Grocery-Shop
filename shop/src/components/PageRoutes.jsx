@@ -4,16 +4,16 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Shop from "./Pages/Shop";
 import Products from "./Pages/Products";
-import About from "./Sections/About";
 import Error404 from "./Pages/Error404";
 import ContactUs from "./Sections/ContactUs";
 import Register from "./Pages/Register";
+import AboutUs from "./Pages/AboutUs";
 
 function PageRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />}></Route>
-      <Route path="/about" element={<About />}></Route>
+      <Route path="/about" element={<AboutUs />}></Route>
       <Route path="/category" element={<Products />}></Route>
       <Route path="/shop" element={<Shop />}></Route>
       <Route path="/login" element={<Login />}></Route>
