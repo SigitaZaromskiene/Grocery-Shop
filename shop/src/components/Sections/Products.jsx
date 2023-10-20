@@ -9,7 +9,26 @@ function Products() {
         <div className="category_container_latest_border"></div>
         <h2>Please choose your products</h2>
         <div className="category_container_latest_border"></div>
-      </div>
+        </div>
+        <div className="select_filter">
+       
+        <select>
+          <option>Filter</option>
+          <option>Fruits</option>
+          <option>Vegetables</option>
+          <option>Dairy</option>
+          <option>Meat</option>
+          <option>Drinks</option>
+          <option>Bakery</option>
+        </select>
+        <select>
+          <option>Sort By</option>
+          <option>Lowest Price</option>
+          <option>Highest Price</option>
+          <option>Newest</option>
+        </select>
+        </div>
+     
       <div className="category_container_about_tables">
         <div className="category_container_latest_table">
           <p className="category_container_latest_table_title">Apple</p>
@@ -81,54 +100,6 @@ function Products() {
             <FontAwesomeIcon icon={faStar} />
           </div>
           <img></img>
-          <Btn to="/category" text="Add to cart"  />
-        </div>
-        <div className="category_container_latest_table">
-          <p>Dark Bread</p>
-          <div className="category_container_latest_table_price">
-            1.39 &euro;
-          </div>
-          <div className="category_container_latest_table_btns">
-            <button className="category_container_latest_table_btns_btn">
-              +
-            </button>
-            <input type="number"></input>
-            <button className="category_container_latest_table_btns_btn">
-              -
-            </button>
-          </div>
-          <div className="stars">
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-          </div>
-          <img></img>
-          <Btn to="/category" text="Add to cart"  />
-        </div>
-        <div className="category_container_latest_table">
-          <p>Chicken</p>
-          <div className="category_container_latest_table_price">
-            1.39 &euro;
-          </div>
-          <div className="category_container_latest_table_btns">
-            <button className="category_container_latest_table_btns_btn">
-              +
-            </button>
-            <input type="number"></input>
-            <button className="category_container_latest_table_btns_btn">
-              -
-            </button>
-          </div>
-          <div className="stars">
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-          </div>
-          <img></img>
           <Btn to="/category" text="Add to cart" />
         </div>
         <div className="category_container_latest_table">
@@ -180,6 +151,30 @@ function Products() {
           <Btn to="/category" text="Add to cart" />
         </div>
         <div className="category_container_latest_table">
+          <p>Dark Bread</p>
+          <div className="category_container_latest_table_price">
+            1.39 &euro;
+          </div>
+          <div className="category_container_latest_table_btns">
+            <button className="category_container_latest_table_btns_btn">
+              +
+            </button>
+            <input type="number"></input>
+            <button className="category_container_latest_table_btns_btn">
+              -
+            </button>
+          </div>
+          <div className="stars">
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+          </div>
+          <img></img>
+          <Btn to="/category" text="Add to cart" />
+        </div>
+        <div className="category_container_latest_table">
           <p>Chicken</p>
           <div className="category_container_latest_table_price">
             1.39 &euro;
@@ -201,7 +196,31 @@ function Products() {
             <FontAwesomeIcon icon={faStar} />
           </div>
           <img></img>
-          <Btn to="/category" text="Add to cart"  />
+          <Btn to="/category" text="Add to cart" />
+        </div>
+        <div className="category_container_latest_table">
+          <p>Chicken</p>
+          <div className="category_container_latest_table_price">
+            1.39 &euro;
+          </div>
+          <div className="category_container_latest_table_btns">
+            <button className="category_container_latest_table_btns_btn">
+              +
+            </button>
+            <input type="number"></input>
+            <button className="category_container_latest_table_btns_btn">
+              -
+            </button>
+          </div>
+          <div className="stars">
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+          </div>
+          <img></img>
+          <Btn to="/category" text="Add to cart" />
         </div>
       </div>
     </section>
