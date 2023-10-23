@@ -1,10 +1,10 @@
 import Category from "../Sections/Category";
 
-function Categories() {
+function CategoriesPage() {
 
     return (
        <Category/>
     )
 }
 
-export default Categories
+export default CategoriesPage

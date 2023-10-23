@@ -1,10 +1,10 @@
 
 import Products from "../Sections/Products"
 
-function Shop (){
+function ShopPage (){
     return (
        <Products/>
     )
 }
 
-export default Shop
+export default ShopPage

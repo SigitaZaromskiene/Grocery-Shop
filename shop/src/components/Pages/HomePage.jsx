@@ -6,7 +6,7 @@ import Testimonials from "../Sections/Testimonials";
 import Footer from "../Sections/Footer";
 import Notification from "../Sections/Notification";
 
-function Home () {
+function HomePage () {
 
     return (
         <>
@@ -20,4 +20,4 @@ function Home () {
       </>
     )
 }
-export default Home
+export default HomePage

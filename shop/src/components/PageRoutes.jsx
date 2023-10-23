@@ -1,25 +1,27 @@
 import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
-import Home from "./Pages/Home";
-import Login from "./Pages/Login";
-import Shop from "./Pages/Shop";
-import Error404 from "./Pages/Error404";
+
+
 import ContactUs from "./Sections/ContactUs";
-import Register from "./Pages/Register";
-import AboutUs from "./Pages/AboutUs";
-import Categories from "./Pages/Categories";
+import HomePage from "./Pages/HomePage";
+import AboutUsPage from "./Pages/AboutUsPage";
+import CategoriesPage from "./Pages/CategoriesPage";
+import RegisterPage from "./Pages/RegisterPage";
+import LoginPage from "./Pages/LoginPage";
+import Error404Page from "./Pages/Error404Page";
+import ShopPage from "./Pages/ShopPage";
 
 function PageRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home />}></Route>
-      <Route path="/about" element={<AboutUs />}></Route>
-      <Route path="/category" element={<Categories />}></Route>
-      <Route path="/shop" element={<Shop />}></Route>
-      <Route path="/login" element={<Login />}></Route>
-      <Route path="/register" element={<Register/>}></Route>
-      <Route path="/contactus" element={<ContactUs />}></Route>
-      <Route path="*" element={<Error404 />}></Route>
+      <Route path="/" element={<HomePage />}></Route>
+      <Route path="/about" element={<AboutUsPage />}></Route>
+      <Route path="/category" element={<CategoriesPage />}></Route>
+      <Route path="/shop" element={<ShopPage />}></Route>
+      <Route path="/login" element={<LoginPage />}></Route>
+      <Route path="/register" element={<RegisterPage/>}></Route>
+      <Route path="/contactus" element={<ContactUs/>}></Route>
+      <Route path="*" element={<Error404Page />}></Route>
     </Routes>
   );
 }
