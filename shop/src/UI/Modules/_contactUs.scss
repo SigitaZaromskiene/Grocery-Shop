@@ -9,7 +9,8 @@
   top: 0px;
   right: 0px;
   flex-direction: column;
-  
+  text-decoration: none;
+  color: $mainFontColor;
 
   &_form {
     background-color: white;

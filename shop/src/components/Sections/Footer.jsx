@@ -1,8 +1,17 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../UI/Img/logo.png";
 import { SocialIcon } from "react-social-icons";
+import { useDispatch } from "react-redux";
+import { uiActions } from "../store/slices/uiSlice";
+
 
 function Footer () {
+
+  const dispatch = useDispatch()
+
+  const contactUsFormHandler = ()=>{
+dispatch(uiActions.toggleContactFormVisibility())
+  }
   return (
     <div className="footer_container wrapper">
       <div>
@@ -43,7 +52,7 @@ function Footer () {
         <h4>Help</h4>
         <NavLink className="footer_container_right_link" to={'/register'}>Sign Up</NavLink>
         <NavLink className="footer_container_right_link" to={'/login'}>Sign In</NavLink>
-        <NavLink className="footer_container_right_link" to={'/contactus'}>Contact us</NavLink>
+        <NavLink className="footer_container_right_link" to={'/contactus'} onClick={contactUsFormHandler}>Contact us</NavLink>
         <NavLink className="footer_container_right_link">+370674393434</NavLink>
       </div>
     </div>

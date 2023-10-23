@@ -10,7 +10,7 @@ function Nav() {
   const dispatch = useDispatch()
 
   const cartFormHandler = () => {
-    dispatch(uiActions.toggleVisibility())
+    dispatch(uiActions.toggleCartVisibility())
   }
   return (
     <nav className="nav_container">
