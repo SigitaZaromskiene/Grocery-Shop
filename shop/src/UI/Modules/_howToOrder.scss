@@ -1,0 +1,57 @@
+.order_section_container {
+    @include flex (center, center, column, 40px);
+
+    img {
+        height: 280px;
+        width: 200px;
+        border-radius: 25px;
+        
+    }
+
+    &_heading {
+        @include flex (center, center, column, 10px);
+    }
+
+    h3 {
+        font-size: 2.2rem;
+        color: $mainOrange;
+       
+    }
+    &_secondary_heading {
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
+    &_steps_container {
+        @include flex (center, center, row, 50px);
+        margin-top: 20px;
+        
+     
+        
+
+        &_step {
+            width: 400px;
+            height: 480px;
+            box-shadow: 0 3px 20px 0 rgba(0,0,0,.1);
+            padding: 15px;
+            text-align: center;
+            border-radius: 25px;
+
+            &:hover {
+                transform:scale(1.1);
+            }
+
+
+            h5 {
+                font-size: 1.4rem;
+                margin-bottom: 30px;
+            }
+
+            p {
+                margin-top: 30px;
+            }
+
+        }
+    }
+
+}

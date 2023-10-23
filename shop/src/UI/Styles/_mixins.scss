@@ -1,62 +1,69 @@
 @mixin flex($justify, $align, $direction, $gap) {
-    display: flex;
-    justify-content: $justify;
-    align-items: $align;
-    flex-direction: $direction;
-    gap: $gap;
-  }
-  
-  @mixin media($point) {
-    @if $point == smallest {
-      @media (max-width: 500px) {
-        @content;
-      }
-    } @else if $point == small {
-      @media (max-width: 700px) {
-        @content;
-      }
-    } @else if $point == medium {
-      @media (max-width: 850px) {
-        @content;
-      }
-    } @else if $point == medium2 {
-      @media (max-width: 1088px) {
-        @content;
-      }
-    } @else if $point == large {
-      @media (max-width: 1200px) {
-        @content;
-      }
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+@mixin media($point) {
+  @if $point == smallest {
+    @media (max-width: 500px) {
+      @content;
+    }
+  } @else if $point == small {
+    @media (max-width: 700px) {
+      @content;
+    }
+  } @else if $point == medium {
+    @media (max-width: 850px) {
+      @content;
+    }
+  } @else if $point == medium2 {
+    @media (max-width: 1088px) {
+      @content;
+    }
+  } @else if $point == large {
+    @media (max-width: 1200px) {
+      @content;
     }
   }
+}
 
+.wrapper {
+  padding: 50px;
+}
 
+.stars {
+  color: #fb6107;
+}
 
-  .wrapper {
-    padding: 50px;
-    
+.icon_leave {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  color: crimson;
+  height: 1.2rem;
+  width: 1.2rem;
+  border: 1px solid crimson;
+  border-radius: 50%;
+  padding: 10px;
+  line-height: 1.2rem;
+  cursor: pointer;
+
+  &:hover {
+    color: black;
+    border: 1px solid black;
   }
+}
 
-  .stars {
-    color: #FB6107;
+.icon_delete {
+  color: crimson;
+  height: 1.2rem;
+  width: 1.2rem;
+  cursor: pointer;
+
+  &:hover {
+    color: black;
   }
-
-  .icon_leave {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    color: crimson;
-    height: 1.2rem;
-    width:1.2rem;
-    border: 1px solid crimson;
-    border-radius: 50%;
-    padding: 10px;
-    line-height: 1.2rem;
-    cursor: pointer;
-
-    &:hover {
-      color: black;
-      border: 1px solid black;
-    }
-    
-  }
+}

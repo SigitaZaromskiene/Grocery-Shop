@@ -1,0 +1,31 @@
+.subscribe_container {
+  background-color: darken($mainGreen, 15%);
+  color: white;
+
+  &_heading {
+    @include flex(center, center, column, 10px);
+  }
+
+  &_action {
+    @include flex(center, center, row, 10px);
+  }
+
+  form {
+    @include flex(center, center, column, 40px);
+
+    h4 {
+      font-size: 2rem;
+    }
+
+    input {
+      width: 270px;
+      height: 45px;
+      font-size: 1rem;
+
+      &::placeholder {
+        padding: 8px;
+        font-size: 1rem;
+      }
+    }
+  }
+}

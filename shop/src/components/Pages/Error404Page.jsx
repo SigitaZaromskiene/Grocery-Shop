@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom"
 import { useEffect } from "react"
 
-function Error404 () {
+function Error404Page () {
 
     const navigate = useNavigate()
 
@@ -22,4 +22,4 @@ return (
     
 }
 
-export default Error404
+export default Error404Page

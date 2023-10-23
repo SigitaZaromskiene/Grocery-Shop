@@ -24,8 +24,8 @@ function Nav() {
         <ul>
           <div className="nav_container_right_cart">
             <FontAwesomeIcon icon={faCartShopping} />
-            <li>Cart</li>
-            <div>0</div>
+            <li> My Cart</li>
+            <div className="nav_container_right_cart_count">0</div>
           </div>
           <NavLink className="custom_link"to='/login'>Login</NavLink>
         </ul>

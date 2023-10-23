@@ -1,0 +1,72 @@
+.cart_items_container {
+  @include flex(center, center, column, 10px);
+}
+
+.cart_items {
+  list-style: none;
+  padding: 25px;
+  border-bottom: 1px solid $mainGreen;
+  width: 100%;
+  margin-bottom: 10px;
+
+  header {
+    @include flex(space-between, center, row, 0px);
+    font-size: 1.2rem;
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+
+      span {
+        margin-left: 5px;
+        color: inherit;
+      }
+    }
+  }
+  &_details {
+    @include flex(space-between, center, row, 20px);
+    margin-top: 10px;
+
+    &_left {
+      @include flex(center, center, row, 20px);
+    }
+  }
+
+  &_quantity span {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  button {
+    background-color: transparent;
+    border: 1px solid $mainGreen;
+    margin-left: 0.5rem;
+    padding: 0.15rem 1rem;
+    color: $mainGreen;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $mainOrange;
+      color: $mainOrange;
+    }
+  }
+
+  &_total {
+    padding: 0px 25px;
+    width: 100%;
+    @include flex(space-between, center, row, 0px);
+
+    &_paragraph {
+        font-size: 1.5rem;
+        color: $mainOrange;
+    }
+
+    &_price {
+      font-size: 1.5rem;
+      span {
+        margin-left: 5px;
+        color: inherit;
+      }
+    }
+  }
+}
