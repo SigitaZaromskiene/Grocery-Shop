@@ -1,5 +1,6 @@
 .cart_items_container {
   @include flex(center, center, column, 10px);
+  
 }
 
 .cart_items {
@@ -8,6 +9,7 @@
   border-bottom: 1px solid $mainGreen;
   width: 100%;
   margin-bottom: 10px;
+ 
 
   header {
     @include flex(space-between, center, row, 0px);

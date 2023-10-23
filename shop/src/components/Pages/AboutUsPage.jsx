@@ -11,7 +11,7 @@ function AboutUsPage() {
       <HowToOrder />
       <Testimonials />
       <Subscribe />
-      <Cart/>
+     
     </>
   );
 }

@@ -6,6 +6,8 @@
   width: 100%;
   background-color: rgba(128, 128, 128, 0.508);
   @include flex(center, center, row, 0px);
+  text-decoration: none;
+  color: $mainFontColor;
 }
 
 .cart {
@@ -15,6 +17,9 @@
   background-color: white;
   border: 2px solid $mainGreen;
   padding: 25px;
+  position: relative;
+  text-decoration: none;
+  
 
    span {
     color: $mainOrange;
@@ -23,6 +28,7 @@
   h2 {
     font-size: 1.50rem;
     text-align: center;
+  
 
     .icon {
         margin-right: 10px;
