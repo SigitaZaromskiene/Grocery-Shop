@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const uiSlice = createSlice({
   name: "ui",
-  initialState: { isNotificationVisible: false, isCartVisible: false, isContactFormVisible: false, isSignInFormVisible: false, isRegisterFormVisible: false },
+  initialState: { notification: null, isCartVisible: false, isContactFormVisible: false, isSignInFormVisible: false, isRegisterFormVisible: false },
   reducers: {
     toggleCartVisibility(state) {
       state.isCartVisible = !state.isCartVisible;
@@ -16,9 +16,12 @@ const uiSlice = createSlice({
       toggleRegisterFormVisibility(state) {
         state.isRegisterFormVisible = !state.isRegisterFormVisible;
       },
-      toggleNotificationVisibility(state) {
-        state.isNotificationVisible = !state.isNotificationVisible;
+      notification(state, action) {
+        state.notification= {status: action.payload.status, title: action.payload.title, message: action.payload.message};
       },
+      toggleNotificationVisibility(state){
+        state.notification=!state.notification
+      }
   },
 });
 

@@ -5,20 +5,20 @@ import LatestProducts from "../Sections/LatestProducts";
 import Testimonials from "../Sections/Testimonials";
 import Footer from "../Sections/Footer";
 
-import Cart from "../Sections/Cart";
+
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import ContactUs from "../Sections/ContactUs";
 
 function HomePage () {
 
 
-  const showCart = useSelector(state=>state.ui.isVisible)
+  const showCart = useSelector(state=>state.ui.isContactFormVisible)
   
   
 
     return (
         <>
-        {showCart && <Cart/>}
+        
         {showCart && <ContactUs/>}
        
         <Hero/>

@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 
-function Btn ({text, to}) {
+function Btn ({text, to, action}) {
     return (
-        <NavLink to={to} className='btn'>{text}</NavLink>
+        <NavLink to={to} onClick={action}className='btn'>{text}</NavLink>
     )
 }
 

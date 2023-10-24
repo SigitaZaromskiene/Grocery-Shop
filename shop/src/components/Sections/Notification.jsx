@@ -1,11 +1,22 @@
-function Notification ({title, text, className}){
-    return (
-        <div className={`notification_container + ${className}`}>
-            <h4>{title}</h4>
-            <p>{text}</p>
-        </div>
-    )
-}
-    
+import { useEffect } from "react";
+import { uiActions } from "../store/slices/uiSlice";
+import { useDispatch } from "react-redux";
 
-    export default Notification
+function Notification({ title, text, className }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(uiActions.toggleNotificationVisibility());
+    }, [5000]);
+  }, [dispatch]);
+  
+  return (
+    <div className={`notification_container + ${className}`}>
+      <h4>{title}</h4>
+      <p>{text}</p>
+    </div>
+  );
+}
+
+export default Notification;

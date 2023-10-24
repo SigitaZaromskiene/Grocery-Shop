@@ -5,6 +5,7 @@ import { uiActions } from "../store/slices/uiSlice";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 
+
 const CartItem = ({ title, price, total, quantity }) => {
   const dispatch = useDispatch();
 

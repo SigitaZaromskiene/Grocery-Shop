@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require("uuid");
 const mysql = require("mysql");
 
 const app = express();
-const port = 3006;
+const port = 3111;
 // app.use(express.json({ limit: "10mb" }));
 // app.use(express.static("public"));
 
@@ -56,18 +56,19 @@ app.use(express.json());
 //   });
 // });
 
-// app.post("/carts", (req, res) => {
-//   const sql = `
-//   INSERT INTO carts (name, price, amount)
-//   VALUES (?, ?, ?)
 
-//   `;
-
-//   con.query(sql, [req.body.name, req.body.price, req.body.amount], (err) => {
-//     if (err) throw err;
-//     res.json({});
-//   });
-// });
+app.post("/carts", (req, res) => {
+    const sql = `
+    INSERT INTO cart (title, price)
+    VALUES (?, ?)
+  
+    `;
+  
+    con.query(sql, [req.body.title, req.body.price], (err) => {
+      if (err) throw err;
+      res.json({});
+    });
+  });
 
 app.listen(port, () => {
     console.log(`LN is on port number: ${port}`);

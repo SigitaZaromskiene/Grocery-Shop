@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import CartTotal from "./CartTotal";
 
+
 const groceries = [
   {
     title: "Apple",
@@ -17,6 +18,11 @@ const groceries = [
 ];
 
 function Cart() {
+
+  
+
+
+
   return (
     <div className="cart_container">
       <div className="cart">
