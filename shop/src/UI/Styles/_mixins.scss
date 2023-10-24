@@ -42,18 +42,18 @@
   position: absolute;
   right: 15px;
   top: 15px;
-  color: crimson;
+  color: black;
   height: 1.2rem;
   width: 1.2rem;
-  border: 1px solid crimson;
+  border: 1px solid black;
   border-radius: 50%;
   padding: 10px;
   line-height: 1.2rem;
   cursor: pointer;
 
   &:hover {
-    color: black;
-    border: 1px solid black;
+    color: crimson;
+    border: 1px solid crimson
   }
 }
 

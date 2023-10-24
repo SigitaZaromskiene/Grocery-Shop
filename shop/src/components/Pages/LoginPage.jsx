@@ -2,14 +2,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import LongBtn from "../Buttons/LongBtn";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { uiActions } from "../store/slices/uiSlice";
 
 function LoginPage() {
+  const dispatch = useDispatch();
+
+  const signInFormHandler = () => {
+    dispatch(uiActions.toggleSignInFormVisibility());
+  };
   return (
     <div className="login_container">
       <form className="login_container_form">
-        <FontAwesomeIcon className="icon_leave" icon={faX} />
         <div className="login_container_heading">
           <h2>Sign In</h2>
+          <NavLink to="/" onClick={signInFormHandler}>
+            <FontAwesomeIcon className="icon_leave" icon={faX} />
+          </NavLink>
         </div>
         <div className="login_container_inputs">
           <div>

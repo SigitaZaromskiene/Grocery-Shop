@@ -1,7 +1,14 @@
 import Btn from "../Buttons/Btn"
 
 
+
+
+
 function Category () {
+
+    
+       
+    
 
     return (
         <section className='category_container wrapper'>
@@ -11,6 +18,7 @@ function Category () {
             <div className='category_container_border'></div>
             </div>
             <div className='category_container_tables'>
+             
                 <div className='category_container_table'>
                     <p>Vegetables</p>
                     <img></img>
@@ -56,12 +64,23 @@ function Category () {
                     <img></img>
                     <Btn to='/category' text="Shop now"/>
                 </div>
-              
+                <div className='category_container_table'>
+                    <p>Meat</p>
+                    <img></img>
+                    <Btn to='/category' text="Shop now"/>
+                </div>
+                <div className='category_container_table'>
+                    <p>Drinks</p>
+                    <img></img>
+                    <Btn to='/category' text="Shop now"/>
+                </div>
+                <div className='category_container_table'>
+                    <p>Baked goods</p>
+                    <img></img>
+                    <Btn to='/category' text="Shop now"/>
+                </div>
             
                 </div>
-         
-          
-            
         </section>
     )
 }

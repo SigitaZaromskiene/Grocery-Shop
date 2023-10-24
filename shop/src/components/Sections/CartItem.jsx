@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX, faTrash } from "@fortawesome/free-solid-svg-icons";
-import Btn from "../Buttons/Btn";
+
 import { uiActions } from "../store/slices/uiSlice";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
@@ -42,14 +42,6 @@ const CartItem = ({ title, price, total, quantity }) => {
           </div>
         </li>
       </ul>
-      <div className="cart_items_total">
-        <p className="cart_items_total_paragraph"> Total</p>
-        <p className="cart_items_total_price">
-          {total}
-          <span>&euro;</span>
-        </p>
-      </div>
-      <Btn text="Order" />
     </div>
   );
 };

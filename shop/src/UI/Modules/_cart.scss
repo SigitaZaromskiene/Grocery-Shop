@@ -2,23 +2,30 @@
   position: fixed;
   top: 0px;
   left: 0px;
-  height: 100vh;
+  max-height: 100vh;
   width: 100%;
   background-color: rgba(128, 128, 128, 0.508);
-  @include flex(center, center, row, 0px);
+  @include flex(center, center, column, 0px);
   text-decoration: none;
   color: $mainFontColor;
+  padding-top: 50px;
+ 
+  
 }
 
 .cart {
   width: 40rem;
   background-color: #313131;
-  border-radius: 25px;
+  margin: 50px;
   background-color: white;
-  border: 2px solid $mainGreen;
-  padding: 25px;
+  box-shadow: 0 3px 20px 0 rgba(0,0,0,.1);
+  padding: 35px;
   position: relative;
   text-decoration: none;
+  overflow: scroll;
+  max-height: 80vh;
+  
+
   
 
    span {
@@ -34,4 +41,20 @@
         margin-right: 10px;
     }
   }
+
+  &_total {
+    padding: 0px 25px;
+    width: 100%;
+    @include flex(space-between, center, row, 0px);
+
+    &_paragraph {
+        font-size: 1.5rem;
+        color: $mainOrange;
+    }
+}
+}
+
+
+.cart_total_container {
+  @include flex (center, center, column, 0px)
 }

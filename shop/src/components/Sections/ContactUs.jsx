@@ -40,8 +40,9 @@ function ContactUs() {
         </div>
         </div>
         <textarea placeholder="Your Message" />
+        <Btn text="Send Message" />
       </form>
-      <Btn text="Send Message" />
+     
      
     </div>
   );
