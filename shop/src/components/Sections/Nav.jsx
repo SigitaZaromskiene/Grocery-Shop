@@ -30,13 +30,11 @@ function Nav() {
       </div>
       <div className="nav_container_right">
         <ul>
-          <div className="nav_container_right_cart" onClick={cartFormHandler}>
-            <NavLink to='/cart'>
+          <NavLink to='/cart' className="nav_container_right_cart" onClick={cartFormHandler}>
             <FontAwesomeIcon icon={faCartShopping} />
             <li> My Cart</li>
             <div className="nav_container_right_cart_count">0</div>
-            </NavLink>
-          </div>
+          </NavLink>
           <NavLink className="custom_link"to='/login'>Login</NavLink>
         </ul>
       </div>

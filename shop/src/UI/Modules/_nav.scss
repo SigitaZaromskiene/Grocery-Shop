@@ -42,6 +42,8 @@
       @include flex(center, center, row, 20px);
       cursor: pointer;
       position: relative;
+      text-decoration: none;
+      color: $mainFontColor;
 
       a {
         text-decoration: none;
