@@ -2,37 +2,44 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import { uiActions } from "../store/slices/uiSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import CartActions from "./CartActions";
 
 
-const CartItem = ({ title, price, total, quantity }) => {
+const CartItem = () => {
   const dispatch = useDispatch();
+
+  const cart = useSelector(state=>state.cart.cart)
+
+
+
+
 
   const showCartHandler = () => {
     dispatch(uiActions.toggleCartVisibility());
   };
 
+
+
+
   return (
     <div className="cart_items_container">
       <ul className="cart_items">
-        <li>
+        {cart.map(i=><li key={i.id}>
           <header>
-            <h3>{title}</h3>
+            <h3>{i.title}</h3>
             <div className="price">
-              {price}
+              {i.price}
               <span>&euro;</span>
             </div>
           </header>
           <div className="cart_items_details">
             <div className="cart_items_details_left">
               <div className="cart_items_quantity">
-                <span>x {quantity}</span>
+                <span>x {i.quantity}</span>
               </div>
-              <div className="cart_items_actions">
-                <button>-</button>
-                <button>+</button>
-              </div>
+             <CartActions id={i.id} title={i.title} price={i.price} quantity={i.quantity}  totalQuantity={i.totalQuantity}/>
             </div>
             <div className="cart_items_delete">
               <NavLink to="/" onClick={showCartHandler}>
@@ -41,7 +48,8 @@ const CartItem = ({ title, price, total, quantity }) => {
               <FontAwesomeIcon className="icon_delete" icon={faTrash} />
             </div>
           </div>
-        </li>
+        </li>)}
+        
       </ul>
     </div>
   );

@@ -2,15 +2,13 @@
   position: fixed;
   top: 0px;
   left: 0px;
-  max-height: 100vh;
+  min-height: 100vh;
   width: 100%;
   background-color: rgba(128, 128, 128, 0.508);
   @include flex(center, center, column, 0px);
   text-decoration: none;
   color: $mainFontColor;
   padding-top: 50px;
- 
-  
 }
 
 .cart {
@@ -18,27 +16,23 @@
   background-color: #313131;
   margin: 50px;
   background-color: white;
-  box-shadow: 0 3px 20px 0 rgba(0,0,0,.1);
+  box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.1);
   padding: 35px;
   position: relative;
   text-decoration: none;
-  overflow: scroll;
+  overflow-y: auto;
   max-height: 80vh;
-  
 
-  
-
-   span {
+  span {
     color: $mainOrange;
-   }
+  }
 
   h2 {
-    font-size: 1.50rem;
+    font-size: 1.5rem;
     text-align: center;
-  
 
     .icon {
-        margin-right: 10px;
+      margin-right: 10px;
     }
   }
 
@@ -48,13 +42,43 @@
     @include flex(space-between, center, row, 0px);
 
     &_paragraph {
-        font-size: 1.5rem;
-        color: $mainOrange;
+      font-size: 1.5rem;
+      color: $mainOrange;
     }
+  }
 }
-}
-
 
 .cart_total_container {
-  @include flex (center, center, column, 0px)
+  @include flex(center, center, column, 0px);
+}
+
+.cart_empty {
+  width: 40rem;
+  background-color: #313131;
+  margin: 50px;
+  background-color: white;
+  box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.1);
+  padding: 35px;
+  position: relative;
+  text-decoration: none;
+  max-height: 80vh;
+
+  span {
+    color: $mainOrange;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+
+    .icon {
+      margin-right: 10px;
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+    text-align: center;
+  }
 }

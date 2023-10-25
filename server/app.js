@@ -57,14 +57,28 @@ app.use(express.json());
 // });
 
 
-app.post("/carts", (req, res) => {
+app.post("/order", (req, res) => {
     const sql = `
-    INSERT INTO cart (title, price)
+    INSERT INTO orders (title, price)
     VALUES (?, ?)
   
     `;
   
     con.query(sql, [req.body.title, req.body.price], (err) => {
+      if (err) throw err;
+      res.json({});
+    });
+  });
+
+
+  app.post("/cart", (req, res) => {
+    const sql = `
+    INSERT INTO cart (title, price, quantity)
+    VALUES (?, ?, ?)
+  
+    `;
+  
+    con.query(sql, [req.body.title, req.body.price, req.body.quantity], (err) => {
       if (err) throw err;
       res.json({});
     });

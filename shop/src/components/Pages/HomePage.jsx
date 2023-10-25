@@ -12,7 +12,7 @@ import ContactUs from "../Sections/ContactUs";
 function HomePage () {
 
 
-  const showCart = useSelector(state=>state.ui.isContactFormVisible)
+  const showCart = useSelector(state=>state.ui.isCartVisible)
   
   
 
