@@ -1,12 +1,23 @@
 import Btn from "../Buttons/Btn";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import { NavLink } from "react-router-dom";
+import { uiActions } from "../store/slices/uiSlice";
+import { useDispatch } from "react-redux";
 
 function ContactUs() {
+
+  const dispatch =useDispatch()
+
+  const contactUsFormHandler = ()=>{
+    dispatch(uiActions.toggleContactFormVisibility())
+      }
   return (
     <div className="contact_modal">
       <form className="contact_modal_form">
-      <FontAwesomeIcon className='icon_leave' icon={faX} />
+        <NavLink to='/'onClick={contactUsFormHandler}>
+      <FontAwesomeIcon className="icon_leave" icon={faX} />
+      </NavLink>
         <div className="category_container_heading">
           <div className="category_container_border"></div>
           <h2>Contact Us</h2>
@@ -29,8 +40,9 @@ function ContactUs() {
         </div>
         </div>
         <textarea placeholder="Your Message" />
+        <Btn text="Send Message" />
       </form>
-      <Btn text="Send Message" />
+     
      
     </div>
   );

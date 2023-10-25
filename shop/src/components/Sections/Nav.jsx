@@ -2,8 +2,16 @@ import logo from "../../UI/Img/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
+import { uiActions } from "../store/slices/uiSlice";
+import { useDispatch } from "react-redux"
 
 function Nav() {
+
+  const dispatch = useDispatch()
+
+  const cartFormHandler = () => {
+    dispatch(uiActions.toggleCartVisibility())
+  }
   return (
     <nav className="nav_container">
       <div className="nav_container_left">
@@ -22,10 +30,12 @@ function Nav() {
       </div>
       <div className="nav_container_right">
         <ul>
-          <div className="nav_container_right_cart">
+          <div className="nav_container_right_cart" onClick={cartFormHandler}>
+            <NavLink to='/cart'>
             <FontAwesomeIcon icon={faCartShopping} />
             <li> My Cart</li>
             <div className="nav_container_right_cart_count">0</div>
+            </NavLink>
           </div>
           <NavLink className="custom_link"to='/login'>Login</NavLink>
         </ul>

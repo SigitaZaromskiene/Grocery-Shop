@@ -10,6 +10,7 @@ import RegisterPage from "./Pages/RegisterPage";
 import LoginPage from "./Pages/LoginPage";
 import Error404Page from "./Pages/Error404Page";
 import ShopPage from "./Pages/ShopPage";
+import Cart from "./Sections/Cart";
 
 function PageRoutes() {
   return (
@@ -21,6 +22,7 @@ function PageRoutes() {
       <Route path="/login" element={<LoginPage />}></Route>
       <Route path="/register" element={<RegisterPage/>}></Route>
       <Route path="/contactus" element={<ContactUs/>}></Route>
+      <Route path="/cart" element={<Cart/>}></Route>
       <Route path="*" element={<Error404Page />}></Route>
     </Routes>
   );
