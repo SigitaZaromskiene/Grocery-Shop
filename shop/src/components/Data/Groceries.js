@@ -5,9 +5,9 @@ export const products = [
       quantity: "1",
       totalQuantity:'1', totalPrice: "1.25"
     },
-    { id: 2,title: "Bread", price: "3.15", quantity: "1", totalQuantity:'1', totalPrice: "1.25" },
-    { id: 3,title: "Chicken", price: "6.25", quantity: "1", totalQuantity:'1', totalPrice: "1.25" },
-    { id: 4,title: "Milk", price: "2.99", quantity: "1", totalQuantity:'1', totalPrice: "1.25"},
-    { id: 5,title: "Bannana", price: "0.99", quantity: "1", totalQuantity:'1', totalPrice: "1.25" },
-    { id: 6,title: "Jam", price: "4.45", quantity: "1", totalQuantity:'1', totalPrice: "1.25" },
+    { id: 2,title: "Bread", price: "3.15", quantity: "1", totalQuantity:1, totalPrice: 1.25 },
+    { id: 3,title: "Chicken", price: "6.25", quantity: "1", totalQuantity:1, totalPrice: 1.25 },
+    { id: 4,title: "Milk", price: "2.99", quantity: "1", totalQuantity:1, totalPrice: 1.25},
+    { id: 5,title: "Bannana", price: "0.99", quantity: "1", totalQuantity:1, totalPrice: 1.25 },
+    { id: 6,title: "Jam", price: "4.45", quantity: "1", totalQuantity:1, totalPrice: 1.25 },
   ];

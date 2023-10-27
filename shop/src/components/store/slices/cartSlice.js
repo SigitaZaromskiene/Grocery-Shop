@@ -37,16 +37,18 @@ const cartSlice = createSlice({
           state.cart.push({
             id: product.id,
             quantity: 1,
-            price: product.price,
+            price: Number(product.price),
             title: product.title,
-            totalPrice: product.price,
+            totalPrice: Number(product.price),
           });
         } else {
           existingItem.quantity++;
-          existingItem.totalPrice = existingItem.totalPrice + product.price;
+          existingItem.totalPrice = Number(existingItem.totalPrice + product.price)
         }
       });
     },
+
+
 
     addItemToCart(state, action) {
       const newItem = action.payload;
@@ -152,6 +154,33 @@ export const deleteCart = () => {
     };
   };
 
+
+//   export const editCartItem = ({ id }) => {
+//     return async (dispatch) => {
+//       try {
+//         const response = await axios.delete(URL1 + "/" + id);
+  
+//         dispatch(cartActions.addItemToCart({ id }));
+//         dispatch(cartActions.removeItemFromCart({ id }));
+//         dispatch(
+//           uiActions.notification({
+//             title: "Success",
+//             message: "Item added to cart",
+//             status: "success",
+//           })
+//         );
+//       } catch (error) {
+//         dispatch(
+//           uiActions.notification({
+//             title: "Error",
+//             message: "Cannot cannot be added",
+//             status: "error",
+//           })
+//         );
+//       }
+//     };
+// }
+
 export const sendOrderData = (cartData) => {
   return async (dispatch) => {
     dispatch(uiActions.toggleNotificationVisibility());
@@ -221,7 +250,7 @@ export const sendCartData = (cartData) => {
     try {
       await sendRequest();
 
-      //    axios.get(URL1).then(res=>dispatch(cartActions.addItemToCart(res)))
+    
 
       dispatch(
         uiActions.notification({
@@ -242,41 +271,8 @@ export const sendCartData = (cartData) => {
   };
 };
 
-// export const deleteCartData = (cartData) => {
-//     return async (dispatch) => {
 
-//       const deleteRequest = async () => {
-//         try {
 
-//           await axios.delete(URL, {
-//             id: cartData.item.id
-//           });
-//         } catch (error) {
-//           throw new Error("Sending cart data failed");
-//         }
-//       };
-
-//       try {
-//         await deleteRequest();
-
-//         dispatch(
-//           uiActions.notification({
-//             title: "Success",
-//             message: "Thank you for your order",
-//             status: "success",
-//           })
-//         );
-//       } catch (error) {
-//         dispatch(
-//           uiActions.notification({
-//             title: "Error",
-//             message: "Cannot send the order",
-//             status: "error",
-//           })
-//         );
-//       }
-//     };
-//   };
 
 export const cartActions = cartSlice.actions;
 export default cartSlice;

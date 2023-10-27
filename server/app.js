@@ -118,6 +118,19 @@ app.post("/order", (req, res) => {
     });
   });
 
+  app.post("/numbers", (req, res) => {
+    const sql = `
+    INSERT INTO numbers (color, date, number)
+    VALUES (?, ?, ?)
+  
+    `;
+  
+    con.query(sql, [req.body.color, req.body.date, req.body.number], (err) => {
+      if (err) throw err;
+      res.json({});
+    });
+  });
+
 app.listen(port, () => {
     console.log(`LN is on port number: ${port}`);
   });

@@ -3,15 +3,12 @@ import { faX, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { uiActions } from "../store/slices/uiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { cartActions, deleteCartItem } from "../store/slices/cartSlice";
-
+import { cartActions, deleteCartItem, editCartItem } from "../store/slices/cartSlice";
 
 const CartItem = () => {
   const dispatch = useDispatch();
 
   const cartData = useSelector((state) => state.cart.cart);
-
-  
 
   const showCartHandler = () => {
     dispatch(uiActions.toggleCartVisibility());
@@ -25,7 +22,7 @@ const CartItem = () => {
             <header>
               <h3>{i.title}</h3>
               <div className="price">
-                {i.price}
+                {i.totalPrice.toFixed(2,0)}
                 <span>&euro;</span>
               </div>
             </header>
@@ -37,14 +34,14 @@ const CartItem = () => {
                 <div className="cart_items_actions">
                   <button
                     onClick={() =>
-                      dispatch(cartActions.addItemToCart({id: i.id}))
+                      dispatch(cartActions.addItemToCart({ id: i.id, price: i.price }))
                     }
                   >
                     +
                   </button>
                   <button
                     onClick={() =>
-                      dispatch(cartActions.removeItemFromCart({id:i.id}))
+                      dispatch(cartActions.removeItemFromCart({ id: i.id, price: i.price }))
                     }
                   >
                     -
@@ -55,12 +52,13 @@ const CartItem = () => {
                 <NavLink to="/" onClick={showCartHandler}>
                   <FontAwesomeIcon className="icon_leave" icon={faX} />
                 </NavLink>
-                <FontAwesomeIcon className="icon_delete" icon={faTrash} onClick={() =>{
- dispatch(cartActions.deleteItemFromCart({id: i.id}))
- dispatch(deleteCartItem({id: i.id}))}
-
-                }/>
-                     
+                <FontAwesomeIcon
+                  className="icon_delete"
+                  icon={faTrash}
+                  onClick={() => {
+                    dispatch(deleteCartItem({ id: i.id }));
+                  }}
+                />
               </div>
             </div>
           </li>
