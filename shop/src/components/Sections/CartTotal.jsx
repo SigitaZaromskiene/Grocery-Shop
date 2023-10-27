@@ -1,6 +1,6 @@
 import Btn from "../Buttons/Btn";
 import { useDispatch, useSelector } from "react-redux";
-import { sendOrderData } from "../store/slices/cartSlice";
+import { cartActions, deleteCart, sendOrderData } from "../store/slices/cartSlice";
 import { uiActions } from "../store/slices/uiSlice";
 
 function CartTotal() {
@@ -16,6 +16,7 @@ function CartTotal() {
   const orderHandler = () => {
     dispatch(sendOrderData(cartData))
     dispatch(uiActions.toggleCartVisibility());
+    dispatch(deleteCart())
     
   };
 
@@ -28,7 +29,7 @@ function CartTotal() {
           <span>&euro;</span>
         </p>
       </div>
-      <Btn text="Order" to={'/'} action={orderHandler} />
+      <Btn text="Order" to='/' action={orderHandler} />
     </div>
   );
 }

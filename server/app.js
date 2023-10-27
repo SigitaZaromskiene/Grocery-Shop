@@ -44,6 +44,28 @@ app.use(express.json());
 //   });
 // });
 
+app.delete("/cart/:id", (req, res) => {
+  const sql = `
+        DELETE FROM cart
+        WHERE id = ?
+    `;
+  con.query(sql, [req.params.id], (err) => {
+    if (err) throw err;
+    res.json({});
+  });
+});
+
+app.delete("/cart", (req, res) => {
+  const sql = `
+        DELETE FROM cart
+       
+    `;
+  con.query(sql, (err) => {
+    if (err) throw err;
+    res.json({});
+  });
+});
+
 app.get("/", (req, res) => {
   const sql = `
   SELECT id, title, quantity, price

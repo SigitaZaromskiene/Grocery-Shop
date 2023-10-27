@@ -3,7 +3,8 @@ import { faX, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { uiActions } from "../store/slices/uiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { cartActions } from "../store/slices/cartSlice";
+import { cartActions, deleteCartItem } from "../store/slices/cartSlice";
+
 
 const CartItem = () => {
   const dispatch = useDispatch();
@@ -54,7 +55,12 @@ const CartItem = () => {
                 <NavLink to="/" onClick={showCartHandler}>
                   <FontAwesomeIcon className="icon_leave" icon={faX} />
                 </NavLink>
-                <FontAwesomeIcon className="icon_delete" icon={faTrash} />
+                <FontAwesomeIcon className="icon_delete" icon={faTrash} onClick={() =>{
+ dispatch(cartActions.deleteItemFromCart({id: i.id}))
+ dispatch(deleteCartItem({id: i.id}))}
+
+                }/>
+                     
               </div>
             </div>
           </li>

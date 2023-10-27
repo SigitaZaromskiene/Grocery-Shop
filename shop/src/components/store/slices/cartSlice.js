@@ -16,6 +16,16 @@ const cartSlice = createSlice({
     totalPrice: 0,
   },
   reducers: {
+    deleteItemFromCart(state, action) {
+      const productToDelete = action.payload;
+
+      state.cart = state.cart.filter((i) => i.id !== productToDelete.id);
+    },
+
+    emptyCart(state){
+        state.cart=[]
+        state.totalQuantity=0
+    },
     renderItemsToCart(state, action) {
       const newItem = action.payload;
 
@@ -74,7 +84,7 @@ const cartSlice = createSlice({
 export const onPageLoad = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(URL2); 
+      const response = await axios.get(URL2);
 
       const cartData = response.data;
 
@@ -90,6 +100,57 @@ export const onPageLoad = () => {
     }
   };
 };
+
+export const deleteCartItem = ({ id }) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(URL1 + "/" + id);
+
+      dispatch(cartActions.deleteItemFromCart({ id }));
+      dispatch(
+        uiActions.notification({
+          title: "Success",
+          message: "Item from cart was deleted",
+          status: "success",
+        })
+      );
+    } catch (error) {
+      dispatch(
+        uiActions.notification({
+          title: "Error",
+          message: "Cannot delete from cart",
+          status: "error",
+        })
+      );
+    }
+  };
+};
+
+
+export const deleteCart = () => {
+    return async (dispatch) => {
+      try {
+        const response = await axios.delete(URL1);
+  
+        dispatch(cartActions.emptyCart());
+        dispatch(
+          uiActions.notification({
+            title: "Success",
+            message: "Thank you for your order",
+            status: "success",
+          })
+        );
+      } catch (error) {
+        dispatch(
+          uiActions.notification({
+            title: "Error",
+            message: "Cannot order",
+            status: "error",
+          })
+        );
+      }
+    };
+  };
 
 export const sendOrderData = (cartData) => {
   return async (dispatch) => {
@@ -114,6 +175,7 @@ export const sendOrderData = (cartData) => {
 
     try {
       await sendRequest();
+      dispatch(cartActions.emptyCart())
 
       dispatch(
         uiActions.notification({
