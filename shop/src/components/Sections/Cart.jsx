@@ -8,13 +8,20 @@ import { uiActions } from "../store/slices/uiSlice";
 
 
 
+
+
+
 function Cart() {
   const cart = useSelector((state) => state.cart.cart);
+
   const dispatch = useDispatch()
 
-  console.log(cart)
+
+ 
+
+ 
   
-  if (cart.length === 0) {
+  if (cart.length===0) {
     return (
       <div className="cart_container">
         <div className="cart_empty">
@@ -38,9 +45,9 @@ function Cart() {
           <FontAwesomeIcon className="icon" icon={faCartShopping} />
           Your <span>Shoping</span> Cart
         </h2>
-        {cart.map((p) => (
-          <CartItem key={p.id} />
-        ))}
+      
+          <CartItem  />
+     
         <CartTotal />
       </div>
     </div>

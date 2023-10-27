@@ -44,17 +44,29 @@ app.use(express.json());
 //   });
 // });
 
-// app.get("/cartModal", (req, res) => {
-//   const sql = `
-//   SELECT id, name, amount, price
-//   FROM carts
+app.get("/", (req, res) => {
+  const sql = `
+  SELECT id, title, quantity, price
+  FROM cart
 
-//   `;
-//   con.query(sql, (err, result) => {
-//     if (err) throw err;
-//     res.json(result);
-//   });
-// });
+  `;
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.json(result);
+  });
+});
+
+app.get("/cart", (req, res) => {
+  const sql = `
+  SELECT title, quantity, price
+  FROM cart
+
+  `;
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.json(result);
+  });
+});
 
 
 app.post("/order", (req, res) => {

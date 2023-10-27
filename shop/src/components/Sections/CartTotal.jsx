@@ -13,8 +13,6 @@ function CartTotal() {
 
   
 
-  
-
   const orderHandler = () => {
     dispatch(sendOrderData(cartData))
     dispatch(uiActions.toggleCartVisibility());
