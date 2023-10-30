@@ -68,7 +68,7 @@ app.delete("/cart", (req, res) => {
 
 app.get("/", (req, res) => {
   const sql = `
-  SELECT id, title, quantity, price
+  SELECT id, title, quantity, price, totalPrice
   FROM cart
 
   `;
@@ -80,7 +80,7 @@ app.get("/", (req, res) => {
 
 app.get("/cart", (req, res) => {
   const sql = `
-  SELECT title, quantity, price
+  SELECT id, title, quantity, price
   FROM cart
 
   `;
@@ -107,25 +107,26 @@ app.post("/order", (req, res) => {
 
   app.post("/cart", (req, res) => {
     const sql = `
-    INSERT INTO cart (title, price, quantity)
-    VALUES (?, ?, ?)
+    INSERT INTO cart (title, price, quantity, totalPrice)
+    VALUES (?, ?, ?, ?)
   
     `;
   
-    con.query(sql, [req.body.title, req.body.price, req.body.quantity], (err) => {
+    con.query(sql, [req.body.title, req.body.price, req.body.quantity, req.body.totalPrice], (err) => {
       if (err) throw err;
       res.json({});
     });
   });
 
-  app.post("/numbers", (req, res) => {
+  app.put("/cart/:id", (req, res) => {
     const sql = `
-    INSERT INTO numbers (color, date, number)
-    VALUES (?, ?, ?)
+    UPDATE cart 
+    SET quantity = ?, totalPrice = ?
+    WHERE id = (?)
   
     `;
   
-    con.query(sql, [req.body.color, req.body.date, req.body.number], (err) => {
+    con.query(sql, [req.body.quantity, req.body.totalPrice, req.params.id], (err) => {
       if (err) throw err;
       res.json({});
     });

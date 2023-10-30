@@ -16,16 +16,10 @@ const cartSlice = createSlice({
     totalPrice: 0,
   },
   reducers: {
-    deleteItemFromCart(state, action) {
-      const productToDelete = action.payload;
 
-      state.cart = state.cart.filter((i) => i.id !== productToDelete.id);
-    },
 
-    emptyCart(state){
-        state.cart=[]
-        state.totalQuantity=0
-    },
+
+
     renderItemsToCart(state, action) {
       const newItem = action.payload;
 
@@ -36,30 +30,74 @@ const cartSlice = createSlice({
         if (!existingItem) {
           state.cart.push({
             id: product.id,
-            quantity: 1,
-            price: Number(product.price),
+            quantity: product.quantity,
+            price: product.price,
             title: product.title,
-            totalPrice: Number(product.price),
+            totalPrice: product.price * product.quantity,
           });
         } else {
           existingItem.quantity++;
-          existingItem.totalPrice = Number(existingItem.totalPrice + product.price)
+          existingItem.totalPrice = existingItem.totalPrice + product.price;
         }
       });
     },
+  //   updateCartQuantity(state, action) {
+  //     const updatedItem = action.payload;
+    
 
+    
+  //     const existingItem = state.cart.find((i) => i.id === updatedItem.id);
+  //  if(existingItem){
+  //   existingItem.quantity++;
+
+  //   existingItem.totalPrice = existingItem.price * existingItem.quantity;
+  //  }
+
+     
+  //   },
+
+//     withdrawCartQuantity(state, action) {
+//       state.totalQuantity--;
+//       const updatedItem = action.payload;
+    
+
+//       const existingItem = state.cart.find((i) => i.id === updatedItem.id);
+
+//       console.log(existingItem)
+//       if (existingItem.quantity === 1) {
+//         state.cart = state.cart.filter((i) => i.id !== updatedItem.id);}
+// else {
+//   existingItem.quantity--;
+//   existingItem.totalQuantity--;
+//   existingItem.totalPrice = existingItem.price * existingItem.quantity;
+// }
+     
+  
+    deleteItemFromCart(state, action) {
+      const productToDelete = action.payload;
+
+      state.cart = state.cart.filter((i) => i.id !== productToDelete.id);
+    },
+
+    emptyCart(state) {
+      state.cart = [];
+      state.totalQuantity = 0;
+    },
 
 
     addItemToCart(state, action) {
       const newItem = action.payload;
 
+      console.log(newItem)
+
       const existingItem = state.cart.find((i) => i.id === newItem.id);
+      console.log(existingItem)
       state.totalQuantity++;
 
       if (!existingItem) {
         state.cart.push({
           id: newItem.id,
-          quantity: 1,
+          quantity: newItem.quantity,
           price: newItem.price,
           title: newItem.title,
           totalPrice: newItem.price,
@@ -73,8 +111,10 @@ const cartSlice = createSlice({
       const newItem = action.payload;
       const existingItem = state.cart.find((i) => i.id === newItem.id);
       state.totalQuantity--;
-      if (existingItem.quantity === 1) {
+      if (existingItem.quantity === 1 ) {
+       
         state.cart = state.cart.filter((i) => i.id !== newItem.id);
+      
       } else {
         existingItem.quantity--;
         existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
@@ -90,6 +130,8 @@ export const onPageLoad = () => {
 
       const cartData = response.data;
 
+      console.log(cartData);
+
       dispatch(cartActions.renderItemsToCart(cartData));
     } catch (error) {
       dispatch(
@@ -103,16 +145,18 @@ export const onPageLoad = () => {
   };
 };
 
-export const deleteCartItem = ({ id }) => {
+export const deleteCartItem = ({ id, quantity }) => {
   return async (dispatch) => {
     try {
+      if (quantity > 0) {
       const response = await axios.delete(URL1 + "/" + id);
-
+      
+      }
       dispatch(cartActions.deleteItemFromCart({ id }));
       dispatch(
         uiActions.notification({
           title: "Success",
-          message: "Item from cart was deleted",
+          message: "Item was deleted from cart",
           status: "success",
         })
       );
@@ -128,58 +172,160 @@ export const deleteCartItem = ({ id }) => {
   };
 };
 
+export const updateCartItem = ({ i }) => {
+  console.log(i);
+
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(URL1 + "/" + i.id, {
+        quantity: i.quantity+1,
+        id: i.id,
+        totalPrice: i.totalPrice + i.price,
+      });
+
+
+      
+      
+
+      dispatch(
+        cartActions.addItemToCart(
+          {id: i.id,
+            quantity: i.quantity,
+            price: i.price,
+            title: i.title,
+            totalPrice: i.totalPrice,}
+        ))
+
+       
+      
+      dispatch(
+        uiActions.notification({
+          title: "Success",
+          message: "Product quantity was changed",
+          status: "success",
+        })
+      );
+    } catch (error) {
+      dispatch(
+        uiActions.notification({
+          title: "Error",
+          message: "Cannot change quantity",
+          status: "error",
+        })
+      );
+    }
+  };
+};
+
+// export const withdrawCartItem = ({ i }) => {
+//   return async (dispatch) => {
+//     try {
+//       const response = await axios.put(URL1 + "/" + i.id, {
+//         quantity: i.quantity-1,
+//         id: i.id,
+//         totalPrice: i.totalPrice - i.price,
+//       });
+
+//       dispatch(
+//         cartActions.removeItemFromCart({
+//           id: i.id,
+//           quantity: i.quantity - 1,
+//           totalPrice: i.totalPrice - i.price,
+//          } )
+//       );
+//       dispatch(
+//         uiActions.notification({
+//           title: "Success",
+//           message: "Product quantity was changed",
+//           status: "success",
+//         })
+//       );
+//     } catch (error) {
+//       dispatch(
+//         uiActions.notification({
+//           title: "Error",
+//           message: "Cannot change quantity",
+//           status: "error",
+//         })
+//       );
+//     }
+//   };
+// };
+
+export const withdrawCartItem = ({ i }) => {
+  return async (dispatch) => {
+    try {
+      if (i.quantity > 1) {
+        // If the item's quantity is greater than 1, reduce the quantity and update the total price.
+        const response = await axios.put(URL1 + "/" + i.id, {
+          quantity: i.quantity - 1,
+          id: i.id,
+          totalPrice: i.totalPrice - i.price,
+        });
+
+        dispatch(
+          cartActions.removeItemFromCart({
+            id: i.id,
+            quantity: i.quantity - 1,
+            totalPrice: i.totalPrice - i.price,
+          })
+        );
+      } else {
+        // If the item's quantity is 1, delete it from the database.
+
+       
+
+          const response = await axios.delete(URL1 + "/" + i.id);
+        
+      
+
+        // Then, remove it from the cart.
+        dispatch(cartActions.deleteItemFromCart({ id: i.id }));
+      }
+
+      dispatch(
+        uiActions.notification({
+          title: "Success",
+          message: "Product quantity was changed",
+          status: "success",
+        })
+      );
+    } catch (error) {
+      dispatch(
+        uiActions.notification({
+          title: "Error",
+          message: "Cannot change quantity",
+          status: "error",
+        })
+      );
+    }
+  };
+};
 
 export const deleteCart = () => {
-    return async (dispatch) => {
-      try {
-        const response = await axios.delete(URL1);
-  
-        dispatch(cartActions.emptyCart());
-        dispatch(
-          uiActions.notification({
-            title: "Success",
-            message: "Thank you for your order",
-            status: "success",
-          })
-        );
-      } catch (error) {
-        dispatch(
-          uiActions.notification({
-            title: "Error",
-            message: "Cannot order",
-            status: "error",
-          })
-        );
-      }
-    };
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(URL1);
+
+      dispatch(cartActions.emptyCart());
+      dispatch(
+        uiActions.notification({
+          title: "Success",
+          message: "Thank you for your order",
+          status: "success",
+        })
+      );
+    } catch (error) {
+      dispatch(
+        uiActions.notification({
+          title: "Error",
+          message: "Cannot order",
+          status: "error",
+        })
+      );
+    }
   };
-
-
-//   export const editCartItem = ({ id }) => {
-//     return async (dispatch) => {
-//       try {
-//         const response = await axios.delete(URL1 + "/" + id);
-  
-//         dispatch(cartActions.addItemToCart({ id }));
-//         dispatch(cartActions.removeItemFromCart({ id }));
-//         dispatch(
-//           uiActions.notification({
-//             title: "Success",
-//             message: "Item added to cart",
-//             status: "success",
-//           })
-//         );
-//       } catch (error) {
-//         dispatch(
-//           uiActions.notification({
-//             title: "Error",
-//             message: "Cannot cannot be added",
-//             status: "error",
-//           })
-//         );
-//       }
-//     };
-// }
+};
 
 export const sendOrderData = (cartData) => {
   return async (dispatch) => {
@@ -204,7 +350,7 @@ export const sendOrderData = (cartData) => {
 
     try {
       await sendRequest();
-      dispatch(cartActions.emptyCart())
+      dispatch(cartActions.emptyCart());
 
       dispatch(
         uiActions.notification({
@@ -237,8 +383,8 @@ export const sendCartData = (cartData) => {
           title: cartData.title,
           price: cartData.price,
           quantity: cartData.quantity,
-          totalquantity: cartData.totalquantity,
-          totalPrice: cartData.TotalPrice,
+          totalQuantity: cartData.totalQuantity,
+          totalPrice: cartData.totalPrice,
         }),
       });
 
@@ -249,8 +395,6 @@ export const sendCartData = (cartData) => {
 
     try {
       await sendRequest();
-
-    
 
       dispatch(
         uiActions.notification({
@@ -270,9 +414,6 @@ export const sendCartData = (cartData) => {
     }
   };
 };
-
-
-
 
 export const cartActions = cartSlice.actions;
 export default cartSlice;

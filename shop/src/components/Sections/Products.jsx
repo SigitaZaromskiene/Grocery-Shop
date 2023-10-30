@@ -47,7 +47,7 @@ function Products() {
               to="/shop"
               text="Add to cart"
               action={() => {
-                dispatch(sendCartData({title:p.title, price: p.price, id:p.id, quantity:p.quantity}))
+                dispatch(sendCartData({title:p.title, price: p.price, id:p.id, quantity:p.quantity, totalPrice: p.totalPrice}))
               dispatch(cartActions.addItemToCart({title:p.title, price: p.price, id:p.id, quantity:p.quantity}))}}
             />
           </div>
