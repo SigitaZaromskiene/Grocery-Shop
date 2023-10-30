@@ -44,27 +44,89 @@ app.use(express.json());
 //   });
 // });
 
-// app.get("/cartModal", (req, res) => {
-//   const sql = `
-//   SELECT id, name, amount, price
-//   FROM carts
+app.delete("/cart/:id", (req, res) => {
+  const sql = `
+        DELETE FROM cart
+        WHERE id = ?
+    `;
+  con.query(sql, [req.params.id], (err) => {
+    if (err) throw err;
+    res.json({});
+  });
+});
 
-//   `;
-//   con.query(sql, (err, result) => {
-//     if (err) throw err;
-//     res.json(result);
-//   });
-// });
+app.delete("/cart", (req, res) => {
+  const sql = `
+        DELETE FROM cart
+       
+    `;
+  con.query(sql, (err) => {
+    if (err) throw err;
+    res.json({});
+  });
+});
+
+app.get("/", (req, res) => {
+  const sql = `
+  SELECT id, title, quantity, price, totalPrice
+  FROM cart
+
+  `;
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.json(result);
+  });
+});
+
+app.get("/cart", (req, res) => {
+  const sql = `
+  SELECT id, title, quantity, price
+  FROM cart
+
+  `;
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.json(result);
+  });
+});
 
 
-app.post("/carts", (req, res) => {
+app.post("/order", (req, res) => {
     const sql = `
-    INSERT INTO cart (title, price)
+    INSERT INTO orders (title, price)
     VALUES (?, ?)
   
     `;
   
     con.query(sql, [req.body.title, req.body.price], (err) => {
+      if (err) throw err;
+      res.json({});
+    });
+  });
+
+
+  app.post("/cart", (req, res) => {
+    const sql = `
+    INSERT INTO cart (title, price, quantity, totalPrice)
+    VALUES (?, ?, ?, ?)
+  
+    `;
+  
+    con.query(sql, [req.body.title, req.body.price, req.body.quantity, req.body.totalPrice], (err) => {
+      if (err) throw err;
+      res.json({});
+    });
+  });
+
+  app.put("/cart/:id", (req, res) => {
+    const sql = `
+    UPDATE cart 
+    SET quantity = ?, totalPrice = ?
+    WHERE id = (?)
+  
+    `;
+  
+    con.query(sql, [req.body.quantity, req.body.totalPrice, req.params.id], (err) => {
       if (err) throw err;
       res.json({});
     });

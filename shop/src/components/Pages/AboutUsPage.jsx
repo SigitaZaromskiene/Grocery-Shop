@@ -5,6 +5,8 @@ import Subscribe from "../Sections/Subscribe";
 import Cart from "../Sections/Cart";
 
 function AboutUsPage() {
+
+  
   return (
     <>
       <About />

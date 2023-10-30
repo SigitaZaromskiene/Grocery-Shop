@@ -16,6 +16,7 @@ function PageRoutes() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />}></Route>
+  
       <Route path="/about" element={<AboutUsPage />}></Route>
       <Route path="/category" element={<CategoriesPage />}></Route>
       <Route path="/shop" element={<ShopPage />}></Route>

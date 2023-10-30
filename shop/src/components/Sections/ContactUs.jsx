@@ -15,7 +15,7 @@ function ContactUs() {
   return (
     <div className="contact_modal">
       <form className="contact_modal_form">
-        <NavLink to='/'onClick={contactUsFormHandler}>
+        <NavLink to='/' onClick={contactUsFormHandler}>
       <FontAwesomeIcon className="icon_leave" icon={faX} />
       </NavLink>
         <div className="category_container_heading">

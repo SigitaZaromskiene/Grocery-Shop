@@ -1,13 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX, faTrash } from "@fortawesome/free-solid-svg-icons";
-
 import { uiActions } from "../store/slices/uiSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { cartActions, deleteCartItem, editCartItem, updateCartItem, withdrawCartItem } from "../store/slices/cartSlice";
 
-
-const CartItem = ({ title, price, total, quantity }) => {
+const CartItem = () => {
   const dispatch = useDispatch();
+
+  const cartData = useSelector((state) => state.cart.cart);
 
   const showCartHandler = () => {
     dispatch(uiActions.toggleCartVisibility());
@@ -16,32 +17,54 @@ const CartItem = ({ title, price, total, quantity }) => {
   return (
     <div className="cart_items_container">
       <ul className="cart_items">
-        <li>
-          <header>
-            <h3>{title}</h3>
-            <div className="price">
-              {price}
-              <span>&euro;</span>
-            </div>
-          </header>
-          <div className="cart_items_details">
-            <div className="cart_items_details_left">
-              <div className="cart_items_quantity">
-                <span>x {quantity}</span>
+        {cartData.map((i) => (
+          <li key={i.id}>
+            <header>
+              <h3>{i.title}</h3>
+              <div className="price">
+                {i.totalPrice}
+                <span>&euro;</span>
               </div>
-              <div className="cart_items_actions">
-                <button>-</button>
-                <button>+</button>
+            </header>
+            <div className="cart_items_details">
+              <div className="cart_items_details_left">
+                <div className="cart_items_quantity">
+                  <span>x {i.quantity}</span>
+                </div>
+                <div className="cart_items_actions">
+                  <button
+                    onClick={() =>
+                      dispatch(updateCartItem({i}))
+                    }
+                  >
+                    +
+                  </button>
+                  <button
+                    onClick={() =>
+                      dispatch(withdrawCartItem({i}))
+                    
+                      // dispatch(cartActions.deleteItemFromCart(i.id)))
+                    }
+                  >
+                    -
+                  </button>
+                </div>
+              </div>
+              <div className="cart_items_delete">
+                <NavLink to="/" onClick={showCartHandler}>
+                  <FontAwesomeIcon className="icon_leave" icon={faX} />
+                </NavLink>
+                <FontAwesomeIcon
+                  className="icon_delete"
+                  icon={faTrash}
+                  onClick={() => {
+                    dispatch(deleteCartItem({ id: i.id }));
+                  }}
+                />
               </div>
             </div>
-            <div className="cart_items_delete">
-              <NavLink to="/" onClick={showCartHandler}>
-                <FontAwesomeIcon className="icon_leave" icon={faX} />
-              </NavLink>
-              <FontAwesomeIcon className="icon_delete" icon={faTrash} />
-            </div>
-          </div>
-        </li>
+          </li>
+        ))}
       </ul>
     </div>
   );
