@@ -41,37 +41,7 @@ const cartSlice = createSlice({
         }
       });
     },
-  //   updateCartQuantity(state, action) {
-  //     const updatedItem = action.payload;
-    
-
-    
-  //     const existingItem = state.cart.find((i) => i.id === updatedItem.id);
-  //  if(existingItem){
-  //   existingItem.quantity++;
-
-  //   existingItem.totalPrice = existingItem.price * existingItem.quantity;
-  //  }
-
-     
-  //   },
-
-//     withdrawCartQuantity(state, action) {
-//       state.totalQuantity--;
-//       const updatedItem = action.payload;
-    
-
-//       const existingItem = state.cart.find((i) => i.id === updatedItem.id);
-
-//       console.log(existingItem)
-//       if (existingItem.quantity === 1) {
-//         state.cart = state.cart.filter((i) => i.id !== updatedItem.id);}
-// else {
-//   existingItem.quantity--;
-//   existingItem.totalQuantity--;
-//   existingItem.totalPrice = existingItem.price * existingItem.quantity;
-// }
-     
+ 
   
     deleteItemFromCart(state, action) {
       const productToDelete = action.payload;
@@ -88,10 +58,10 @@ const cartSlice = createSlice({
     addItemToCart(state, action) {
       const newItem = action.payload;
 
-      console.log(newItem)
+      
 
       const existingItem = state.cart.find((i) => i.id === newItem.id);
-      console.log(existingItem)
+     
       state.totalQuantity++;
 
       if (!existingItem) {
@@ -148,10 +118,11 @@ export const onPageLoad = () => {
 export const deleteCartItem = ({ id, quantity }) => {
   return async (dispatch) => {
     try {
-      if (quantity > 0) {
+     
       const response = await axios.delete(URL1 + "/" + id);
+    
       
-      }
+      
       dispatch(cartActions.deleteItemFromCart({ id }));
       dispatch(
         uiActions.notification({
@@ -280,7 +251,7 @@ export const withdrawCartItem = ({ i }) => {
       
 
         // Then, remove it from the cart.
-        dispatch(cartActions.deleteItemFromCart({ id: i.id }));
+        dispatch(cartActions.deleteItemFromCart({ id: i.id, quantity:i.quantity }));
       }
 
       dispatch(
