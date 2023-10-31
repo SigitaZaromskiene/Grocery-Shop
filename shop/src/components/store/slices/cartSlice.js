@@ -34,6 +34,8 @@ const cartSlice = createSlice({
             price: product.price,
             title: product.title,
             totalPrice: product.price * product.quantity,
+            category: product.category
+            
           });
         } else {
           existingItem.quantity++;
@@ -71,6 +73,7 @@ const cartSlice = createSlice({
           price: newItem.price,
           title: newItem.title,
           totalPrice: newItem.price,
+          category:newItem.category
         });
       } else {
         existingItem.quantity++;
@@ -356,6 +359,7 @@ export const sendCartData = (cartData) => {
           quantity: cartData.quantity,
           totalQuantity: cartData.totalQuantity,
           totalPrice: cartData.totalPrice,
+          category: cartData.category
         }),
       });
 

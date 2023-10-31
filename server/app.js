@@ -68,7 +68,7 @@ app.delete("/cart", (req, res) => {
 
 app.get("/", (req, res) => {
   const sql = `
-  SELECT id, title, quantity, price, totalPrice
+  SELECT id, title, quantity, price, totalPrice, category
   FROM cart
 
   `;
@@ -80,7 +80,7 @@ app.get("/", (req, res) => {
 
 app.get("/cart", (req, res) => {
   const sql = `
-  SELECT id, title, quantity, price
+  SELECT id, title, quantity, price, category
   FROM cart
 
   `;
@@ -107,12 +107,12 @@ app.post("/order", (req, res) => {
 
   app.post("/cart", (req, res) => {
     const sql = `
-    INSERT INTO cart (title, price, quantity, totalPrice)
-    VALUES (?, ?, ?, ?)
+    INSERT INTO cart (title, price, quantity, totalPrice, category)
+    VALUES (?, ?, ?, ?, ?)
   
     `;
   
-    con.query(sql, [req.body.title, req.body.price, req.body.quantity, req.body.totalPrice], (err) => {
+    con.query(sql, [req.body.title, req.body.price, req.body.quantity, req.body.totalPrice, req.body.category], (err) => {
       if (err) throw err;
       res.json({});
     });
