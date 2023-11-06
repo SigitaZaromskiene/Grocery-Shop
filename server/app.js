@@ -118,6 +118,19 @@ app.post("/order", (req, res) => {
     });
   });
 
+  app.post("/register", (req, res) => {
+    const sql = `
+    INSERT INTO register (name,psw)
+    VALUES (?, ?)
+  
+    `;
+  
+    con.query(sql, [req.body.name, req.body.psw], (err) => {
+      if (err) throw err;
+      res.json({});
+    });
+  });
+
   app.put("/cart/:id", (req, res) => {
     const sql = `
     UPDATE cart 
