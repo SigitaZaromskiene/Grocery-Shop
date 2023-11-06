@@ -2,16 +2,24 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { filterSliceActions } from "../store/slices/filterSlice";
 
+
+
+
 function Filter() {
   const dispatch = useDispatch();
+
+
   const filter = useSelector((state) => state.filter);
 
   const handleCategoryChange = (event) => {
-    dispatch(filterSliceActions.setCategory(event.target.value)); // Dispatch the action to set the category
+    dispatch(filterSliceActions.setCategory(event.target.value)); 
+    
+
   };
 
   const handleSortByChange = (event) => {
     dispatch(filterSliceActions.setSortBy(event.target.value));
+   
   };
 
   return (

@@ -20,6 +20,7 @@ function PageRoutes() {
       <Route path="/about" element={<AboutUsPage />}></Route>
       <Route path="/category" element={<CategoriesPage />}></Route>
       <Route path="/shop" element={<ShopPage />}></Route>
+      <Route path="/shop/:id" element={<ShopPage />}></Route>
       <Route path="/login" element={<LoginPage />}></Route>
       <Route path="/register" element={<RegisterPage/>}></Route>
       <Route path="/contactus" element={<ContactUs/>}></Route>
