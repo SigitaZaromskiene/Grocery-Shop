@@ -1,88 +1,34 @@
-import Btn from "../Buttons/Btn"
+import Btn from "../Buttons/Btn";
+import { categories } from "../Data/Categories";
+import { useDispatch } from "react-redux";
+import { filterSliceActions } from "../store/slices/filterSlice";
 
 
+function Category() {
+  const dispatch = useDispatch();
 
-
-
-function Category () {
-
-    
-       
-    
-
-    return (
-        <section className='category_container wrapper'>
-            <div className='category_container_heading'>
-            <div className='category_container_border'></div>
-            <h2>Shop by category</h2>
-            <div className='category_container_border'></div>
-            </div>
-            <div className='category_container_tables'>
-             
-                <div className='category_container_table'>
-                    <p>Vegetables</p>
-                    <img></img>
-                    <Btn to='/category' text="Shop now"/>
-                </div>
-                <div className='category_container_table'>
-                    <p>Fruits</p>
-                    <img></img>
-                    <Btn to='/category' text="Shop now"/>
-                </div>
-                <div className='category_container_table'>
-                    <p>Meat</p>
-                    <img></img>
-                    <Btn to='/category' text="Shop now"/>
-                </div>
-                <div className='category_container_table'>
-                    <p>Drinks</p>
-                    <img></img>
-                    <Btn to='/category' text="Shop now"/>
-                </div>
-                <div className='category_container_table'>
-                    <p>Baked goods</p>
-                    <img></img>
-                    <Btn to='/category' text="Shop now"/>
-                </div>
-                <div className='category_container_table'>
-                    <p>Dairy</p>
-                    <img></img>
-                    <Btn to='/category' text="Shop now"/>
-                </div>
-                <div className='category_container_table'>
-                    <p>Snacks</p>
-                    <img></img>
-                    <Btn to='/category' text="Shop now"/>
-                </div>
-                <div className='category_container_table'>
-                    <p>Cans & Jars</p>
-                    <img></img>
-                    <Btn to='/category' text="Shop now"/>
-                </div>
-                <div className='category_container_table'>
-                    <p>Sauces</p>
-                    <img></img>
-                    <Btn to='/category' text="Shop now"/>
-                </div>
-                <div className='category_container_table'>
-                    <p>Meat</p>
-                    <img></img>
-                    <Btn to='/category' text="Shop now"/>
-                </div>
-                <div className='category_container_table'>
-                    <p>Drinks</p>
-                    <img></img>
-                    <Btn to='/category' text="Shop now"/>
-                </div>
-                <div className='category_container_table'>
-                    <p>Baked goods</p>
-                    <img></img>
-                    <Btn to='/category' text="Shop now"/>
-                </div>
-            
-                </div>
-        </section>
-    )
+  return (
+    <section className="category_container wrapper">
+      <div className="category_container_heading">
+        <div className="category_container_border"></div>
+        <h2>Shop by category</h2>
+        <div className="category_container_border"></div>
+      </div>
+      <div className="category_container_tables">
+        {categories.map((c) => (
+          <div className="category_container_table">
+            <p>{c.title}</p>
+            <img></img>
+            <Btn
+              to="/shop"
+              text="Shop now"
+              action={() => dispatch(filterSliceActions.setCategory(c.title))}
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }
 
-export default Category
+export default Category;

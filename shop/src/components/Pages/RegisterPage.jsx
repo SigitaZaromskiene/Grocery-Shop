@@ -2,14 +2,102 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import LongBtn from "../Buttons/LongBtn";
 import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../store/slices/uiSlice";
+import { useState } from "react";
+import { sendRegisterData } from "../store/slices/signUpSlice";
+import FormErrorNotification from "../Sections/FormErrorNotification";
 
 function RegisterPage() {
   const dispatch = useDispatch();
 
+  const [name, setName] = useState("");
+  const [psw, setPsw] = useState("");
+  const [psw2, setPsw2] = useState("");
+
+  const notification = useSelector((state) => state.ui.errorNotification);
+
+  const registrationStatus = useSelector(
+    (state) => state.ui.errorNotification?.status
+  );
+
+  const renderRegistrationForm = registrationStatus !== "success";
+
   const registerFormHandler = () => {
     dispatch(uiActions.toggleRegisterFormVisibility());
+  };
+
+  const isRegisterFormDetailsValid = () => {
+    if (name.length < 2) {
+      dispatch(
+        uiActions.errorNotification({
+          status: "error",
+          title: "Error",
+          message: "Name is too short",
+        })
+      );
+      return true;
+    }
+
+    const pattern = /^[A-Za-z]+$/;
+    if (!pattern.test(name)) {
+      dispatch(
+        uiActions.errorNotification(
+          {
+            status: "error",
+            title: "Error",
+            message: "Please use only letters",
+          },
+          setName(""),
+          setPsw(""),
+          setPsw2("")
+        )
+      );
+      return true;
+    }
+
+    if (!name || !psw || !psw2) {
+      dispatch(
+        uiActions.errorNotification(
+          {
+            status: "error",
+            title: "Error",
+            message: "Please fill all details",
+          },
+          setName(""),
+          setPsw(""),
+          setPsw2("")
+        )
+      );
+      return true;
+    }
+
+    if (psw !== psw2) {
+      dispatch(
+        uiActions.errorNotification(
+          {
+            status: "error",
+            title: "Error",
+            message: "Passwords dissmatch",
+          },
+          setName(""),
+          setPsw(""),
+          setPsw2("")
+        )
+      );
+      return true;
+    }
+  };
+
+  const signUpHandler = () => {
+    if (!isRegisterFormDetailsValid()) {
+      dispatch(
+        sendRegisterData(name, psw),
+        setName(""),
+        setPsw(""),
+        setPsw2("")
+      );
+    }
   };
   return (
     <div className="login_container">
@@ -20,30 +108,65 @@ function RegisterPage() {
             <FontAwesomeIcon className="icon_leave" icon={faX} />
           </NavLink>
         </div>
-        <div className="login_container_inputs">
-          <div>
-            <input className="login_container_input" placeholder="Name"></input>
+        {registrationStatus === "success" ? (
+          <div className="success-message">
+            <p>Registration successful! You can now sign in.</p>
+            <LongBtn to="/login" text='Go to Sign In'></LongBtn>
           </div>
-          <div>
-            <input
-              className="login_container_input"
-              placeholder="Password"
-            ></input>
+        ) : (
+          <div className="login_container_inputs">
+            {notification ? (
+              <FormErrorNotification
+                title={notification.title}
+                text={notification.message}
+                className={notification.status}
+              />
+            ) : null}
+            <div>
+              <input
+                className={notification?.status==='error' ? "login_container_input formError": "login_container_input"}
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                type="text"
+              ></input>
+            </div>
+            <div>
+              <input
+              className={notification?.status==='error' ? "login_container_input formError": "login_container_input"}
+                placeholder="Password"
+                value={psw}
+                onChange={(e) => setPsw(e.target.value)}
+                type="number"
+              ></input>
+            </div>
+            <div>
+              <input
+                 className={notification?.status==='error' ? "login_container_input formError": "login_container_input"}
+                placeholder="Repeat Password"
+                onChange={(e) => setPsw2(e.target.value)}
+                type="number"
+                value={psw2}
+              ></input>
+            </div>
           </div>
-          <div>
-            <input
-              className="login_container_input"
-              placeholder="Repeat Password"
-            ></input>
-          </div>
-        </div>
-        <LongBtn text="Sign Up" />
-        <div className="login_container_input_register">
+        )}
+        {renderRegistrationForm && (
+          <>
+          <LongBtn
+            text="Sign Up"
+            action={signUpHandler}
+            to="/register" 
+          />
+          <div className="login_container_input_register">
           <p>Already have an account?</p>
-          <NavLink className="login_container_input_register_now" to={"/login"}>
+          <NavLink className="login_container_input_register_now" to="/login">
             SIGN IN NOW
           </NavLink>
         </div>
+        </>
+        )}
+        
       </form>
     </div>
   );

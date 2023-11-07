@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 
-function LongBtn ({text, to}) {
+function LongBtn ({text, to, action}) {
     return (
-        <NavLink to={to} className='btn + long_btn'>{text}</NavLink>
+        <NavLink to={to} onClick={action} className='btn + long_btn'>{text} </NavLink>
     )
 }
 
