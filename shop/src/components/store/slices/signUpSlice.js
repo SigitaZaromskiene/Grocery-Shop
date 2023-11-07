@@ -41,16 +41,19 @@ export const sendRegisterData = (name, psw) => {
     try {
       await sendRequest();
 
+      
+
       dispatch(
-        uiActions.notification({
+        uiActions.errorNotification({
           title: "Success",
           message: "Successful registered",
           status: "success",
-        })
-      );
+        }),
+      )
+      
     } catch (error) {
       dispatch(
-        uiActions.notification({
+        uiActions.errorNotification({
           title: "Error",
           message: "Cannot register",
           status: "error",
@@ -60,6 +63,7 @@ export const sendRegisterData = (name, psw) => {
   };
 };
 
-export default signUpSlice;
+
 
 export const signUpSliceActions = signUpSlice.actions;
+export default signUpSlice;

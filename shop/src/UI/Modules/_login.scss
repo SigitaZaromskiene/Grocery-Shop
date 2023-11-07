@@ -8,10 +8,13 @@
   @include flex(center, center, row, 0px);
   text-decoration: none;
   color: $mainFontColor;
+
+  
  
 
    &_heading {
     width: 100%;
+    position: relative;
    
    }
 
@@ -43,6 +46,9 @@
     &::placeholder {
       color: black;
     }
+
+    
+  
 
 
      &_register {
@@ -77,5 +83,17 @@
   &_inputs {
     @include flex(center, center, column, 30px);
     
+  }
+}
+
+
+.formError {
+  
+  border: 1px solid red;
+  background-color: white;
+  
+
+  &::placeholder {
+    color: black;
   }
 }

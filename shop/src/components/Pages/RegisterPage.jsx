@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../store/slices/uiSlice";
 import { useState } from "react";
 import { sendRegisterData } from "../store/slices/signUpSlice";
+import FormErrorNotification from "../Sections/FormErrorNotification";
 
 function RegisterPage() {
   const dispatch = useDispatch();
@@ -14,7 +15,13 @@ function RegisterPage() {
   const [psw, setPsw] = useState("");
   const [psw2, setPsw2] = useState("");
 
-  const noError = useSelector((state) => state.ui.notification);
+  const notification = useSelector((state) => state.ui.errorNotification);
+
+  const registrationStatus = useSelector(
+    (state) => state.ui.errorNotification?.status
+  );
+
+  const renderRegistrationForm = registrationStatus !== "success";
 
   const registerFormHandler = () => {
     dispatch(uiActions.toggleRegisterFormVisibility());
@@ -23,7 +30,7 @@ function RegisterPage() {
   const isRegisterFormDetailsValid = () => {
     if (name.length < 2) {
       dispatch(
-        uiActions.notification({
+        uiActions.errorNotification({
           status: "error",
           title: "Error",
           message: "Name is too short",
@@ -35,7 +42,7 @@ function RegisterPage() {
     const pattern = /^[A-Za-z]+$/;
     if (!pattern.test(name)) {
       dispatch(
-        uiActions.notification(
+        uiActions.errorNotification(
           {
             status: "error",
             title: "Error",
@@ -51,7 +58,7 @@ function RegisterPage() {
 
     if (!name || !psw || !psw2) {
       dispatch(
-        uiActions.notification(
+        uiActions.errorNotification(
           {
             status: "error",
             title: "Error",
@@ -67,7 +74,7 @@ function RegisterPage() {
 
     if (psw !== psw2) {
       dispatch(
-        uiActions.notification(
+        uiActions.errorNotification(
           {
             status: "error",
             title: "Error",
@@ -80,13 +87,10 @@ function RegisterPage() {
       );
       return true;
     }
-    return false;
   };
 
   const signUpHandler = () => {
-    if (isRegisterFormDetailsValid()) {
-      return false;
-    } else {
+    if (!isRegisterFormDetailsValid()) {
       dispatch(
         sendRegisterData(name, psw),
         setName(""),
@@ -104,49 +108,65 @@ function RegisterPage() {
             <FontAwesomeIcon className="icon_leave" icon={faX} />
           </NavLink>
         </div>
-        <div className="login_container_inputs">
-          <div>
-            <input
-              className="login_container_input"
-              placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              type="text"
-            ></input>
+        {registrationStatus === "success" ? (
+          <div className="success-message">
+            <p>Registration successful! You can now sign in.</p>
+            <LongBtn to="/login" text='Go to Sign In'></LongBtn>
           </div>
-          <div>
-            <input
-              className="login_container_input"
-              placeholder="Password"
-              value={psw}
-              onChange={(e) => setPsw(e.target.value)}
-              type="number"
-            ></input>
+        ) : (
+          <div className="login_container_inputs">
+            {notification ? (
+              <FormErrorNotification
+                title={notification.title}
+                text={notification.message}
+                className={notification.status}
+              />
+            ) : null}
+            <div>
+              <input
+                className={notification?.status==='error' ? "login_container_input formError": "login_container_input"}
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                type="text"
+              ></input>
+            </div>
+            <div>
+              <input
+              className={notification?.status==='error' ? "login_container_input formError": "login_container_input"}
+                placeholder="Password"
+                value={psw}
+                onChange={(e) => setPsw(e.target.value)}
+                type="number"
+              ></input>
+            </div>
+            <div>
+              <input
+                 className={notification?.status==='error' ? "login_container_input formError": "login_container_input"}
+                placeholder="Repeat Password"
+                onChange={(e) => setPsw2(e.target.value)}
+                type="number"
+                value={psw2}
+              ></input>
+            </div>
           </div>
-          <div>
-            <input
-              className="login_container_input"
-              placeholder="Repeat Password"
-              onChange={(e) => setPsw2(e.target.value)}
-              type="number"
-              value={psw2}
-            ></input>
-          </div>
-        </div>
-        <LongBtn
-          text="Sign Up"
-          action={signUpHandler}
-          to={!noError ? "/register" : "/login"}
-        />
-        <div className="login_container_input_register">
+        )}
+        {renderRegistrationForm && (
+          <>
+          <LongBtn
+            text="Sign Up"
+            action={signUpHandler}
+            to="/register" 
+          />
+          <div className="login_container_input_register">
           <p>Already have an account?</p>
-          <NavLink
-            className="login_container_input_register_now"
-            to={"/register"}
-          >
+          <NavLink className="login_container_input_register_now" to="/login">
             SIGN IN NOW
           </NavLink>
         </div>
+        </>
+        )}
+        
       </form>
     </div>
   );

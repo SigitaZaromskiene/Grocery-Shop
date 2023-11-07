@@ -103,7 +103,6 @@ export const onPageLoad = () => {
 
       const cartData = response.data;
 
-      console.log(cartData);
 
       dispatch(cartActions.renderItemsToCart(cartData));
     } catch (error) {
