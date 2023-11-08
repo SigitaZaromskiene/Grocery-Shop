@@ -72,7 +72,7 @@ export const getSignInData = (name, psw) => {
             throw new Error("Cannot login");
           }
 
-          dispatch(signInActions.isLogged());
+          dispatch(signInActions.isLogged(true));
           dispatch(signInActions.setName(name));
           dispatch(signInActions.setPsw(psw));
           dispatch(signInActions.setLoggedName(name));
