@@ -3,18 +3,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { uiActions } from "../store/slices/uiSlice";
-import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import PersonalGreeting from "./PersonalGreeting";
+import Logout from "../Pages/Logout";
 
 function Nav() {
+  const dispatch = useDispatch();
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const notification = useSelector((state) => state.signIn.isLogged);
 
-  const dispatch = useDispatch()
-  const totalQuantity = useSelector(state=>state.cart.totalQuantity)
 
   const cartFormHandler = () => {
-    dispatch(uiActions.toggleCartVisibility())
-  }
+    dispatch(uiActions.toggleCartVisibility());
+  };
   return (
+    <>
     <nav className="nav_container">
       <div className="nav_container_left">
         <img src={logo} alt="Shop logo leaf" />
@@ -24,23 +28,46 @@ function Nav() {
       </div>
       <div className="nav_container_middle">
         <ul>
-          <NavLink className="custom_link" to="/">Home</NavLink>
-          <NavLink className="custom_link" to='/about'>About us</NavLink>
-          <NavLink className="custom_link" to='/category'>Category</NavLink>
-          <NavLink className="custom_link" to='/shop'>Shop</NavLink>
+          <NavLink className="custom_link" to="/">
+            Home
+          </NavLink>
+          <NavLink className="custom_link" to="/about">
+            About us
+          </NavLink>
+          <NavLink className="custom_link" to="/category">
+            Category
+          </NavLink>
+          <NavLink className="custom_link" to="/shop">
+            Shop
+          </NavLink>
         </ul>
       </div>
       <div className="nav_container_right">
         <ul>
-          <NavLink to='/cart' className="nav_container_right_cart" onClick={cartFormHandler}>
+          <NavLink
+            to="/cart"
+            className="nav_container_right_cart"
+            onClick={cartFormHandler}
+          >
             <FontAwesomeIcon icon={faCartShopping} />
             <li> My Cart</li>
-            <div className="nav_container_right_cart_count">{totalQuantity}</div>
+            <div className="nav_container_right_cart_count">
+              {totalQuantity}
+            </div>
           </NavLink>
-          <NavLink className="custom_link"to='/login'>Login</NavLink>
+          {notification === true ? (
+           <Logout/>
+          ) : (
+            <NavLink className="custom_link" to="/login">
+              Login
+            </NavLink>
+          )}
         </ul>
+       
       </div>
     </nav>
+     {notification === true ? <PersonalGreeting></PersonalGreeting> : null}
+     </>
   );
 }
 export default Nav;

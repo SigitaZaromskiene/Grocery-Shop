@@ -119,17 +119,83 @@ app.post("/order", (req, res) => {
   });
 
   app.post("/register", (req, res) => {
+
+    const session = uuidv4();
     const sql = `
-    INSERT INTO register (name,psw)
-    VALUES (?, ?)
+    INSERT INTO register (session,name,psw)
+    VALUES (?, ?, ?)
   
     `;
   
-    con.query(sql, [req.body.name, req.body.psw], (err) => {
+    con.query(sql, [session, req.body.name, md5(req.body.psw)],  (err, result) => {
       if (err) throw err;
-      res.json({});
+      if (result.affectedRows) {
+        res.cookie("usersSession", session);
+        res.json({
+          status: "ok",
+          name: req.body.name,
+        });
+      } else {
+        res.json({
+          status: "error",
+        });
+      }
+    }
+  );
+
+  });
+
+  app.post("/login", (req, res) => {
+    const sessionId = uuidv4();
+  
+    const sql = `
+          UPDATE register
+          SET session = ?
+          WHERE name = ? AND psw = ?
+      `;
+  
+    con.query(
+      sql,
+      [sessionId, req.body.name, md5(req.body.psw)],
+      (err, result) => {
+        if (err) throw err;
+        if (result.affectedRows) {
+          res.cookie("usersSession", sessionId);
+          res.json({
+            status: "ok",
+            name: req.body.name,
+          });
+        } else {
+          res.json({
+            status: "error",
+          });
+        }
+      }
+    );
+  });
+  
+  app.get("/login", (req, res) => {
+    const sql = `
+          SELECT name
+          FROM register
+          WHERE session = ?
+      `;
+    con.query(sql, [req.cookies.usersSession || ""], (err, result) => {
+      if (err) throw err;
+  
+      if (result.length) {
+        res.json({
+          status: "ok",
+          name: result[0].name,
+        });
+      } else {
+        res.json({
+          status: "error",
+        });
+      }
     });
   });
+  
 
   app.put("/cart/:id", (req, res) => {
     const sql = `

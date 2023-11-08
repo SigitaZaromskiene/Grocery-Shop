@@ -7,7 +7,7 @@ function FormErrorNotification({ title, text, className }) {
 
   useEffect(() => {
     setTimeout(() => {
-      dispatch(uiActions.toggleRegisterFormVisibility(),
+      dispatch(uiActions.toggleErrorNotificationVisibility(),
     );
     }, [2000]);
   }, [dispatch]);
