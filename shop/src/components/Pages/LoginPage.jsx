@@ -46,6 +46,9 @@ function LoginPage() {
       )}
     dispatch(sendAndGetData(name, psw));
 
+    dispatch(uiActions.toggleSignInFormVisibility())
+  
+
     
     
   };
@@ -62,7 +65,7 @@ function LoginPage() {
           </NavLink>
         </div>
        
-          <div>
+        
             {notification === false? (
               <FormErrorNotification
                 title={notification.title}
@@ -81,7 +84,7 @@ function LoginPage() {
               onChange={(e) => setName(e.target.value)}
             ></input>
           </div>
-          <div>
+          
             <input
               className="login_container_input"
               placeholder="Password"
@@ -89,7 +92,7 @@ function LoginPage() {
               value={psw}
               onChange={(e) => setPsw(e.target.value)}
             ></input>
-          </div>
+        
         </div>
         <LongBtn text="Sign In" action={signInHandler} to={notification === true?'/' : '/login'} />
         <div className="login_container_input_register">
@@ -99,7 +102,7 @@ function LoginPage() {
           </NavLink>
         </div>
        
-        </div>
+       
         
 
         

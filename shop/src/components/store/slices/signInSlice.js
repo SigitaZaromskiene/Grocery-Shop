@@ -6,7 +6,7 @@ const URL = "http://localhost:3111/login";
 
 const signInSlice = createSlice({
   name: "signIn",
-  initialState: { isLogged: false, name: "", psw: "", loggedName: "" },
+  initialState: { isLogged: null, name: "", psw: "", loggedName: "" },
   reducers: {
     isLogged(state) {
       state.isLogged = !state.isLogged;
@@ -115,6 +115,8 @@ export const getSignInData = (name, psw) => {
   
         // Dispatch the GET action to fetch data
         await dispatch(getSignInData(name, psw));
+
+        
 
 
         dispatch(
