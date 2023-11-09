@@ -30,7 +30,8 @@ export const sendRegisterData = (name, psw) => {
         body: JSON.stringify({
           name,
           psw,
-        }),
+        
+        }, { withCredentials: true }),
       });
 
       if (!response.ok) {

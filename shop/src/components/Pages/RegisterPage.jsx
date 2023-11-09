@@ -16,6 +16,7 @@ function RegisterPage() {
   const [psw2, setPsw2] = useState("");
 
   const notification = useSelector((state) => state.ui.errorNotification);
+  
 
   const registrationStatus = useSelector(
     (state) => state.ui.errorNotification?.status
@@ -156,7 +157,7 @@ function RegisterPage() {
           <LongBtn
             text="Sign Up"
             action={signUpHandler}
-            to="/register" 
+            to="/login" 
           />
           <div className="login_container_input_register">
           <p>Already have an account?</p>

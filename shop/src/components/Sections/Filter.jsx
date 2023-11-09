@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { filterSliceActions } from "../store/slices/filterSlice";
+import { useEffect } from "react";
 
 
 
@@ -21,6 +22,8 @@ function Filter() {
     dispatch(filterSliceActions.setSortBy(event.target.value));
    
   };
+
+ 
 
   return (
     <div className="select_filter">

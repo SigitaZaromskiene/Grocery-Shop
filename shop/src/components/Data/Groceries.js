@@ -3,7 +3,7 @@ export const products = [
       title: "Apple",
       price: 1.25,
       quantity: 1,
-      totalQuantity:1, totalPrice: 1.25
+      totalQuantity:1, totalPrice: 1.25,category:'Fruit'
     },
     { id: 2,title: "Bread", price: 3.15, quantity: 1, totalPrice: 3.15, category:'Bakery' },
     { id: 3,title: "Chicken", price: 6.25, quantity: 1,totalPrice: 6.25, category:'Meat' },

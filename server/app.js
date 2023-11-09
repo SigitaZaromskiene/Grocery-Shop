@@ -118,6 +118,21 @@ app.post("/order", (req, res) => {
     });
   });
 
+
+  app.post("/", (req, res) => {
+    const sql = `
+    INSERT INTO cart (title, price, quantity, totalPrice, category)
+    VALUES (?, ?, ?, ?, ?)
+  
+    `;
+  
+    con.query(sql, [req.body.title, req.body.price, req.body.quantity, req.body.totalPrice, req.body.category], (err) => {
+      if (err) throw err;
+      res.json({});
+    });
+  });
+
+
   app.post("/register", (req, res) => {
 
     const session = uuidv4();

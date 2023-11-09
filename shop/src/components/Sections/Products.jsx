@@ -43,7 +43,7 @@ function Products() {
 
   // Filter products based on the category
   const filteredProducts = products.filter((product) => {
-    if (filter.category === "All" || product.category === filter.category) {
+    if (product.category === filter.category) {
       return true;
     }
     return false;
@@ -51,6 +51,92 @@ function Products() {
 
   // Sort the filtered products
   const sortedProducts = sortProducts(filteredProducts, filter.sortBy);
+
+
+ if(filter.category === "All"){
+  return ( <section className="category_container_latest wrapper">
+  <div className="category_container_latest_heading">
+    <div className="category_container_latest_border"></div>
+    <h2>Please choose your products</h2>
+    <div className="category_container_latest_border"></div>
+  </div>
+  <Filter />
+  <div className="category_container_about_tables">
+    {products.map((p) => (
+      <div key={p.id} className="category_container_latest_table">
+        <p className="category_container_latest_table_title">{p.title}</p>
+        <div className="category_container_latest_table_price">
+          {p.price} &euro;
+        </div>
+        <div className="category_container_latest_table_btns">
+          <button
+            className="category_container_latest_table_btns_btn"
+            onClick={() => {
+              const currentQuantity = productQuantities[p.id] || 0;
+              handleQuantityChange(p.id, currentQuantity + 1);
+            }}
+          >
+            +
+          </button>
+          <input
+            type="number"
+            min="0"
+            max="20"
+            value={productQuantities[p.id] || 0}
+            onChange={(e) =>
+              handleQuantityChange(p.id, parseInt(e.target.value))
+            }
+          ></input>
+          <button
+            className="category_container_latest_table_btns_btn"
+            onClick={() => {
+              const currentQuantity = productQuantities[p.id] || 0;
+              handleQuantityChange(p.id, currentQuantity - 1);
+            }}
+          >
+            -
+          </button>
+        </div>
+        <div className="stars">
+          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} />
+        </div>
+        <Btn
+          to="/shop"
+          text="Add to cart"
+          action={() => {
+            setProductQuantities((prev) => prev === 0);
+            dispatch(
+              sendCartData({
+                title: p.title,
+                price: p.price,
+                id: p.id,
+                quantity: parseInt(Object.values(productQuantities)),
+                totalPrice: p.totalPrice,
+                category: p.category
+              })
+            );
+            dispatch(
+              cartActions.addItemToCart({
+                title: p.title,
+                price: p.price,
+                id: p.id,
+                quantity: parseInt(Object.values(productQuantities)),
+                category:p.category
+              })
+            );
+          }}
+        />
+      </div>
+    ))}
+  </div>
+</section>)
+
+ }
+  
 
   return (
     <section className="category_container_latest wrapper">
