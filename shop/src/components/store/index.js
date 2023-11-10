@@ -4,6 +4,7 @@ import cartSlice from "./slices/cartSlice";
 import filterSlice from "./slices/filterSlice";
 import  signUpSlice from "./slices/signUpSlice";
 import signInSlice from "./slices/signInSlice";
+import contactUsSlice from "./slices/contactusSlise";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     filter: filterSlice.reducer,
     signUp: signUpSlice.reducer,
     signIn: signInSlice.reducer,
+    contactUs:contactUsSlice.reducer,
   },
 });
 
