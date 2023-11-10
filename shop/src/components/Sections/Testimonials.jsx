@@ -6,7 +6,7 @@ import face3 from "../../UI/Img/face3.jpg";
 import { useState } from "react";
 
 function Testimonials() {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(1);
 
   return (
     <div className="testimonials wrapper">

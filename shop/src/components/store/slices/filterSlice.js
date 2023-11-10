@@ -8,6 +8,7 @@ const filterSlice = createSlice({
   },
   reducers: {
     setCategory: (state, action) => {
+      
       state.category = action.payload;
     },
     setSortBy: (state, action) => {

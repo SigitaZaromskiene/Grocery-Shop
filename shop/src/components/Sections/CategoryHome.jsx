@@ -39,7 +39,9 @@ function CategoryHome() {
           {visibleCategories.map(c => (
             <div className='category_container_table' key={c.id}>
               <p>{c.title}</p>
-              <img src={c.imageUrl} />
+            
+              <img src={c.img} alt='Category img'></img>
+             
               <Btn to='/shop' text="Shop now" action={() => dispatch(filterSliceActions.setCategory(c.title))} />
             </div>
           ))}

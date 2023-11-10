@@ -7,6 +7,8 @@ import { filterSliceActions } from "../store/slices/filterSlice";
 function Category() {
   const dispatch = useDispatch();
 
+  console.log(categories)
+
   return (
     <section className="category_container wrapper">
       <div className="category_container_heading">
@@ -18,7 +20,9 @@ function Category() {
         {categories.map((c) => (
           <div className="category_container_table">
             <p>{c.title}</p>
-            <img></img>
+           
+            <img src={c.img}  alt='Category img'></img>
+           
             <Btn
               to="/shop"
               text="Shop now"
