@@ -7,11 +7,11 @@ const filterSlice = createSlice({
     sortBy: 'None' 
   },
   reducers: {
-    setCategory: (state, action) => {
-      
-      state.category = action.payload;
+    setCategory (state, action) {
+      const category = action.payload
+      state.category = category;
     },
-    setSortBy: (state, action) => {
+    setSortBy (state, action){
       state.sortBy = action.payload;
     },
   },

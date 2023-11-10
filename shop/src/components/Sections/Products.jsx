@@ -13,7 +13,7 @@ function Products() {
 
   const filter = useSelector((state) => state.filter);
 
-  const [productQuantities, setProductQuantities] = useState(0);
+  const [productQuantities, setProductQuantities] = useState({});
 
   const handleQuantityChange = (productId, newQuantity) => {
     setProductQuantities((prevQuantities) => ({
@@ -46,7 +46,7 @@ function Products() {
   // Sort the filtered products
   const sortedProducts = sortProducts(filteredProducts, filter.sortBy);
 
-  console.log(sortedProducts);
+  
 
   if (filter.category === "All") {
     return (
@@ -68,7 +68,7 @@ function Products() {
                 <button
                   className="category_container_latest_table_btns_btn"
                   onClick={() => {
-                    const currentQuantity = productQuantities[p.id] || 0;
+                    const currentQuantity = productQuantities[p.id] || 1;
                     handleQuantityChange(p.id, currentQuantity + 1);
                   }}
                 >
@@ -78,7 +78,7 @@ function Products() {
                   type="number"
                   min="0"
                   max="20"
-                  value={productQuantities[p.id] || 0}
+                  value={productQuantities[p.id] || 1}
                   onChange={(e) =>
                     handleQuantityChange(p.id, parseInt(e.target.value))
                   }
@@ -86,7 +86,7 @@ function Products() {
                 <button
                   className="category_container_latest_table_btns_btn"
                   onClick={() => {
-                    const currentQuantity = productQuantities[p.id] || 0;
+                    const currentQuantity = productQuantities[p.id] || 1;
                     handleQuantityChange(p.id, currentQuantity - 1);
                   }}
                 >
@@ -101,16 +101,16 @@ function Products() {
                 <FontAwesomeIcon icon={faStar} />
               </div>
               <Btn
-                to="/shop"
+              
                 text="Add to cart"
                 action={() => {
-                  setProductQuantities((prev) => prev === 0);
+                  setProductQuantities((prev) => ({ ...prev, [p.id]: 1 }));
                   dispatch(
                     sendCartData({
                       title: p.title,
                       price: p.price,
                       id: p.id,
-                      quantity: parseInt(Object.values(productQuantities)),
+                      quantity: parseInt(Object.values(productQuantities) ),
                       totalPrice: p.totalPrice,
                       category: p.category,
                     })
@@ -120,7 +120,7 @@ function Products() {
                       title: p.title,
                       price: p.price,
                       id: p.id,
-                      quantity: parseInt(Object.values(productQuantities)),
+                      quantity: parseInt(Object.values(productQuantities) ),
                       category: p.category,
                     })
                   );
@@ -153,7 +153,7 @@ function Products() {
               <button
                 className="category_container_latest_table_btns_btn"
                 onClick={() => {
-                  const currentQuantity = productQuantities[p.id] || 0;
+                  const currentQuantity = productQuantities[p.id] || 1;
                   handleQuantityChange(p.id, currentQuantity + 1);
                 }}
               >
@@ -163,7 +163,7 @@ function Products() {
                 type="number"
                 min="0"
                 max="20"
-                value={productQuantities[p.id] || 0}
+                value={productQuantities[p.id] || 1}
                 onChange={(e) =>
                   handleQuantityChange(p.id, parseInt(e.target.value))
                 }
@@ -171,7 +171,7 @@ function Products() {
               <button
                 className="category_container_latest_table_btns_btn"
                 onClick={() => {
-                  const currentQuantity = productQuantities[p.id] || 0;
+                  const currentQuantity = productQuantities[p.id] || 1;
                   handleQuantityChange(p.id, currentQuantity - 1);
                 }}
               >
@@ -189,13 +189,13 @@ function Products() {
               to="/shop"
               text="Add to cart"
               action={() => {
-                setProductQuantities((prev) => prev === 0);
+                setProductQuantities((prev) => ({ ...prev, [p.id]: 1 }));
                 dispatch(
                   sendCartData({
                     title: p.title,
                     price: p.price,
                     id: p.id,
-                    quantity: parseInt(Object.values(productQuantities)),
+                    quantity: parseInt(Object.values(productQuantities) ),
                     totalPrice: p.totalPrice,
                     category: p.category,
                   })
@@ -205,7 +205,7 @@ function Products() {
                     title: p.title,
                     price: p.price,
                     id: p.id,
-                    quantity: parseInt(Object.values(productQuantities)),
+                    quantity: parseInt(Object.values(productQuantities) ),
                     category: p.category,
                   })
                 );

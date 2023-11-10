@@ -11,14 +11,17 @@ import { cartActions } from "../store/slices/cartSlice";
 function LatestProducts() {
   const dispatch = useDispatch();
 
-  const [productQuantities, setProductQuantities] = useState(0);
+
+  const [productQuantities, setProductQuantities] = useState({});
 
   const handleQuantityChange = (productId, newQuantity) => {
+
     setProductQuantities((prevQuantities) => ({
       ...prevQuantities,
       [productId]: newQuantity,
     }));
   };
+
   return (
     <section className="category_container_latest wrapper">
       <div className="category_container_latest_heading">
@@ -37,7 +40,7 @@ function LatestProducts() {
               <button
                 className="category_container_latest_table_btns_btn"
                 onClick={() => {
-                  const currentQuantity = productQuantities[p.id] || 0;
+                  const currentQuantity = productQuantities[p.id] || 1;
                   handleQuantityChange(p.id, currentQuantity + 1);
                 }}
               >
@@ -47,15 +50,15 @@ function LatestProducts() {
                 type="number"
                 min="0"
                 max="20"
-                value={productQuantities[p.id] || 0}
+                value={productQuantities[p.id] || 1}
                 onChange={(e) =>
-                  handleQuantityChange(p.id, parseInt(e.target.value))
+                  handleQuantityChange(p.id, parseInt(e.target.value) || 1)
                 }
               ></input>
               <button
                 className="category_container_latest_table_btns_btn"
                 onClick={() => {
-                  const currentQuantity = productQuantities[p.id] || 0;
+                  const currentQuantity = productQuantities[p.id] || 1;
                   handleQuantityChange(p.id, currentQuantity - 1);
                 }}
               >
@@ -70,16 +73,15 @@ function LatestProducts() {
               <FontAwesomeIcon icon={faStar} />
             </div>
             <Btn
-              to="/shop"
               text="Add to cart"
               action={() => {
-                setProductQuantities((prev) => prev === 0);
+                setProductQuantities((prev) => ({ ...prev, [p.id]: 1 }));
                 dispatch(
                   sendCartData({
                     title: p.title,
                     price: p.price,
                     id: p.id,
-                    quantity: parseInt(Object.values(productQuantities)),
+                    quantity: parseInt(productQuantities[p.id]) || 1,
                     totalPrice: p.totalPrice,
                     category: p.category,
                   })
@@ -89,7 +91,7 @@ function LatestProducts() {
                     title: p.title,
                     price: p.price,
                     id: p.id,
-                    quantity: parseInt(Object.values(productQuantities)),
+                    quantity: parseInt(productQuantities[p.id]) || 1,
                     category: p.category,
                   })
                 );
@@ -104,3 +106,4 @@ function LatestProducts() {
 }
 
 export default LatestProducts;
+

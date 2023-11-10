@@ -3,6 +3,8 @@
   padding: 10px 40px;
   background-color: $lightGreen;
   font-size: 1.2rem;
+  
+  
 
   &_left {
     @include flex(center, center, row, 10px);
