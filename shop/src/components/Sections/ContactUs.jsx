@@ -3,25 +3,59 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { uiActions } from "../store/slices/uiSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import {
+  contactUsActions,
+  sendContactUsDetails,
+} from "../store/slices/contactusSlice";
+
+import FormErrorNotification from "./FormErrorNotification";
 
 function ContactUs() {
   const dispatch = useDispatch();
+  const notification = useSelector((state) => state.contactUs.formNotification);
 
-  const [name, setName] = useState('')
-  const [surname, setSurName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
+  console.log(notification);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   const contactUsFormHandlerCloseHandler = () => {
     dispatch(uiActions.toggleContactFormVisibility());
   };
 
+  const contactMessageHandler = () => {
+    if (!name || !email || !message) {
+      dispatch(
+        contactUsActions.formNotificationToggle({
+          title: "Error",
+          message: "Please fill all details",
+          status: "error",
+        })
+      );
+      return;
+    }
 
-  const contactMessageHandler = ()=>{
+    const pattern = /^[A-Za-z]+$/;
+    if (!pattern.test(name)) {
+      dispatch(
+        contactUsActions.formNotificationToggle({
+          status: "error",
+          title: "Error",
+          message: "Please use only letters in name",
+        })
+      );
+      return;
+    }
+    dispatch(sendContactUsDetails(name, email, message));
+    dispatch(uiActions.toggleContactFormVisibility());
 
-  }
+    setName("");
+    setEmail("");
+    setMessage("");
+  };
   return (
     <div className="contact_modal">
       <form className="contact_modal_form">
@@ -32,25 +66,47 @@ function ContactUs() {
           <div className="category_container_border"></div>
           <h2>Contact Us</h2>
           <div className="category_container_border"></div>
+          {notification && (
+            <FormErrorNotification
+              title={notification.title}
+              text={notification.message}
+              className={notification.status}
+            />
+          )}
         </div>
         <div className="contact_modal_form_inputs">
           <div>
-            <input type='text' value={name} placeholder="Name" onClick={(e)=>setName(e.target.value)}></input>
+            <input
+              type="text"
+              value={name}
+              placeholder="Name"
+              onChange={(e) => setName(e.target.value)}
+            ></input>
           </div>
-          <div>
-         
-          </div>
+          <div></div>
         </div>
         <div className="contact_modal_form_inputs">
           <div>
-          <input type='email' value={email} placeholder="Email" onClick={(e)=>setEmail(e.target.value)}></input>
+            <input
+              type="email"
+              value={email}
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
           </div>
-          <div>
-         
-          </div>
+          <div></div>
         </div>
-        <textarea placeholder="Your Message" />
-        <Btn text="Send Message" to='/' action={contactMessageHandler}/>
+        <textarea
+          placeholder="Your Message"
+          type="text"
+          onChange={(e) => setMessage(e.target.value)}
+          value={message}
+        />
+        <Btn
+          text="Send Message"
+          to={notification ? "/" : "/contactus"}
+          action={contactMessageHandler}
+        />
       </form>
     </div>
   );

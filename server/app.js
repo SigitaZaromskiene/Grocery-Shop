@@ -132,6 +132,19 @@ app.post("/order", (req, res) => {
     });
   });
 
+  app.post("/contactus", (req, res) => {
+    const sql = `
+    INSERT INTO contactus (name, email, message)
+    VALUES (?, ?, ?)
+  
+    `;
+  
+    con.query(sql, [req.body.name, req.body.email, req.body.message], (err) => {
+      if (err) throw err;
+      res.json({});
+    });
+  });
+
 
   app.post("/register", (req, res) => {
 

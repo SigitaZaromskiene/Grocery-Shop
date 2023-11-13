@@ -7,7 +7,7 @@ import { filterSliceActions } from "../store/slices/filterSlice";
 function Category() {
   const dispatch = useDispatch();
 
-  console.log(categories)
+
 
   return (
     <section className="category_container wrapper">
