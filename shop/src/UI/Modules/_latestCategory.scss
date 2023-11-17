@@ -110,3 +110,7 @@
         color: $mainOrange;
     }
 }
+
+.category_container_inside{
+  @include flex (center, center, column, 20px)
+}

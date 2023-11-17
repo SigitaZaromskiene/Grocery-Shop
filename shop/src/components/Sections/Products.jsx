@@ -40,7 +40,7 @@ function Products() {
           <div className="category_container_latest_border"></div>
         </div>
         <Filter />
-        <div className="category_container_about_tables">
+
           {products.map((p) => (
             <div key={p.id} className="category_container_latest_table">
               <p className="category_container_latest_table_title">{p.title}</p>
@@ -48,11 +48,11 @@ function Products() {
                 {p.price} &euro;
               </div>
              
-                <ShopInputs product={p.id} />
+                <ShopInputs product={p} />
               </div>
          
           ))}
-        </div>
+     
       </section>
     );
   }

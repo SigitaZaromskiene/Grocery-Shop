@@ -14,7 +14,8 @@ function ShopInputs({p}) {
     const dispatch = useDispatch();
  
   return (
-   
+    <div className="category_container_about_tables">
+        
     <div className="category_container_latest_table_btns">
     <button
     className="category_container_latest_table_btns_btn"
@@ -75,6 +76,7 @@ function ShopInputs({p}) {
        }}
      />
    )}
+   </div>
    </div>
  
   );
