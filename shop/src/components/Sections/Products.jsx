@@ -13,14 +13,16 @@ function Products() {
 
   const filter = useSelector((state) => state.filter);
 
-  const [productQuantities, setProductQuantities] = useState({});
+  const cart = useSelector(state=>state.cart.cart)
 
-  const handleQuantityChange = (productId, newQuantity) => {
-    setProductQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [productId]: newQuantity,
-    }));
-  };
+  const cartId = cart.filter(c=>c)
+
+  console.log(cartId)
+
+  const [productQuantities, setProductQuantities] = useState(0);
+
+  
+
 
   const sortProducts = (products, sortBy) => {
     if (sortBy === "Lowest Price") {
@@ -67,10 +69,8 @@ function Products() {
               <div className="category_container_latest_table_btns">
                 <button
                   className="category_container_latest_table_btns_btn"
-                  onClick={() => {
-                    const currentQuantity = productQuantities[p.id] || 1;
-                    handleQuantityChange(p.id, currentQuantity + 1);
-                  }}
+                  onClick={() => setProductQuantities(c=>c+1)}
+                  
                 >
                   +
                 </button>
@@ -78,17 +78,15 @@ function Products() {
                   type="number"
                   min="0"
                   max="20"
-                  value={productQuantities[p.id] || 1}
-                  onChange={(e) =>
-                    handleQuantityChange(p.id, parseInt(e.target.value))
-                  }
+                  value={productQuantities}
+                  onChange={(e)=>setProductQuantities(e.target.value)}
+                  
+                  
                 ></input>
                 <button
                   className="category_container_latest_table_btns_btn"
-                  onClick={() => {
-                    const currentQuantity = productQuantities[p.id] || 1;
-                    handleQuantityChange(p.id, currentQuantity - 1);
-                  }}
+                 
+                  onClick={() => setProductQuantities(c=>c-1)}
                 >
                   -
                 </button>
@@ -102,15 +100,16 @@ function Products() {
               </div>
               <Btn
               
+              
                 text="Add to cart"
                 action={() => {
-                  setProductQuantities((prev) => ({ ...prev, [p.id]: 1 }));
+                
                   dispatch(
                     sendCartData({
                       title: p.title,
                       price: p.price,
                       id: p.id,
-                      quantity: parseInt(Object.values(productQuantities) ),
+                      quantity:  parseInt(productQuantities ),
                       totalPrice: p.totalPrice,
                       category: p.category,
                     })
@@ -120,10 +119,11 @@ function Products() {
                       title: p.title,
                       price: p.price,
                       id: p.id,
-                      quantity: parseInt(Object.values(productQuantities) ),
+                      quantity: parseInt(productQuantities),
                       category: p.category,
                     })
                   );
+                  setProductQuantities(0)
                 }}
               />
             </div>
@@ -152,10 +152,8 @@ function Products() {
             <div className="category_container_latest_table_btns">
               <button
                 className="category_container_latest_table_btns_btn"
-                onClick={() => {
-                  const currentQuantity = productQuantities[p.id] || 1;
-                  handleQuantityChange(p.id, currentQuantity + 1);
-                }}
+               
+                onClick={() => setProductQuantities(c=>c+1)}
               >
                 +
               </button>
@@ -163,17 +161,13 @@ function Products() {
                 type="number"
                 min="0"
                 max="20"
-                value={productQuantities[p.id] || 1}
-                onChange={(e) =>
-                  handleQuantityChange(p.id, parseInt(e.target.value))
-                }
+                value={productQuantities}
+                onChange={(e)=>setProductQuantities(e.target.value)}
+                
               ></input>
               <button
                 className="category_container_latest_table_btns_btn"
-                onClick={() => {
-                  const currentQuantity = productQuantities[p.id] || 1;
-                  handleQuantityChange(p.id, currentQuantity - 1);
-                }}
+                onClick={() => setProductQuantities(c=>c-1)}
               >
                 -
               </button>
@@ -187,15 +181,16 @@ function Products() {
             </div>
             <Btn
               to="/shop"
+              className={productQuantities===1? 'disabled': null}
               text="Add to cart"
               action={() => {
-                setProductQuantities((prev) => ({ ...prev, [p.id]: 1 }));
+                setProductQuantities((prev) => ({ ...prev, [p.id]: 0 }));
                 dispatch(
                   sendCartData({
                     title: p.title,
                     price: p.price,
                     id: p.id,
-                    quantity: parseInt(Object.values(productQuantities) ),
+                    quantity: p.quantity +parseInt(productQuantities ),
                     totalPrice: p.totalPrice,
                     category: p.category,
                   })
@@ -205,7 +200,7 @@ function Products() {
                     title: p.title,
                     price: p.price,
                     id: p.id,
-                    quantity: parseInt(Object.values(productQuantities) ),
+                    quantity: p.quantity +parseInt(productQuantities ),
                     category: p.category,
                   })
                 );

@@ -16,12 +16,10 @@ const cartSlice = createSlice({
     totalPrice: 0,
   },
   reducers: {
-
-
-
-
     renderItemsToCart(state, action) {
       const newItem = action.payload;
+
+      console.log(newItem);
 
       newItem.forEach((product) => {
         const existingItem = state.cart.find((i) => i.id === product.id);
@@ -34,8 +32,7 @@ const cartSlice = createSlice({
             price: product.price,
             title: product.title,
             totalPrice: product.price * product.quantity,
-            category: product.category
-            
+            category: product.category,
           });
         } else {
           existingItem.quantity++;
@@ -43,8 +40,7 @@ const cartSlice = createSlice({
         }
       });
     },
- 
-  
+
     deleteItemFromCart(state, action) {
       const productToDelete = action.payload;
 
@@ -56,14 +52,11 @@ const cartSlice = createSlice({
       state.totalQuantity = 0;
     },
 
-
     addItemToCart(state, action) {
       const newItem = action.payload;
 
-      
-
       const existingItem = state.cart.find((i) => i.id === newItem.id);
-     
+
       state.totalQuantity++;
 
       if (!existingItem) {
@@ -73,7 +66,7 @@ const cartSlice = createSlice({
           price: newItem.price,
           title: newItem.title,
           totalPrice: newItem.price,
-          category:newItem.category
+          category: newItem.category,
         });
       } else {
         existingItem.quantity++;
@@ -84,10 +77,8 @@ const cartSlice = createSlice({
       const newItem = action.payload;
       const existingItem = state.cart.find((i) => i.id === newItem.id);
       state.totalQuantity--;
-      if (existingItem.quantity === 1 ) {
-       
+      if (existingItem.quantity === 1) {
         state.cart = state.cart.filter((i) => i.id !== newItem.id);
-      
       } else {
         existingItem.quantity--;
         existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
@@ -102,7 +93,6 @@ export const onPageLoad = () => {
       const response = await axios.get(URL2);
 
       const cartData = response.data;
-
 
       dispatch(cartActions.renderItemsToCart(cartData));
     } catch (error) {
@@ -120,11 +110,8 @@ export const onPageLoad = () => {
 export const deleteCartItem = ({ id, quantity }) => {
   return async (dispatch) => {
     try {
-     
       const response = await axios.delete(URL1 + "/" + id);
-    
-      
-      
+
       dispatch(cartActions.deleteItemFromCart({ id }));
       dispatch(
         uiActions.notification({
@@ -146,31 +133,24 @@ export const deleteCartItem = ({ id, quantity }) => {
 };
 
 export const updateCartItem = ({ i }) => {
-  console.log(i);
-
   return async (dispatch) => {
     try {
       const response = await axios.put(URL1 + "/" + i.id, {
-        quantity: i.quantity+1,
+        quantity: i.quantity + 1,
         id: i.id,
         totalPrice: i.totalPrice + i.price,
       });
 
-
-      
-      
-
       dispatch(
-        cartActions.addItemToCart(
-          {id: i.id,
-            quantity: i.quantity,
-            price: i.price,
-            title: i.title,
-            totalPrice: i.totalPrice,}
-        ))
+        cartActions.addItemToCart({
+          id: i.id,
+          quantity: i.quantity,
+          price: i.price,
+          title: i.title,
+          totalPrice: i.totalPrice,
+        })
+      );
 
-       
-      
       dispatch(
         uiActions.notification({
           title: "Success",
@@ -246,14 +226,12 @@ export const withdrawCartItem = ({ i }) => {
       } else {
         // If the item's quantity is 1, delete it from the database.
 
-       
-
-          const response = await axios.delete(URL1 + "/" + i.id);
-        
-      
+        const response = await axios.delete(URL1 + "/" + i.id);
 
         // Then, remove it from the cart.
-        dispatch(cartActions.deleteItemFromCart({ id: i.id, quantity:i.quantity }));
+        dispatch(
+          cartActions.deleteItemFromCart({ id: i.id, quantity: i.quantity })
+        );
       }
 
       dispatch(
@@ -358,7 +336,7 @@ export const sendCartData = (cartData) => {
           quantity: cartData.quantity,
           totalQuantity: cartData.totalQuantity,
           totalPrice: cartData.totalPrice,
-          category: cartData.category
+          category: cartData.category,
         }),
       });
 

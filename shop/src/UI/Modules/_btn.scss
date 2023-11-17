@@ -19,3 +19,9 @@
     width: 300px;
     text-align: center;
 }
+
+.btn:disabled {
+    background-color: #bdc3c7;
+  color: #7f8c8d;
+  cursor: not-allowed;
+}
