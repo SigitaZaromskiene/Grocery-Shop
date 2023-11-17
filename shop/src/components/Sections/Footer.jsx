@@ -3,6 +3,7 @@ import logo from "../../UI/Img/logo.png";
 import { SocialIcon } from "react-social-icons";
 import { useDispatch } from "react-redux";
 import { uiActions } from "../store/slices/uiSlice";
+import { filterSliceActions } from "../store/slices/filterSlice";
 
 function Footer() {
   const dispatch = useDispatch();
@@ -10,6 +11,13 @@ function Footer() {
   const contactUsFormHandler = () => {
     dispatch(uiActions.toggleContactFormVisibility());
   };
+
+  const findAddress = () => {
+    const address = "Nepriklausomybės a. 14, 44320 Kaunas";
+    const formattedAddress = encodeURIComponent(address);
+    window.open(`https://www.google.com/maps?q=${formattedAddress}`, "_blank");
+  };
+
   return (
     <div className="footer_container wrapper">
       <div>
@@ -47,26 +55,48 @@ function Footer() {
         <div className="footer_container_right_container">
           <h4>About</h4>
           <NavLink className="footer_container_right_link" to={"/about"}>
-            About us
+            Newsletter
           </NavLink>
-          <NavLink className="footer_container_right_link" to={"/products"}>
-            Testimonials
+          <NavLink className="footer_container_right_link" to={"/category"}>
+            Categories
           </NavLink>
-          <NavLink className="footer_container_right_link" to={"/products"}>
+          <NavLink className="footer_container_right_link" to={"/shop"}>
             Shop
           </NavLink>
-          <NavLink className="footer_container_right_link" to={"/"}>
-            Home
+          <NavLink className="footer_container_right_link" to={"/cart"}>
+            My cart
           </NavLink>
         </div>
         <div className="footer_container_right_container">
           <h4>Categories</h4>
-          <NavLink className="footer_container_right_link">Fruits</NavLink>
-          <NavLink className="footer_container_right_link">Vegetables</NavLink>
-          <NavLink className="footer_container_right_link">
-            Dairy products
+          <NavLink
+            className="footer_container_right_link"
+            to="/shop"
+            onClick={() => dispatch(filterSliceActions.setCategory("Meat"))}
+          >
+            Meat
           </NavLink>
-          <NavLink className="footer_container_right_link">Soft drinks</NavLink>
+          <NavLink
+            className="footer_container_right_link"
+            to="/shop"
+            onClick={() => dispatch(filterSliceActions.setCategory("Dairy"))}
+          >
+            Dairy
+          </NavLink>
+          <NavLink
+            className="footer_container_right_link"
+            to="/shop"
+            onClick={() => dispatch(filterSliceActions.setCategory("Fruits"))}
+          >
+            Fruits
+          </NavLink>
+          <NavLink
+            className="footer_container_right_link"
+            to="/shop"
+            onClick={() => dispatch(filterSliceActions.setCategory("Drink"))}
+          >
+            Soft drinks
+          </NavLink>
         </div>
         <div className="footer_container_right_container">
           <h4>Help</h4>
@@ -83,8 +113,11 @@ function Footer() {
           >
             Contact us
           </NavLink>
-          <NavLink className="footer_container_right_link">
-            +370674393434
+          <NavLink
+            className="footer_container_right_link"
+            onClick={findAddress}
+          >
+            Find us
           </NavLink>
         </div>
       </div>

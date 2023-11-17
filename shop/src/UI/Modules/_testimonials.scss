@@ -1,59 +1,65 @@
 .testimonials {
-    background-color: $lightGreen;
-    color: $mainFontColor;
-   
-    
+  background-color: $lightGreen;
+  color: $mainFontColor;
 
-     h2 {
-        text-align: center;
-        font-size: 1.8rem;
-        padding-bottom: 60px;
-     }
+  h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    padding-bottom: 60px;
+  }
 
+  &_container {
+    @include flex(center, center, row, 45px);
+    margin-bottom: 30px;
 
-    &_container {
-        @include flex (center, center, row, 45px);
-        margin-bottom: 30px;
-        
-        &_feedback {
-            background-color: white;
-            padding: 15px;
-            border-radius: 25px;
+    &_feedback {
+      background-color: white;
+      padding: 15px;
+      border-radius: 25px;
 
-            &_text {
-                font-size: 1rem;
-                margin-bottom: 15px;
-            }
-        }
-
-
-        &_feedback_info {
-            @include flex (flex-start, center, row, 25px);
-            margin-bottom: 25px;
-
-            img {
-                height: 8rem;
-                width: 8em;
-                border-radius: 50%;
-                object-fit: cover;
-                }
-
-                p {
-                    font-size: 1.4rem;
-                }
-        }
+      &_text {
+        font-size: 1rem;
+        margin-bottom: 15px;
+      }
     }
+
+    &_feedback_info {
+      @include flex(flex-start, center, row, 25px);
+      margin-bottom: 25px;
+
+      img {
+        height: 8rem;
+        width: 8em;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      p {
+        font-size: 1.4rem;
+      }
+    }
+  }
 }
 
 .dot_container {
-  @include flex (center, center, row, 5px);
-  
-  .dot {
-    background-color: white;
-    height: .8rem;
-    width: .8rem;
-    border-radius: 50%;
-    border: 1px solid $lightGreen;
+  @include flex(center, center, row, 5px);
 
+  .dot {
+    height: 0.8rem;
+    width: 0.8rem;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid black;
+
+    &_active {
+      background-color: $mainOrange;
+    }
   }
+}
+.active_dot {
+  background-color: $lightOrange;
+}
+
+.active_feedback {
+  background-color: $lightOrange !important;
 }

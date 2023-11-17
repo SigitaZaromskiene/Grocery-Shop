@@ -36,8 +36,6 @@ export const sendSignInData = (name, psw) => {
       if (response.status !== 200) {
         throw new Error("Cannot login");
       }
-
-      
     };
     try {
       await sendRequest();
@@ -62,79 +60,65 @@ export const sendSignInData = (name, psw) => {
 };
 
 export const getSignInData = (name, psw) => {
-    return async (dispatch) => {
-      const sendRequest = async () => {
-        try {
-          const response = await axios.get(URL,{ withCredentials: true }
-          );
-
-          if (!response.data || response.data.status !== "ok") {
-            throw new Error("Cannot login");
-          }
-
-          dispatch(signInActions.isLogged(true));
-          dispatch(signInActions.setName(name));
-          dispatch(signInActions.setPsw(psw));
-          dispatch(signInActions.setLoggedName(name));
-        } catch (error) {
-          throw new Error("Cannot login");
-        }
-      };
-
-      try {
-        await sendRequest();
-
-        dispatch(
-          uiActions.errorNotification({
-            title: "Success",
-            message: "Successful logged in",
-            status: "success",
-          })
-        );
-      } catch (error) {
-        dispatch(
-          uiActions.errorNotification({
-            title: "Error",
-            message: "Cannot login",
-            status: "error",
-          })
-        );
-      }
-    };
-  };
-
-
-
-  export const sendAndGetData = (name, psw) => {
-    return async (dispatch) => {
-      try {
-        // Dispatch the POST action to send data
-        await dispatch(sendSignInData(name, psw));
-
+  return async (dispatch) => {
+    const sendRequest = async () => {
      
-  
-        // Dispatch the GET action to fetch data
-        await dispatch(getSignInData(name, psw));
+        const response = await axios.get(URL, { withCredentials: true });
 
-        
+        console.log(response);
 
+        if (response.data.status === "ok") {
+          dispatch(signInActions.isLogged());
+          dispatch(signInActions.setName(""));
+          dispatch(signInActions.setPsw(""));
+          dispatch(signInActions.setLoggedName(name));
+        }
+    }
+      
+    
 
-        dispatch(
-            uiActions.errorNotification({
-              title: "Success",
-              message: "Successful registered",
-              status: "success",
-            }))
-      } catch (error) {
-        dispatch(
-            uiActions.errorNotification({
-              title: "Error",
-              message: "Something is wrong",
-              status: "error",
-            }))
-      }
-    };
+    try {
+      await sendRequest();
+
+      dispatch(
+        uiActions.errorNotification({
+          title: "Success",
+          message: "Successful logged in",
+          status: "success",
+        })
+      );
+    } catch (error) {
+      dispatch(
+        uiActions.errorNotification({
+          title: "Error",
+          message: "Cannot login",
+          status: "error",
+        })
+      );
+    
+}
   };
+};
+
+export const sendAndGetData = (name, psw) => {
+  return async (dispatch) => {
+    try {
+      // Dispatch the POST action to send data
+      await dispatch(sendSignInData(name, psw));
+
+      // Dispatch the GET action to fetch data
+      await dispatch(getSignInData(name, psw));
+    } catch (error) {
+      dispatch(
+        uiActions.errorNotification({
+          title: "Error",
+          message: "Something is wrong",
+          status: "error",
+        })
+      );
+    }
+  };
+};
 
 export default signInSlice;
 export const signInActions = signInSlice.actions;

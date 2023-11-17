@@ -9,7 +9,7 @@ function Notification({ title, text, className }) {
     setTimeout(() => {
       dispatch(uiActions.toggleNotificationVisibility());
       
-    }, [5000]);
+    }, [2000]);
   }, [dispatch]);
 
   

@@ -1,4 +1,4 @@
-.notification_container {
+.error_notification_container {
   width: 100%;
   height: 6rem;
   background-color: #1a8ed1;
@@ -7,7 +7,7 @@
   padding: 10px 40px;
   align-items: center;
   color: white;
-  position: fixed;
+  position: absolute;
 
   h4,
   p {
