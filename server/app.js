@@ -107,8 +107,8 @@ app.post("/order", (req, res) => {
 
   app.post("/cart", (req, res) => {
     const sql = `
-    INSERT INTO cart (title, price, quantity, totalPrice, category)
-    VALUES (?, ?, ?, ?, ?)
+    INSERT INTO cart ( title, price, quantity, totalPrice, category)
+    VALUES ( ?, ?, ?, ?, ?)
   
     `;
   

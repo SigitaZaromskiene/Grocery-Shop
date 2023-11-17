@@ -1,27 +1,32 @@
 .btn {
-    border: 1px solid $mainGreen;
-    padding: 10px 50px;
-    background-color: $mainGreen;
-    border-radius: 25px;
-    font-weight: 600;
-    color: white;
-    cursor: pointer;
-    text-decoration: none;
+  border: 1px solid $mainGreen;
+  padding: 10px 50px;
+  background-color: $mainGreen;
+  border-radius: 25px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
 
-    &:hover {
-        background-color: white;
-        color: $mainOrange;
-        border: 1px solid $mainOrange;
-    }
+  &:hover {
+    background-color: white;
+    color: $mainOrange;
+    border: 1px solid $mainOrange;
+  }
 }
 
 .long_btn {
-    width: 300px;
-    text-align: center;
+  width: 300px;
+  text-align: center;
 }
 
-.btn:disabled {
-    background-color: #bdc3c7;
+.disabled {
+  background-color: #bdc3c7;
   color: #7f8c8d;
   cursor: not-allowed;
+  padding: 10px 50px;
+  border-radius: 25px;
+  font-size: 1.05rem;
+  color: white;
+  text-decoration: none;
 }

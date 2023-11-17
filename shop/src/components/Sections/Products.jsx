@@ -1,28 +1,11 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import Btn from "../Buttons/Btn";
 import { products } from "../Data/Groceries";
 import Filter from "./Filter";
 import { useDispatch, useSelector } from "react-redux";
-import { cartActions } from "../store/slices/cartSlice";
-import { sendCartData } from "../store/slices/cartSlice";
-import { useState } from "react";
+
+import ShopInputs from "./ShopInputs";
 
 function Products() {
-  const dispatch = useDispatch();
-
   const filter = useSelector((state) => state.filter);
-
-  const cart = useSelector(state=>state.cart.cart)
-
-  const cartId = cart.filter(c=>c)
-
-  console.log(cartId)
-
-  const [productQuantities, setProductQuantities] = useState(0);
-
-  
-
 
   const sortProducts = (products, sortBy) => {
     if (sortBy === "Lowest Price") {
@@ -48,8 +31,6 @@ function Products() {
   // Sort the filtered products
   const sortedProducts = sortProducts(filteredProducts, filter.sortBy);
 
-  
-
   if (filter.category === "All") {
     return (
       <section className="category_container_latest wrapper">
@@ -66,67 +47,10 @@ function Products() {
               <div className="category_container_latest_table_price">
                 {p.price} &euro;
               </div>
-              <div className="category_container_latest_table_btns">
-                <button
-                  className="category_container_latest_table_btns_btn"
-                  onClick={() => setProductQuantities(c=>c+1)}
-                  
-                >
-                  +
-                </button>
-                <input
-                  type="number"
-                  min="0"
-                  max="20"
-                  value={productQuantities}
-                  onChange={(e)=>setProductQuantities(e.target.value)}
-                  
-                  
-                ></input>
-                <button
-                  className="category_container_latest_table_btns_btn"
-                 
-                  onClick={() => setProductQuantities(c=>c-1)}
-                >
-                  -
-                </button>
+             
+                <ShopInputs product={p.id} />
               </div>
-              <div className="stars">
-                <FontAwesomeIcon icon={faStar} />
-                <FontAwesomeIcon icon={faStar} />
-                <FontAwesomeIcon icon={faStar} />
-                <FontAwesomeIcon icon={faStar} />
-                <FontAwesomeIcon icon={faStar} />
-              </div>
-              <Btn
-              
-              
-                text="Add to cart"
-                action={() => {
-                
-                  dispatch(
-                    sendCartData({
-                      title: p.title,
-                      price: p.price,
-                      id: p.id,
-                      quantity:  parseInt(productQuantities ),
-                      totalPrice: p.totalPrice,
-                      category: p.category,
-                    })
-                  );
-                  dispatch(
-                    cartActions.addItemToCart({
-                      title: p.title,
-                      price: p.price,
-                      id: p.id,
-                      quantity: parseInt(productQuantities),
-                      category: p.category,
-                    })
-                  );
-                  setProductQuantities(0)
-                }}
-              />
-            </div>
+         
           ))}
         </div>
       </section>
@@ -150,62 +74,8 @@ function Products() {
               {p.price} &euro;
             </div>
             <div className="category_container_latest_table_btns">
-              <button
-                className="category_container_latest_table_btns_btn"
-               
-                onClick={() => setProductQuantities(c=>c+1)}
-              >
-                +
-              </button>
-              <input
-                type="number"
-                min="0"
-                max="20"
-                value={productQuantities}
-                onChange={(e)=>setProductQuantities(e.target.value)}
-                
-              ></input>
-              <button
-                className="category_container_latest_table_btns_btn"
-                onClick={() => setProductQuantities(c=>c-1)}
-              >
-                -
-              </button>
+              <ShopInputs product={p} />
             </div>
-            <div className="stars">
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-            </div>
-            <Btn
-              to="/shop"
-              className={productQuantities===1? 'disabled': null}
-              text="Add to cart"
-              action={() => {
-                setProductQuantities((prev) => ({ ...prev, [p.id]: 0 }));
-                dispatch(
-                  sendCartData({
-                    title: p.title,
-                    price: p.price,
-                    id: p.id,
-                    quantity: p.quantity +parseInt(productQuantities ),
-                    totalPrice: p.totalPrice,
-                    category: p.category,
-                  })
-                );
-                dispatch(
-                  cartActions.addItemToCart({
-                    title: p.title,
-                    price: p.price,
-                    id: p.id,
-                    quantity: p.quantity +parseInt(productQuantities ),
-                    category: p.category,
-                  })
-                );
-              }}
-            />
           </div>
         ))}
       </div>
