@@ -8,7 +8,7 @@ import { sendCartData } from "../store/slices/cartSlice";
 
 import { useDispatch } from "react-redux";
 
-function ShopInputs({ p}) {
+function ShopInputs({p}) {
 
     const [productQuantities, setProductQuantities] = useState(0);
     const dispatch = useDispatch();
