@@ -7,14 +7,18 @@ function CartTotal() {
 
   const dispatch = useDispatch();
   const cartData = useSelector(state=>state.cart.cart)
+
+  const {title,price} = cartData
   const totalPrice = useSelector(state=>state.cart.totalPrice)
 
+
+  console.log(cartData)
   
 
   
 
   const orderHandler = () => {
-    dispatch(sendOrderData(cartData))
+    dispatch(sendOrderData(title, price))
     dispatch(uiActions.toggleCartVisibility());
     dispatch(deleteCart())
     

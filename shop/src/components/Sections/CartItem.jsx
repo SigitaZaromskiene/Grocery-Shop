@@ -4,11 +4,14 @@ import { uiActions } from "../store/slices/uiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { cartActions, deleteCartItem, editCartItem, updateCartItem, withdrawCartItem } from "../store/slices/cartSlice";
+import Btn from "../Buttons/Btn";
 
 const CartItem = () => {
   const dispatch = useDispatch();
 
   const cartData = useSelector((state) => state.cart.cart);
+
+  console.log(cartData)
 
   const showCartHandler = () => {
     dispatch(uiActions.toggleCartVisibility());
@@ -22,7 +25,7 @@ const CartItem = () => {
             <header>
               <h3>{i.title}</h3>
               <div className="price">
-                {i.totalPrice}
+                {i.totalPrice.toFixed(2,0)}
                 <span>&euro;</span>
               </div>
             </header>
@@ -32,18 +35,24 @@ const CartItem = () => {
                   <span>x {i.quantity}</span>
                 </div>
                 <div className="cart_items_actions">
-                  <button
+                <button
                     onClick={() =>
-                      dispatch(updateCartItem({i}))
+                      dispatch(cartActions.addItemToCart({title: i.title,
+                        price: i.price,
+                        id: i.id,
+                        quantity: i.quantity * i.price,
+                        category: i.category}))
                     }
                   >
                     +
                   </button>
                   <button
                     onClick={() =>
-                      dispatch(withdrawCartItem({i}))
-                    
-                      // dispatch(cartActions.deleteItemFromCart(i.id)))
+                      dispatch(cartActions.removeItemFromCart({title: i.title,
+                        price: i.price,
+                        id: i.id,
+                        quantity: i.quantity * i.price,
+                        category: i.category}))
                     }
                   >
                     -

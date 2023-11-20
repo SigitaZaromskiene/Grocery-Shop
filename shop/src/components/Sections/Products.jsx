@@ -40,20 +40,24 @@ function Products() {
           <div className="category_container_latest_border"></div>
         </div>
         <Filter />
-<div style={{display: 'grid', gap:'40px', gridTemplateColumns: '1fr 1fr 1fr', justifyContent:'center'}}>
+        <div
+          style={{
+            display: "grid",
+            gap: "40px",
+            gridTemplateColumns: "1fr 1fr 1fr",
+            justifyContent: "center",
+          }}
+        >
           {products.map((p) => (
             <div key={p.id} className="category_container_latest_table">
               <p className="category_container_latest_table_title">{p.title}</p>
               <div className="category_container_latest_table_price">
                 {p.price} &euro;
               </div>
-            
-                <ShopInputs product={p} />
-                
-              </div>
-         
+              <ShopInputs p={p} />
+            </div>
           ))}
-     </div>
+        </div>
       </section>
     );
   }
@@ -74,9 +78,8 @@ function Products() {
             <div className="category_container_latest_table_price">
               {p.price} &euro;
             </div>
-            
-              <ShopInputs product={p} />
-         
+
+            <ShopInputs p={p} />
           </div>
         ))}
       </div>
