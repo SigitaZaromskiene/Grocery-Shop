@@ -14,9 +14,10 @@ function ShopInputs({p}) {
     const dispatch = useDispatch();
  
   return (
-    <div className="category_container_about_tables">
-        
-    <div className="category_container_latest_table_btns">
+  
+     
+    <div style={{display:'flex', flexDirection: 'column', alignItems:'center', gap: '10px'}}>
+        <div style={{display:'flex',  alignItems:'center', gap: '10px'}}>
     <button
     className="category_container_latest_table_btns_btn"
     onClick={() => setProductQuantities((c) =>  c + 1)}
@@ -24,6 +25,7 @@ function ShopInputs({p}) {
     +
   </button>
     <input
+    style={{height: '30px', padding: '2px'}}
       type="number"
       min="0"
       max="20"
@@ -39,6 +41,7 @@ function ShopInputs({p}) {
       >
         -
       </button>
+      </div>
      <div className="stars">
      <FontAwesomeIcon icon={faStar} />
      <FontAwesomeIcon icon={faStar} />
@@ -77,7 +80,8 @@ function ShopInputs({p}) {
      />
    )}
    </div>
-   </div>
+   
+ 
  
   );
 }

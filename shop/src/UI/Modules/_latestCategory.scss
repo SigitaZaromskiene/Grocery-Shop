@@ -68,7 +68,7 @@
       }
 
       &_btns {
-        @include flex (center, center, row, 10px);
+        @include flex (center, center, column, 10px);
 
         &_btn {
           padding: 5px;
