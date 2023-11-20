@@ -11,8 +11,6 @@ const CartItem = () => {
 
   const cartData = useSelector((state) => state.cart.cart);
 
-  console.log(cartData)
-
   const showCartHandler = () => {
     dispatch(uiActions.toggleCartVisibility());
   };
@@ -41,7 +39,7 @@ const CartItem = () => {
                         price: i.price,
                         id: i.id,
                         quantity: i.quantity * i.price,
-                        category: i.category}))
+                        category: i.category, totalPrice: i.totalPrice}))
                     }
                   >
                     +
@@ -52,7 +50,7 @@ const CartItem = () => {
                         price: i.price,
                         id: i.id,
                         quantity: i.quantity * i.price,
-                        category: i.category}))
+                        category: i.category, totalPrice: i.totalPrice}))
                     }
                   >
                     -

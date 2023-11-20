@@ -45,10 +45,7 @@ const cartSlice = createSlice({
       });
     },
 
-    // updateCartItemTotalPrice (state, action){
-    //   const itemPrice = action.payload;
-
-    // }
+  
 
     deleteItemFromCart(state, action) {
       const productToDelete = action.payload;
@@ -73,6 +70,7 @@ const cartSlice = createSlice({
     
 
       state.totalQuantity++;
+    
 
       if (!existingItem) {
         state.cart.push({
@@ -82,7 +80,8 @@ const cartSlice = createSlice({
           title: newItem.title,
           totalPrice: newItem.price *newItem.quantity,
           category: newItem.category,
-        });
+        }
+        );
       } else {
         existingItem.quantity++;
         existingItem.totalPrice = existingItem.totalPrice + newItem.price;

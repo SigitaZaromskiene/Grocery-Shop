@@ -77,6 +77,7 @@ function ShopInputs({ p }) {
                 id: p.id,
                 quantity: p.quantity + parseInt(productQuantities),
                 category: p.category,
+                
               })
             );
           }}
