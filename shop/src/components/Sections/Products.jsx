@@ -1,6 +1,6 @@
 import { products } from "../Data/Groceries";
 import Filter from "./Filter";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import ShopInputs from "./ShopInputs";
 
@@ -8,9 +8,11 @@ function Products() {
   const filter = useSelector((state) => state.filter);
 
   const sortProducts = (products, sortBy) => {
-    if (sortBy === "Lowest Price") {
+    if (sortBy === "Default") {
+      return products.slice();
+    } else if (sortBy === "Lowest") {
       return products.slice().sort((a, b) => a.price - b.price);
-    } else if (sortBy === "Highest Price") {
+    } else if (sortBy === "Highest") {
       return products.slice().sort((a, b) => b.price - a.price);
     } else if (sortBy === "Name") {
       return products.slice().sort((a, b) => b.name - a.name);
@@ -31,6 +33,8 @@ function Products() {
   // Sort the filtered products
   const sortedProducts = sortProducts(filteredProducts, filter.sortBy);
 
+  const sortedAllProducts = sortProducts(products, filter.sortBy);
+
   if (filter.category === "All") {
     return (
       <section className="category_container_latest wrapper">
@@ -48,7 +52,7 @@ function Products() {
             justifyContent: "center",
           }}
         >
-          {products.map((p) => (
+          {sortedAllProducts.map((p) => (
             <div key={p.id} className="category_container_latest_table">
               <p className="category_container_latest_table_title">{p.title}</p>
               <div className="category_container_latest_table_price">
