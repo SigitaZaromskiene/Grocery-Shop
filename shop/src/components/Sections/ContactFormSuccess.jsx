@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faX } from "@fortawesome/free-solid-svg-icons";
-import { uiActions } from "../store/slices/uiSlice";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch} from "react-redux";
 import { NavLink } from "react-router-dom";
 import { contactUsActions } from "../store/slices/contactusSlice";

@@ -1,18 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { contactUsActions } from "../store/slices/contactusSlice";
-import { uiActions } from "../store/slices/uiSlice";
+import signInSlice, { signInActions } from "../store/slices/signInSlice";
 
-function FormErrorNotification({ title, text, className }) {
+function LoginFormNotification({ title, text, className }) {
   const dispatch = useDispatch();
   
 
   useEffect(() => {
     setTimeout(() => {
-      dispatch(uiActions.errorNotification({title: "",
-      message: "",
-      status: ""})
-    
+      dispatch(signInActions.toggleLoginNotificationVisibility(),
+      
     );
     }, [2000]);
   }, [dispatch]);
@@ -28,4 +26,4 @@ function FormErrorNotification({ title, text, className }) {
   );
 }
 
-export default FormErrorNotification;
+export default LoginFormNotification;

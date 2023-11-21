@@ -6,7 +6,7 @@ const URL = "http://localhost:3111/login";
 
 const signInSlice = createSlice({
   name: "signIn",
-  initialState: { isLogged: null, name: "", psw: "", loggedName: "" },
+  initialState: { isLogged: null, name: "", psw: "", loggedName: "", isErrorVisible: false},
   reducers: {
     isLogged(state) {
       state.isLogged = !state.isLogged;
@@ -21,6 +21,9 @@ const signInSlice = createSlice({
     setLoggedName(state, action) {
       state.loggedName = state.name;
     },
+    toggleLoginNotificationVisibility(state){
+      state.isErrorVisible =!state.isErrorVisible
+    }
   },
 });
 

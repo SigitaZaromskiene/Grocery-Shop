@@ -9,6 +9,7 @@ import FormErrorNotification from "../Sections/FormErrorNotification";
 import { sendAndGetData } from "../store/slices/signInSlice";
 import { useSelector } from "react-redux";
 import PersonalGreeting from "../Sections/PersonalGreeting";
+import LoginFormNotification from "../Sections/LoginFormNotifications";
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ function LoginPage() {
 
   const renderRegistrationForm = registrationStatus !== "success";
 
-  console.log(notification);
+
 
   const [name, setName] = useState("");
   const [psw, setPsw] = useState("");
@@ -78,15 +79,9 @@ function LoginPage() {
     if (!isRegisterFormDetailsValid()) {
       dispatch(sendAndGetData(name, psw));
 
-      dispatch(
-        uiActions.errorNotification({
-          title: "Success",
-          message: "Successful logged in",
-          status: "success",
-        })
-      );
+    
 
-      dispatch(uiActions.toggleSignInFormVisibility());
+     
       setName("");
       setPsw("");
     }
@@ -116,7 +111,7 @@ function LoginPage() {
         ) : (
           <div className="login_container_inputs">
             {notification ? (
-              <FormErrorNotification
+              <FormErrorNotification 
                 title={notification.title}
                 text={notification.message}
                 className={notification.status}

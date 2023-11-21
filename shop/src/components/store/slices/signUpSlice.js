@@ -44,17 +44,18 @@ export const sendRegisterData = (name, psw) => {
 
       
 
-      dispatch(
-        uiActions.errorNotification({
-          title: "Success",
-          message: "Successful registered",
-          status: "success",
-        }),
-      )
+      // dispatch(
+      //   uiActions.notification({
+      //     title: "Success",
+      //     message: "Successful registered",
+      //     status: "success",
+      //   }),
+      // )
+      // dispatch(uiActions.toggleSignInFormVisibility());
       
     } catch (error) {
       dispatch(
-        uiActions.errorNotification({
+        uiActions.notification({
           title: "Error",
           message: "Cannot register",
           status: "error",

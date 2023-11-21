@@ -16,7 +16,8 @@ function RegisterPage() {
   const [psw2, setPsw2] = useState("");
 
   const notification = useSelector((state) => state.ui.errorNotification);
-  
+
+  console.log(notification);
 
   const registrationStatus = useSelector(
     (state) => state.ui.errorNotification?.status
@@ -31,12 +32,18 @@ function RegisterPage() {
   const isRegisterFormDetailsValid = () => {
     if (name.length < 2) {
       dispatch(
-        uiActions.errorNotification({
-          status: "error",
-          title: "Error",
-          message: "Name is too short",
-        })
+        uiActions.errorNotification(
+          {
+            status: "error",
+            title: "Error",
+            message: "Name is too short",
+          },
+          setName(""),
+          setPsw(""),
+          setPsw2("")
+        )
       );
+
       return true;
     }
 
@@ -94,6 +101,13 @@ function RegisterPage() {
     if (!isRegisterFormDetailsValid()) {
       dispatch(
         sendRegisterData(name, psw),
+        dispatch(
+          uiActions.errorNotification({
+            title: "Success",
+            message: "Successful registered",
+            status: "success",
+          })
+        ),
         setName(""),
         setPsw(""),
         setPsw2("")
@@ -112,7 +126,7 @@ function RegisterPage() {
         {registrationStatus === "success" ? (
           <div className="success-message">
             <p>Registration successful! You can now sign in.</p>
-            <LongBtn to="/login" text='Go to Sign In'></LongBtn>
+            <LongBtn to="/login" text="Go to Sign In"></LongBtn>
           </div>
         ) : (
           <div className="login_container_inputs">
@@ -125,7 +139,11 @@ function RegisterPage() {
             ) : null}
             <div>
               <input
-                className={notification?.status==='error' ? "login_container_input formError": "login_container_input"}
+                className={
+                  notification?.status === "error"
+                    ? "login_container_input error"
+                    : "login_container_input"
+                }
                 placeholder="Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -134,7 +152,11 @@ function RegisterPage() {
             </div>
             <div>
               <input
-              className={notification?.status==='error' ? "login_container_input formError": "login_container_input"}
+                className={
+                  notification?.status === "error"
+                    ? "login_container_input error"
+                    : "login_container_input"
+                }
                 placeholder="Password"
                 value={psw}
                 onChange={(e) => setPsw(e.target.value)}
@@ -143,7 +165,11 @@ function RegisterPage() {
             </div>
             <div>
               <input
-                 className={notification?.status==='error' ? "login_container_input formError": "login_container_input"}
+                className={
+                  notification?.status === "error"
+                    ? "login_container_input error"
+                    : "login_container_input"
+                }
                 placeholder="Repeat Password"
                 onChange={(e) => setPsw2(e.target.value)}
                 type="number"
@@ -154,20 +180,28 @@ function RegisterPage() {
         )}
         {renderRegistrationForm && (
           <>
-          <LongBtn
-            text="Sign Up"
-            action={signUpHandler}
-            to="/login" 
-          />
-          <div className="login_container_input_register">
-          <p>Already have an account?</p>
-          <NavLink className="login_container_input_register_now" to="/login">
-            SIGN IN NOW
-          </NavLink>
-        </div>
-        </>
+            <LongBtn
+              text="Sign Up"
+              action={signUpHandler}
+              to={
+                notification?.status === "error" ||
+                notification === null ||
+                notification?.status === ""
+                  ? "/register"
+                  : "/login"
+              }
+            />
+            <div className="login_container_input_register">
+              <p>Already have an account?</p>
+              <NavLink
+                className="login_container_input_register_now"
+                to="/login"
+              >
+                SIGN IN NOW
+              </NavLink>
+            </div>
+          </>
         )}
-        
       </form>
     </div>
   );
