@@ -126,7 +126,7 @@ function LoginPage() {
             <div className="login_container_inputs">
               <div>
                 <input
-                  className="login_container_input"
+                  className={!notification ?"login_container_input": "login_container_input + formError"}
                   placeholder="Name"
                   type="text"
                   value={name}
@@ -135,7 +135,7 @@ function LoginPage() {
               </div>
 
               <input
-                className="login_container_input"
+                className={!notification ?"login_container_input": "login_container_input + formError"}
                 placeholder="Password"
                 type="number"
                 value={psw}
