@@ -4,13 +4,12 @@ import { SocialIcon } from "react-social-icons";
 import { useDispatch } from "react-redux";
 import { uiActions } from "../store/slices/uiSlice";
 import { filterSliceActions } from "../store/slices/filterSlice";
+import { contactUsActions } from "../store/slices/contactusSlice";
 
 function Footer() {
   const dispatch = useDispatch();
 
-  const contactUsFormHandler = () => {
-    dispatch(uiActions.toggleContactFormVisibility());
-  };
+
 
   const findAddress = () => {
     const address = "Nepriklausomybės a. 14, 44320 Kaunas";
@@ -109,7 +108,7 @@ function Footer() {
           <NavLink
             className="footer_container_right_link"
             to={"/contactus"}
-            onClick={contactUsFormHandler}
+            onClick={()=>dispatch(contactUsActions.setFormVisibility())}
           >
             Contact us
           </NavLink>

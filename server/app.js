@@ -119,6 +119,21 @@ app.post("/order", (req, res) => {
   });
 
 
+  app.post("/about", (req, res) => {
+    const sql = `
+    INSERT INTO subscribe ( email)
+    VALUES ( ?)
+  
+    `;
+  
+    con.query(sql, [req.body.email], (err) => {
+      if (err) throw err;
+      res.json({});
+    });
+  });
+
+
+
   app.post("/", (req, res) => {
     const sql = `
     INSERT INTO cart (title, price, quantity, totalPrice, category)

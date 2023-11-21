@@ -4,7 +4,7 @@
 
   &_heading {
     @include flex(center, center, row, 20px);
-    margin-bottom: 50px;
+    margin: 20px 0px;
   }
 
   &_buttons {
@@ -31,6 +31,7 @@
 
   h2 {
     font-size: 1.8rem;
+   
   }
 
   &_tables {

@@ -11,12 +11,15 @@ import {
 } from "../store/slices/contactusSlice";
 
 import FormErrorNotification from "./FormErrorNotification";
+import ContactFormSuccess from "./ContactFormSuccess";
 
 function ContactUs() {
   const dispatch = useDispatch();
   const notification = useSelector((state) => state.contactUs.formNotification);
+  const formSuccessMessage = useSelector(
+    (state) => state.contactUs.formSuccessMessage
+  );
 
-  console.log(notification);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -48,14 +51,21 @@ function ContactUs() {
         })
       );
       return;
-    }
-    dispatch(sendContactUsDetails(name, email, message));
-    dispatch(uiActions.toggleContactFormVisibility());
+    } 
+    else {
+      dispatch(sendContactUsDetails(name, email, message));
+      dispatch(contactUsActions.formSendSuccessFormVisibility());
 
-    setName("");
-    setEmail("");
-    setMessage("");
+      setName("");
+      setEmail("");
+      setMessage("");
+    }
   };
+
+  if (formSuccessMessage === true) {
+    return <ContactFormSuccess />;
+  }
+
   return (
     <div className="contact_modal">
       <form className="contact_modal_form">
@@ -77,6 +87,7 @@ function ContactUs() {
         <div className="contact_modal_form_inputs">
           <div>
             <input
+            className={notification? 'formError': ''}
               type="text"
               value={name}
               placeholder="Name"
@@ -88,6 +99,7 @@ function ContactUs() {
         <div className="contact_modal_form_inputs">
           <div>
             <input
+            className={notification? 'formError': ''}
               type="email"
               value={email}
               placeholder="Email"
@@ -98,13 +110,14 @@ function ContactUs() {
         </div>
         <textarea
           placeholder="Your Message"
+          className={notification? 'formError': ''}
           type="text"
           onChange={(e) => setMessage(e.target.value)}
           value={message}
         />
         <Btn
           text="Send Message"
-          to={notification ? "/" : "/contactus"}
+          // to={notification?  "/": "/contactus" }
           action={contactMessageHandler}
         />
       </form>
