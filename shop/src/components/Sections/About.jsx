@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 function About() {
 
   const dispatch = useDispatch()
+  
   return (
     <div className="about_us wrapper">
       <div className="about_us_right">

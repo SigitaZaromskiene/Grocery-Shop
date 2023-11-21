@@ -5,6 +5,7 @@ import filterSlice from "./slices/filterSlice";
 import  signUpSlice from "./slices/signUpSlice";
 import signInSlice from "./slices/signInSlice";
 import contactUsSlice from "./slices/contactusSlice";
+import newsLetterSlice from "./slices/newsLetterSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     signUp: signUpSlice.reducer,
     signIn: signInSlice.reducer,
     contactUs: contactUsSlice.reducer,
+    newsLetter: newsLetterSlice.reducer,
   },
 });
 

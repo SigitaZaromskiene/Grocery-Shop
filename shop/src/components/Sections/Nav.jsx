@@ -9,8 +9,21 @@ import Logout from "../Pages/Logout";
 
 function Nav() {
   const dispatch = useDispatch();
-  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  
   const isLogged = useSelector((state) => state.signIn.isLogged);
+
+
+
+ 
+const cartArray = useSelector(state=>state.cart.cart)
+const totalCartAmount =  cartArray.reduce((acc, curr)=>acc + curr.quantity, 0)
+  
+  //  else {
+  //   const total = useSelector(state=>state.cart.cart.reduce((acc, curr)=>acc + curr.quantity))
+  //   console.log(total)
+  //  }
+  
+  
 
   const cartFormHandler = () => {
     dispatch(uiActions.toggleCartVisibility());
@@ -50,7 +63,7 @@ function Nav() {
               <FontAwesomeIcon icon={faCartShopping} />
               <li> My Cart</li>
               <div className="nav_container_right_cart_count">
-                {totalQuantity}
+                {totalCartAmount}
               </div>
             </NavLink>
             {isLogged ? (

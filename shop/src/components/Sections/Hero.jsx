@@ -1,6 +1,6 @@
 import Btn from "../Buttons/Btn";
 import heroImg from "../../UI/Img/salad.png"
-import filterSliceActions from "../store/slices/filterSlice";
+import {filterSliceActions} from "../store/slices/filterSlice";
 import { useDispatch } from "react-redux";
 
 

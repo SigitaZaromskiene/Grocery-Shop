@@ -4,7 +4,7 @@ const filterSlice = createSlice({
   name: 'filter',
   initialState: {
     category: 'All',
-    sortBy: 'None' 
+    sortBy: 'Default' 
   },
   reducers: {
     setCategory (state, action) {
@@ -12,7 +12,8 @@ const filterSlice = createSlice({
       state.category = category;
     },
     setSortBy (state, action){
-      state.sortBy = action.payload;
+      const sortBy = action.payload
+      state.sortBy = sortBy;
     },
   },
 });

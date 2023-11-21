@@ -1,112 +1,100 @@
 .category_container_latest {
-    background-color: white;
-    @include flex(center, center, column, 50px);
-    color: $mainFontColor;
-  
-    &_heading {
-      @include flex(center, center, row, 20px);
-      margin-bottom: 30px;
-    }
-  
-    &_buttons {
-      @include flex(center, center, row, 20px);
-    }
+  background-color: white;
+  @include flex(center, center, column, 50px);
+  color: $mainFontColor;
 
-  
-  
-    &_icon {
-      border-radius: 50%;
-      padding: 10px;
-      background-color: $mainOrange;
-      border: 1px solid transparent;
-      cursor: pointer;
-  
-      &:hover {
-          background-color: white;
-          border: 1px solid $lightOrange;
-  
-      }
-    }
-  
-    &_border {
-      border-bottom: 3px solid $mainGreen;
-      width: 150px;
-    }
-  
-    h2 {
-      font-size: 1.8rem;
-      
-    }
-  
-    &_tables {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      justify-content: center;
-      align-items: center;
-      column-gap: 50px;
-      row-gap: 50px;
-      margin-bottom: 20px;
-
-      
-    }
-    
-      
-    &_table {
-      @include flex(center, center, column, 15px);
-      border: 2px solid $mainGreen;
-      padding: 25px;
-      border-radius: 25px;
-
-
-      p {
-        font-size: 1.6rem;
-      }
-
-      &_price {
-        font-size: 1.4rem;
-        color: red;
-      }
-
-      &_btns {
-        @include flex (center, center, row, 10px);
-
-        &_btn {
-          padding: 5px;
-          border: 2px solid transparent;
-          background-color: $mainGreen;
-          height: 2rem;
-          width: 2rem;
-          font-size: 1.2rem;
-          cursor: pointer;
-          line-height: 1.2rem;
-  
-          &:hover {
-            border: 2px solid $mainGreen;;
-            background-color: white;
-          }
-  
-  
-        }
-  
-        input {
-          padding: 5px;
-          
-        }
-  
-       
-      }
-
-      }
-
-      
+  &_heading {
+    @include flex(center, center, row, 20px);
+    margin-bottom: 30px;
   }
 
-.category_container_about_tables {
-    @include flex (center, center, row, 45px);
-    flex-wrap: wrap;
-    margin-bottom: 30px;
+  &_buttons {
+    @include flex(center, center, row, 20px);
+  }
 
-    .category_container_table_stars {
-        color: $mainOrange;
+  &_icon {
+    border-radius: 50%;
+    padding: 10px;
+    background-color: $mainOrange;
+    border: 1px solid transparent;
+    cursor: pointer;
+
+    &:hover {
+      background-color: white;
+      border: 1px solid $lightOrange;
     }
+  }
+
+  &_border {
+    border-bottom: 3px solid $mainGreen;
+    width: 150px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  &_tables {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    column-gap: 50px;
+    row-gap: 50px;
+    margin-bottom: 20px;
+  }
+
+  &_table {
+    @include flex(center, center, column, 15px);
+    border: 2px solid $mainGreen;
+    padding: 25px;
+    border-radius: 25px;
+
+    p {
+      font-size: 1.6rem;
+    }
+
+    &_price {
+      font-size: 1.4rem;
+      color: red;
+    }
+
+    &_btns {
+      @include flex(center, center, column, 10px);
+
+      &_btn {
+        padding: 5px;
+        border: 2px solid transparent;
+        background-color: $mainGreen;
+        height: 2rem;
+        width: 2rem;
+        font-size: 1.2rem;
+        cursor: pointer;
+        line-height: 1.2rem;
+
+        &:hover {
+          border: 2px solid $mainGreen;
+          background-color: white;
+        }
+      }
+
+      input {
+        padding: 5px;
+      }
+    }
+  }
+}
+
+.category_container_about_tables {
+  @include flex(center, center, row, 45px);
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+
+  .category_container_table_stars {
+    color: $mainOrange;
+  }
+}
+
+.category_container_inside {
+  @include flex(center, center, column, 20px);
 }

@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { filterSliceActions } from "../store/slices/filterSlice";
-import { useEffect } from "react";
+
 
 
 
@@ -38,10 +38,11 @@ function Filter() {
         <option value="Bakery">Bakery</option>
       </select>
       <label>Sort By</label>
-      <select onChange={handleSortByChange} value={filter.category}>
-        <option>Lowest Price</option>
-        <option>Highest Price</option>
-        <option>Name</option>
+      <select onChange={handleSortByChange} value={filter.sortBy}>
+      <option value='Default'>Default</option>
+        <option value='Lowest'>Lowest Price</option>
+        <option value='Highest'>Highest Price</option>
+        <option value='Name'>Name</option>
       </select>
     </div>
   );

@@ -1,6 +1,6 @@
 .nav_container {
   @include flex(space-between, center, row, 0px);
-  padding: 10px 40px;
+  padding: 20px 50px;
   background-color: $lightGreen;
   font-size: 1.2rem;
   
@@ -21,6 +21,7 @@
 
   &_middle {
     padding: 5px 25px;
+    cursor: pointer;
     ul {
       @include flex(center, center, row, 60px);
       list-style: none;
@@ -30,6 +31,7 @@
 
   &_right {
     padding: 5px 12px;
+    cursor: pointer;
     ul {
       @include flex(center, center, row, 40px);
       list-style: none;
