@@ -57,6 +57,8 @@
   background-color: $mainGreen;
 }
 
-.success-message {
+.success_message {
   @include flex(center, center, column, 30px);
+  padding: 10px;
+  font-size: 1.3rem;
 }

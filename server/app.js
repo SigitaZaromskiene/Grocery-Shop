@@ -32,17 +32,6 @@ app.use(
 );
 app.use(express.json());
 
-// app.get("/menu", (req, res) => {
-//   const sql = `
-//   SELECT id, name, description, price, amount
-//   FROM menu
- 
-//   `;
-//   con.query(sql, (err, result) => {
-//     if (err) throw err;
-//     res.json(result);
-//   });
-// });
 
 app.delete("/cart/:id", (req, res) => {
   const sql = `
@@ -240,17 +229,10 @@ app.post("/order", (req, res) => {
   });
   
 
-  app.put("/cart/:id", (req, res) => {
-    const sql = `
-    UPDATE cart 
-    SET quantity = ?, totalPrice = ?
-    WHERE id = (?)
-  
-    `;
-  
-    con.query(sql, [req.body.quantity, req.body.totalPrice, req.params.id], (err) => {
-      if (err) throw err;
-      res.json({});
+  app.post("/logout", (req, res) => {
+    res.cookie("usersSession", "");
+    res.json({
+      status: "logout",
     });
   });
 

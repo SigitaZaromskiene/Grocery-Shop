@@ -9,21 +9,16 @@ import Logout from "../Pages/Logout";
 
 function Nav() {
   const dispatch = useDispatch();
-  
+
   const isLogged = useSelector((state) => state.signIn.isLogged);
 
+  console.log(isLogged)
 
-
- 
-const cartArray = useSelector(state=>state.cart.cart)
-const totalCartAmount =  cartArray.reduce((acc, curr)=>acc + curr.quantity, 0)
-  
-  //  else {
-  //   const total = useSelector(state=>state.cart.cart.reduce((acc, curr)=>acc + curr.quantity))
-  //   console.log(total)
-  //  }
-  
-  
+  const cartArray = useSelector((state) => state.cart.cart);
+  const totalCartAmount = cartArray.reduce(
+    (acc, curr) => acc + curr.quantity,
+    0
+  );
 
   const cartFormHandler = () => {
     dispatch(uiActions.toggleCartVisibility());
@@ -66,7 +61,7 @@ const totalCartAmount =  cartArray.reduce((acc, curr)=>acc + curr.quantity, 0)
                 {totalCartAmount}
               </div>
             </NavLink>
-            {isLogged ? (
+            {isLogged=== !false ? (
               <Logout />
             ) : (
               <NavLink className="custom_link" to="/login">

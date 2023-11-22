@@ -15,12 +15,13 @@ function LoginPage() {
   const dispatch = useDispatch();
 
   const notification = useSelector((state) => state.ui.errorNotification);
-  const isLogged = useSelector((state) => state.signUp.isLogged);
+  const isLogged = useSelector((state) => state.signIn.isLogged);
+ 
 
   console.log(isLogged)
 
   const registrationStatus = useSelector(
-    (state) => state.ui.errorNotification?.status
+    (state) => state.ui.notification?.status
   );
 
   const renderRegistrationForm = registrationStatus !== "success";
@@ -29,6 +30,8 @@ function LoginPage() {
 
   const [name, setName] = useState("");
   const [psw, setPsw] = useState("");
+
+
 
   const signInFormHandler = () => {
     dispatch(uiActions.toggleSignInFormVisibility());
@@ -79,13 +82,13 @@ function LoginPage() {
 
   const signInHandler = () => {
     if (!isRegisterFormDetailsValid()) {
-      dispatch(sendAndGetData(name, psw));
+      dispatch(sendAndGetData(name, psw), setName(""),
+      setPsw(""));
 
     
 
      
-      setName("");
-      setPsw("");
+      
     }
   };
 
@@ -106,7 +109,7 @@ function LoginPage() {
         </div>
 
         {isLogged  ? (
-          <div className="success-message">
+          <div className="success_message">
             <p>You are logged in</p>
             <LongBtn to="/" text="Home page"></LongBtn>
           </div>
@@ -123,7 +126,7 @@ function LoginPage() {
             <div className="login_container_inputs">
               <div>
                 <input
-                  className={notification ?"login_container_input": "login_container_input + formError"}
+                  className={notification || notification=== null?"login_container_input": "login_container_input + formError"}
                   placeholder="Name"
                   type="text"
                   value={name}
@@ -132,7 +135,7 @@ function LoginPage() {
               </div>
 
               <input
-                className={notification ?"login_container_input": "login_container_input + formError"}
+                className={notification || notification=== null ?"login_container_input": "login_container_input + formError"}
                 placeholder="Password"
                 type="number"
                 value={psw}
@@ -141,7 +144,7 @@ function LoginPage() {
             </div>
           </div>
         )}
-        {renderRegistrationForm && (
+        {renderRegistrationForm && !isLogged?(
           <>
             <LongBtn text="Sign In" action={signInHandler} to={!isLogged ? "/login": "/" }/>
             <div className="login_container_input_register">
@@ -154,7 +157,7 @@ function LoginPage() {
               </NavLink>
             </div>
           </>
-        )}
+        ): null}
       </form>
     </div>
   );
