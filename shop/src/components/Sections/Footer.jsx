@@ -2,12 +2,14 @@ import { NavLink } from "react-router-dom";
 import logo from "../../UI/Img/logo.png";
 import { SocialIcon } from "react-social-icons";
 import { useDispatch } from "react-redux";
-import { uiActions } from "../store/slices/uiSlice";
+import { useSelector } from "react-redux";
 import { filterSliceActions } from "../store/slices/filterSlice";
 import { contactUsActions } from "../store/slices/contactusSlice";
+import Logout from "../Pages/Logout";
 
 function Footer() {
   const dispatch = useDispatch();
+  const isLogged = useSelector((state) => state.signIn.isLogged);
 
 
 
@@ -99,12 +101,19 @@ function Footer() {
         </div>
         <div className="footer_container_right_container">
           <h4>Help</h4>
-          <NavLink className="footer_container_right_link" to={"/register"}>
+          {!isLogged ?  <NavLink className="footer_container_right_link" to={"/register"}>
             Sign Up
-          </NavLink>
-          <NavLink className="footer_container_right_link" to={"/login"}>
+          </NavLink>: <Logout/>}
+          {!isLogged ?  <NavLink className="footer_container_right_link" to={"/login"}>
             Sign In
-          </NavLink>
+          </NavLink>: <NavLink
+            className="footer_container_right_link"
+            
+          >
+            Email us
+          </NavLink>}
+         
+          
           <NavLink
             className="footer_container_right_link"
             to={"/contactus"}

@@ -11,10 +11,8 @@ function Nav() {
   const dispatch = useDispatch();
 
   const isLogged = useSelector((state) => state.signIn.isLogged);
-
-  console.log(isLogged)
-
   const cartArray = useSelector((state) => state.cart.cart);
+  
   const totalCartAmount = cartArray.reduce(
     (acc, curr) => acc + curr.quantity,
     0
