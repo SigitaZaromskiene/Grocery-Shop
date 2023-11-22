@@ -5,7 +5,9 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../store/slices/uiSlice";
 import { useState } from "react";
-import { sendRegisterData } from "../store/slices/signUpSlice";
+import {
+  sendRegisterData,
+  } from "../store/slices/signUpSlice";
 import FormErrorNotification from "../Sections/FormErrorNotification";
 
 function RegisterPage() {
@@ -16,8 +18,6 @@ function RegisterPage() {
   const [psw2, setPsw2] = useState("");
 
   const notification = useSelector((state) => state.ui.errorNotification);
-
-  console.log(notification);
 
   const registrationStatus = useSelector(
     (state) => state.ui.errorNotification?.status
@@ -102,12 +102,21 @@ function RegisterPage() {
       dispatch(
         sendRegisterData(name, psw),
         dispatch(
+          uiActions.notification({
+            title: "Success",
+            message: "Successful registered",
+            status: "success",
+          })
+        ),
+
+        dispatch(
           uiActions.errorNotification({
             title: "Success",
             message: "Successful registered",
             status: "success",
           })
         ),
+
         setName(""),
         setPsw(""),
         setPsw2("")
@@ -126,7 +135,19 @@ function RegisterPage() {
         {registrationStatus === "success" ? (
           <div className="success-message">
             <p>Registration successful! You can now sign in.</p>
-            <LongBtn to="/login" text="Go to Sign In"></LongBtn>
+            <LongBtn
+              to="/login"
+              text="Go to Sign In"
+              action={() =>
+                dispatch(
+                  uiActions.errorNotification({
+                    title: "",
+                    message: "",
+                    status: "",
+                  })
+                )
+              }
+            ></LongBtn>
           </div>
         ) : (
           <div className="login_container_inputs">
@@ -141,7 +162,7 @@ function RegisterPage() {
               <input
                 className={
                   notification?.status === "error"
-                    ? "login_container_input error"
+                    ? "login_container_input formError"
                     : "login_container_input"
                 }
                 placeholder="Name"
@@ -154,7 +175,7 @@ function RegisterPage() {
               <input
                 className={
                   notification?.status === "error"
-                    ? "login_container_input error"
+                    ? "login_container_input formError"
                     : "login_container_input"
                 }
                 placeholder="Password"
@@ -167,7 +188,7 @@ function RegisterPage() {
               <input
                 className={
                   notification?.status === "error"
-                    ? "login_container_input error"
+                    ? "login_container_input formError"
                     : "login_container_input"
                 }
                 placeholder="Repeat Password"
@@ -180,17 +201,7 @@ function RegisterPage() {
         )}
         {renderRegistrationForm && (
           <>
-            <LongBtn
-              text="Sign Up"
-              action={signUpHandler}
-              to={
-                notification?.status === "error" ||
-                notification === null ||
-                notification?.status === ""
-                  ? "/register"
-                  : "/login"
-              }
-            />
+            <LongBtn text="Sign Up" action={signUpHandler} />
             <div className="login_container_input_register">
               <p>Already have an account?</p>
               <NavLink

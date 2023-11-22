@@ -9,13 +9,15 @@ import FormErrorNotification from "../Sections/FormErrorNotification";
 import { sendAndGetData } from "../store/slices/signInSlice";
 import { useSelector } from "react-redux";
 import PersonalGreeting from "../Sections/PersonalGreeting";
-import LoginFormNotification from "../Sections/LoginFormNotifications";
+
 
 function LoginPage() {
   const dispatch = useDispatch();
 
   const notification = useSelector((state) => state.ui.errorNotification);
   const isLogged = useSelector((state) => state.signUp.isLogged);
+
+  console.log(isLogged)
 
   const registrationStatus = useSelector(
     (state) => state.ui.errorNotification?.status
@@ -121,7 +123,7 @@ function LoginPage() {
             <div className="login_container_inputs">
               <div>
                 <input
-                  className={!notification ?"login_container_input": "login_container_input + formError"}
+                  className={notification ?"login_container_input": "login_container_input + formError"}
                   placeholder="Name"
                   type="text"
                   value={name}
@@ -130,7 +132,7 @@ function LoginPage() {
               </div>
 
               <input
-                className={!notification ?"login_container_input": "login_container_input + formError"}
+                className={notification ?"login_container_input": "login_container_input + formError"}
                 placeholder="Password"
                 type="number"
                 value={psw}
