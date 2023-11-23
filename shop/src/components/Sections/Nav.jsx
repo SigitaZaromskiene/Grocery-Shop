@@ -1,11 +1,12 @@
 import logo from "../../UI/Img/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping} from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { uiActions } from "../store/slices/uiSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Logout from "../Pages/Logout";
+import MobileFriendlyMenu from "./NavMobileFriendlyMenu";
 
 function Nav() {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ function Nav() {
           </ul>
         </div>
         <div className="nav_container_right">
+         
           <ul>
             <NavLink
               to="/cart"
@@ -68,6 +70,7 @@ function Nav() {
             )}
           </ul>
         </div>
+        <MobileFriendlyMenu/>
       </nav>
     </>
   );

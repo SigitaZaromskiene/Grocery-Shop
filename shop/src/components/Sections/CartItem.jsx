@@ -4,7 +4,7 @@ import { uiActions } from "../store/slices/uiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { cartActions} from "../store/slices/cartSlice";
-import Btn from "../Buttons/Btn";
+
 
 const CartItem = () => {
   const dispatch = useDispatch();
