@@ -1,7 +1,5 @@
 import TransparentBtn from "../Buttons/TransparentBtn";
-
 import { products } from "../Data/Groceries";
-
 import ShopInputs from "./ShopInputs";
 
 function LatestProducts() {

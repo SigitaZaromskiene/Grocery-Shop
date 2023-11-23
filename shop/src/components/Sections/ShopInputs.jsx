@@ -9,6 +9,8 @@ import { useDispatch } from "react-redux";
 
 function ShopInputs({ p }) {
 
+  console.log(p)
+
 
   const [productQuantities, setProductQuantities] = useState(0);
   const dispatch = useDispatch();
@@ -77,6 +79,7 @@ function ShopInputs({ p }) {
                 id: p.id,
                 quantity: p.quantity + parseInt(productQuantities),
                 category: p.category,
+                totalPrice: p.totalPrice
                 
               })
             );

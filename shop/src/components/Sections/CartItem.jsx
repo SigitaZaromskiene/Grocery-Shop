@@ -3,8 +3,8 @@ import { faX, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { uiActions } from "../store/slices/uiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { cartActions, deleteCartItem, editCartItem, updateCartItem, withdrawCartItem } from "../store/slices/cartSlice";
-import Btn from "../Buttons/Btn";
+import { cartActions} from "../store/slices/cartSlice";
+
 
 const CartItem = () => {
   const dispatch = useDispatch();
@@ -65,7 +65,7 @@ const CartItem = () => {
                   className="icon_delete"
                   icon={faTrash}
                   onClick={() => {
-                    dispatch(deleteCartItem({ id: i.id }));
+                    dispatch(cartActions.deleteItemFromCart({ id: i.id }));
                   }}
                 />
               </div>

@@ -5,9 +5,10 @@ import { uiActions } from "../store/slices/uiSlice";
 
 function CartTotal() {
   const dispatch = useDispatch();
-  const cartData = useSelector((state) => state.cart.cart);
+  const cartDataTitle = useSelector((state) => state.cart.cart[0].title);
+  const cartDataPrice = useSelector((state) => state.cart.cart[0].price);
 
-  const { title, price } = cartData;
+
   const getCartPrices = useSelector((state) => state.cart.cart);
 
   const totalPrice = getCartPrices.reduce(
@@ -16,9 +17,9 @@ function CartTotal() {
   );
 
   const orderHandler = () => {
-    dispatch(sendOrderData(title, price));
-    dispatch(uiActions.toggleCartVisibility());
-    dispatch(deleteCart());
+  dispatch(sendOrderData({title: cartDataTitle, price:cartDataPrice}))
+    dispatch(uiActions.toggleCartVisibility())
+    dispatch(deleteCart())
   };
 
   return (

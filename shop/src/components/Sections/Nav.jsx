@@ -1,29 +1,23 @@
 import logo from "../../UI/Img/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping} from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { uiActions } from "../store/slices/uiSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Logout from "../Pages/Logout";
+import MobileFriendlyMenu from "./NavMobileFriendlyMenu";
 
 function Nav() {
   const dispatch = useDispatch();
-  
+
   const isLogged = useSelector((state) => state.signIn.isLogged);
-
-
-
- 
-const cartArray = useSelector(state=>state.cart.cart)
-const totalCartAmount =  cartArray.reduce((acc, curr)=>acc + curr.quantity, 0)
+  const cartArray = useSelector((state) => state.cart.cart);
   
-  //  else {
-  //   const total = useSelector(state=>state.cart.cart.reduce((acc, curr)=>acc + curr.quantity))
-  //   console.log(total)
-  //  }
-  
-  
+  const totalCartAmount = cartArray.reduce(
+    (acc, curr) => acc + curr.quantity,
+    0
+  );
 
   const cartFormHandler = () => {
     dispatch(uiActions.toggleCartVisibility());
@@ -54,6 +48,7 @@ const totalCartAmount =  cartArray.reduce((acc, curr)=>acc + curr.quantity, 0)
           </ul>
         </div>
         <div className="nav_container_right">
+         
           <ul>
             <NavLink
               to="/cart"
@@ -66,7 +61,7 @@ const totalCartAmount =  cartArray.reduce((acc, curr)=>acc + curr.quantity, 0)
                 {totalCartAmount}
               </div>
             </NavLink>
-            {isLogged ? (
+            {isLogged=== !false ? (
               <Logout />
             ) : (
               <NavLink className="custom_link" to="/login">
@@ -75,6 +70,7 @@ const totalCartAmount =  cartArray.reduce((acc, curr)=>acc + curr.quantity, 0)
             )}
           </ul>
         </div>
+        <MobileFriendlyMenu/>
       </nav>
     </>
   );

@@ -1,3 +1,4 @@
+
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { uiActions } from "./uiSlice";
@@ -6,52 +7,28 @@ const URL = "http://localhost:3111/login";
 
 const signInSlice = createSlice({
   name: "signIn",
-  initialState: { isLogged: null, name: "", psw: "", loggedName: "" },
+  initialState: { isLogged: false, name:'' },
   reducers: {
     isLogged(state) {
       state.isLogged = !state.isLogged;
     },
-    setName(state, action) {
+    getLoggedPersonName(state, action){
       state.name = action.payload;
-    },
-
-    setPsw(state, action) {
-      state.psw = action.payload;
-    },
-    setLoggedName(state, action) {
-      state.loggedName = state.name;
-    },
+    }
   },
 });
 
-export const sendSignInData = (name, psw) => {
+export const sendAndGetData = (name, psw) => {
   return async (dispatch) => {
-    const sendRequest = async () => {
-      const response = await axios.post(
-        URL,
-        { name, psw },
-        { withCredentials: true }
-      );
-
-      if (response.status !== 200) {
-        throw new Error("Cannot login");
-      }
-    };
     try {
-      await sendRequest();
+      await dispatch(sendSignInData(name, psw));
+      await dispatch(getSignInData());
 
-      dispatch(
-        uiActions.errorNotification({
-          title: "Success",
-          message: "Successful logged in",
-          status: "success",
-        })
-      );
     } catch (error) {
       dispatch(
         uiActions.errorNotification({
           title: "Error",
-          message: "Cannot loggin",
+          message: "Something went wrong",
           status: "error",
         })
       );
@@ -59,34 +36,43 @@ export const sendSignInData = (name, psw) => {
   };
 };
 
-export const getSignInData = (name, psw) => {
-  return async (dispatch) => {
-    const sendRequest = async () => {
-     
-        const response = await axios.get(URL, { withCredentials: true });
-
-        console.log(response);
-
-        if (response.data.status === "ok") {
-          dispatch(signInActions.isLogged());
-          dispatch(signInActions.setName(""));
-          dispatch(signInActions.setPsw(""));
-          dispatch(signInActions.setLoggedName(name));
-        }
-    }
-      
-    
-
+export const sendSignInData = (name, psw) => {
+  return async () => {
     try {
-      await sendRequest();
+      const response = await axios.post(URL, { name, psw }, { withCredentials: true });
 
-      dispatch(
-        uiActions.errorNotification({
-          title: "Success",
-          message: "Successful logged in",
-          status: "success",
-        })
-      );
+      if (response.status !== 200) {
+        throw new Error("Cannot login");
+      }
+    } catch (error) {
+      throw new Error("Cannot login");
+    }
+  };
+};
+
+export const getSignInData = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(URL, { withCredentials: true });
+
+      console.log(response, 'tt')
+
+      if(response.data.status=== 'error'){
+        throw new Error('NOOOO')
+      }
+
+      else if(response.data.status === "ok") {
+
+        dispatch( signInActions.isLogged())
+        dispatch(signInActions.getLoggedPersonName (response.data.name))
+        dispatch(
+          uiActions.notification({
+            title: "Success",
+            message: "Logged in successfully",
+            status: "success",
+          })
+        );
+      }
     } catch (error) {
       dispatch(
         uiActions.errorNotification({
@@ -95,30 +81,9 @@ export const getSignInData = (name, psw) => {
           status: "error",
         })
       );
-    
-}
-  };
-};
-
-export const sendAndGetData = (name, psw) => {
-  return async (dispatch) => {
-    try {
-      // Dispatch the POST action to send data
-      await dispatch(sendSignInData(name, psw));
-
-      // Dispatch the GET action to fetch data
-      await dispatch(getSignInData(name, psw));
-    } catch (error) {
-      dispatch(
-        uiActions.errorNotification({
-          title: "Error",
-          message: "Something is wrong",
-          status: "error",
-        })
-      );
     }
   };
 };
 
-export default signInSlice;
 export const signInActions = signInSlice.actions;
+export default signInSlice;

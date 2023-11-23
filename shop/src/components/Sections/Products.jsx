@@ -82,7 +82,6 @@ function Products() {
             <div className="category_container_latest_table_price">
               {p.price} &euro;
             </div>
-
             <ShopInputs p={p} />
           </div>
         ))}
