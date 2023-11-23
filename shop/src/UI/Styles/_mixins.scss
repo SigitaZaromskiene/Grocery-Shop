@@ -23,8 +23,9 @@
     @media (max-width: 1088px) {
       @content;
     }
+  
   } @else if $point == large {
-    @media (max-width: 1200px) {
+    @media (max-width: 1250px) {
       @content;
     }
   }

@@ -15,6 +15,10 @@
 
     &_title {
       font-size: 1.8rem;
+
+      @include media(large){
+        font-size: 1.2rem;
+      }
     }
     span {
       color: $mainOrange;
@@ -33,6 +37,11 @@
       @include flex(center, center, row, 60px);
       list-style: none;
       cursor: pointer;
+
+      @include media(large){
+        @include flex(center, center, row, 20px);
+      }
+
     }
   }
 
@@ -50,6 +59,8 @@
 
       @include media(medium2){
         display: block;
+        font-size: 2rem;
+        cursor: pointer;
       }
       display: none;
 
@@ -60,6 +71,7 @@
       list-style: none;
       cursor: pointer;
 
+     
 
       
     }
