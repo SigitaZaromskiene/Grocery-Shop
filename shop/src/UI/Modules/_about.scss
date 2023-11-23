@@ -3,6 +3,10 @@
   @include flex(center, center, row, 50px);
   color: $mainFontColor;
 
+  @include media(large) {
+    @include flex(center, center, column, 20px);
+  }
+
   &_right {
     img {
       height: 35rem;
@@ -11,7 +15,14 @@
   }
 
   &_left {
+
+    @include media(large) {
+      @include flex(center, center, column, 20px);
+    }
     h2 {
+      @include media(large) {
+        text-align: center;
+      }
       font-size: 2.2rem;
       width: 500px;
       margin-bottom: 20px;
@@ -25,9 +36,18 @@
     &_paragraph {
       font-weight: 300;
       margin-bottom: 25px;
+
+      
+      
+      
     }
 
     ul {
+
+      @include media(large) {
+        font-size: 1.5rem;
+       
+      }
       list-style: none;
       margin-bottom: 45px;
     }

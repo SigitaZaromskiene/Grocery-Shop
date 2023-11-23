@@ -21,10 +21,10 @@ function ShopInputs({ p }) {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: "10px",
+        gap: "20px",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+      <div className="btns_container">
         <button
           className="category_container_latest_table_btns_btn"
           onClick={() => setProductQuantities((c) => c + 1)}
@@ -32,7 +32,7 @@ function ShopInputs({ p }) {
           +
         </button>
         <input
-          style={{ height: "30px", padding: "2px" }}
+         className="btns_container_input"
           type="number"
           min="0"
           max="20"

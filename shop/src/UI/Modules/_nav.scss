@@ -19,6 +19,10 @@
       @include media(large){
         font-size: 1.2rem;
       }
+
+      @include media(medium2){
+        font-size: 1.8rem;
+      }
     }
     span {
       color: $mainOrange;

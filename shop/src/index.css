@@ -48,3 +48,8 @@ code {
 .active {
   color: #03C03C;
   }
+
+
+  .align {
+    text-align: center;
+  }

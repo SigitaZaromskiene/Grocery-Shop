@@ -6,6 +6,7 @@
   &_heading {
     @include flex(center, center, row, 20px);
     margin-bottom: 50px;
+    
   }
 
   &_buttons {
@@ -29,30 +30,48 @@
   &_border {
     border-bottom: 3px solid $mainGreen;
     width: 150px;
+    @include media(medium) {
+      width: 70px; 
+    }
+
+   
+   
   }
 
   h2 {
     font-size: 1.8rem;
+    @include media(smallest) {
+      text-align: center;
+    }
     
   }
 
   &_tables {
+
+    @include media(medium2) {
+      grid-template-columns: 1fr 1fr;
+    }
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  
     justify-content: center;
     align-items: center;
     column-gap: 50px;
     margin-bottom: 40px;
- 
-  }
-  &_table {
-    @include flex(center, center, column, 15px);
-    border: 1px solid $lightGreen;
-    padding: 15px 25px;
-    border-radius: 25px;
+    padding: 20px;
+    row-gap: 30px;
 
     
+ 
   }
+  // &_table {
+  //   @include flex(center, center, column, 25px);
+  //   border: 1px solid $lightGreen;
+  //   padding: 25px 35px;
+  //   border-radius: 25px;
+
+    
+  // }
 }
 
 

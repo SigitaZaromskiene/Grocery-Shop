@@ -1,4 +1,6 @@
 .btn {
+
+ 
   border: 1px solid $mainGreen;
   padding: 10px 50px;
   background-color: $mainGreen;
@@ -7,6 +9,12 @@
   color: white;
   cursor: pointer;
   text-decoration: none;
+
+  @include media(medium) {
+  text-align: center;
+  }
+
+ 
 
   &:hover {
     background-color: white;

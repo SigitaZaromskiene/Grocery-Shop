@@ -37,6 +37,7 @@
   &_tables {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    
     justify-content: center;
     align-items: center;
     column-gap: 50px;
@@ -46,7 +47,7 @@
   &_table {
     @include flex(center, center, column, 15px);
     border: 2px solid $mainGreen;
-    padding: 25px;
+    padding: 15px;
     border-radius: 25px;
 
     img {
