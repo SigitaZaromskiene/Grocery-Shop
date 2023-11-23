@@ -1,6 +1,4 @@
 .btn {
-
- 
   border: 1px solid $mainGreen;
   padding: 10px 50px;
   background-color: $mainGreen;
@@ -11,10 +9,8 @@
   text-decoration: none;
 
   @include media(medium) {
-  text-align: center;
+    text-align: center;
   }
-
- 
 
   &:hover {
     background-color: white;

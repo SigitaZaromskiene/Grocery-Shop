@@ -44,13 +44,8 @@ function Products() {
           <div className="category_container_latest_border"></div>
         </div>
         <Filter />
-        <div
-          style={{
-            display: "grid",
-            gap: "40px",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            justifyContent: "center",
-          }}
+        <div className = "category_container_about_tables"
+          
         >
           {sortedAllProducts.map((p) => (
             <div key={p.id} className="category_container_latest_table">

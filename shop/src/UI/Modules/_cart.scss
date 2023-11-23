@@ -12,6 +12,9 @@
 }
 
 .cart {
+  @include media(small) {
+    width: 28rem;
+  }
   width: 40rem;
   background-color: #313131;
   margin: 50px;
@@ -64,6 +67,10 @@
   position: relative;
   text-decoration: none;
   max-height: 80vh;
+
+  @include media(medium) {
+    width: 28rem;
+  }
 
   span {
     color: $mainOrange;

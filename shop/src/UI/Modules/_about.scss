@@ -8,14 +8,11 @@
   }
 
   &_right {
-
-    @include media(medium2){
+    @include media(medium2) {
       img {
-       display: none;
+        display: none;
       }
-    
-       
-     }
+    }
     img {
       height: 35rem;
       width: 40rem;
@@ -23,7 +20,6 @@
   }
 
   &_left {
-
     @include media(large) {
       @include flex(center, center, column, 20px);
     }
@@ -47,17 +43,12 @@
 
       @include media(large) {
         text-align: center;
-       
       }
-      
-      
     }
 
     ul {
-
       @include media(large) {
         font-size: 1.5rem;
-       
       }
       list-style: none;
       margin-bottom: 45px;
@@ -69,7 +60,6 @@
 
       @include media(large) {
         @include flex(center, center, row, 15px);
-       
       }
     }
 

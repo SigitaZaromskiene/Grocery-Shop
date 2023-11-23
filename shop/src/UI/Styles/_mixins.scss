@@ -23,7 +23,6 @@
     @media (max-width: 1088px) {
       @content;
     }
-  
   } @else if $point == large {
     @media (max-width: 1250px) {
       @content;
@@ -33,7 +32,6 @@
 
 .wrapper {
   padding: 50px;
-  
 }
 
 .stars {
@@ -55,7 +53,7 @@
 
   &:hover {
     color: crimson;
-    border: 1px solid crimson
+    border: 1px solid crimson;
   }
 }
 

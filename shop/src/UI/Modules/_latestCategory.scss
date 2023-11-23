@@ -4,10 +4,9 @@
   color: $mainFontColor;
 
   &_heading {
-
     @include media(medium) {
       text-align: center;
-      }
+    }
     @include flex(center, center, row, 20px);
     margin-bottom: 30px;
   }
@@ -49,14 +48,11 @@
   }
 
   &_table {
-
-    @include media(small){
+    @include media(small) {
       padding: 45px;
       @include flex(center, center, column, 25px);
     }
 
-   
-    
     @include flex(center, center, column, 15px);
     border: 2px solid $mainGreen;
     padding: 25px;
@@ -65,17 +61,16 @@
     p {
       font-size: 1.6rem;
 
-      @include media(small){
+      @include media(small) {
         font-size: 2.2em;
       }
     }
 
-  
     &_price {
       font-size: 1.4rem;
       color: red;
 
-      @include media(small){
+      @include media(small) {
         font-size: 2em;
       }
     }
@@ -83,11 +78,7 @@
     &_btns {
       @include flex(center, center, column, 20px);
 
-     
-
       &_btn {
-
-        
         padding: 5px;
         border: 2px solid transparent;
         background-color: $mainGreen;
@@ -102,8 +93,6 @@
           background-color: white;
         }
       }
-
-      
     }
   }
 }
@@ -122,18 +111,14 @@
   @include flex(center, center, column, 20px);
 }
 
-
 .btns_container {
   display: flex;
-   align-items: center;
-    gap: 10px
-
-   
+  align-items: center;
+  gap: 10px;
 }
-
 
 .btns_container_input {
   height: 35px;
-   padding: 5px ;
+  padding: 5px;
   font-size: 1rem;
 }

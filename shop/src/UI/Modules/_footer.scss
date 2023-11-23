@@ -3,20 +3,15 @@
   @include flex(center, center, row, 50px);
   color: black;
 
-  @include media(medium2){
+  @include media(medium2) {
     @include flex(center, center, column, 70px);
-    
-    
   }
 
   div {
-    @include media(medium2){
-     text-align: center;
-      
+    @include media(medium2) {
+      text-align: center;
     }
-
   }
-  
 
   h3 {
     font-size: 1.8rem;
@@ -28,31 +23,26 @@
   }
 
   &_right {
-   
     @include flex(center, center, row, 70px);
 
-    @include media(medium2){
+    @include media(medium2) {
       @include flex(center, center, row, 80px);
-      
-      
     }
 
-   
-
     &_container {
-        @include flex(center, flex-start, column, 15px);
-        width: 115px;
+      @include flex(center, flex-start, column, 15px);
+      width: 115px;
     }
 
     &_link {
-        @include flex(flex-start, center, column, 10px);
-        cursor: pointer;
-        text-decoration: none;
-        color: black;
+      @include flex(flex-start, center, column, 10px);
+      cursor: pointer;
+      text-decoration: none;
+      color: black;
 
-        &:hover {
-            color: white;
-        }
+      &:hover {
+        color: white;
+      }
     }
   }
 
@@ -63,19 +53,16 @@
   &_logo {
     @include flex(flex-start, center, row, 25px);
 
-    @include media(medium2){
+    @include media(medium2) {
       @include flex(center, center, row, 25px);
       margin-bottom: 20px;
-     }
+    }
   }
 
   &_icons {
-
-    @include media(medium2){
+    @include media(medium2) {
       @include flex(center, center, row, 25px);
-    
-       
-     }
+    }
     @include flex(flex-start, center, row, 15px);
     margin-top: 40px;
     cursor: pointer;
