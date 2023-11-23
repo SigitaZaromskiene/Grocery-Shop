@@ -11,6 +11,7 @@
 
   &_buttons {
     @include flex(center, center, row, 20px);
+    
   }
 
   &_icon {
@@ -19,6 +20,7 @@
     background-color: $mainOrange;
     border: 1px solid transparent;
     cursor: pointer;
+  
 
     &:hover {
         background-color: white;
@@ -31,7 +33,7 @@
     border-bottom: 3px solid $mainGreen;
     width: 150px;
     @include media(medium) {
-      width: 70px; 
+      width: 120px; 
     }
 
    
@@ -40,7 +42,7 @@
 
   h2 {
     font-size: 1.8rem;
-    @include media(smallest) {
+    @include media(medium2) {
       text-align: center;
     }
     
@@ -50,28 +52,22 @@
 
     @include media(medium2) {
       grid-template-columns: 1fr 1fr;
+      column-gap: 30px;
+      
     }
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-  
     justify-content: center;
     align-items: center;
     column-gap: 50px;
-    margin-bottom: 40px;
+   
     padding: 20px;
     row-gap: 30px;
 
     
  
   }
-  // &_table {
-  //   @include flex(center, center, column, 25px);
-  //   border: 1px solid $lightGreen;
-  //   padding: 25px 35px;
-  //   border-radius: 25px;
-
-    
-  // }
+  
 }
 
 

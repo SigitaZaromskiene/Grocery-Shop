@@ -12,14 +12,34 @@
     @include flex(center, center, row, 45px);
     margin-bottom: 30px;
 
+    @include media(medium2){
+      @include flex(center, center, column, 35px);
+      
+    }
+
     &_feedback {
       background-color: white;
       padding: 15px;
       border-radius: 25px;
 
+      @include media(medium2){
+        @include flex(center, center, column, 25px);
+        padding: 35px;
+        
+      }
+
       &_text {
         font-size: 1rem;
         margin-bottom: 15px;
+        @include media(medium2){
+          width: 420px;
+          
+        }
+
+        @include media(smallest){
+          width: 300px;
+        }
+        
       }
     }
 

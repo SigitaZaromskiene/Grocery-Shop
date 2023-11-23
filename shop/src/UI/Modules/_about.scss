@@ -8,6 +8,14 @@
   }
 
   &_right {
+
+    @include media(medium2){
+      img {
+       display: none;
+      }
+    
+       
+     }
     img {
       height: 35rem;
       width: 40rem;
@@ -37,7 +45,10 @@
       font-weight: 300;
       margin-bottom: 25px;
 
-      
+      @include media(large) {
+        text-align: center;
+       
+      }
       
       
     }
@@ -55,6 +66,11 @@
     li {
       @include flex(flex-start, center, row, 15px);
       margin-bottom: 10px;
+
+      @include media(large) {
+        @include flex(center, center, row, 15px);
+       
+      }
     }
 
     &_icon {

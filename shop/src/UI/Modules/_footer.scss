@@ -2,6 +2,20 @@
   background-color: darken($mainGreen, 15%);
   @include flex(center, center, row, 50px);
   color: black;
+
+  @include media(medium2){
+    @include flex(center, center, column, 70px);
+    
+    
+  }
+
+  div {
+    @include media(medium2){
+     text-align: center;
+      
+    }
+
+  }
   
 
   h3 {
@@ -14,7 +28,16 @@
   }
 
   &_right {
+   
     @include flex(center, center, row, 70px);
+
+    @include media(medium2){
+      @include flex(center, center, row, 80px);
+      
+      
+    }
+
+   
 
     &_container {
         @include flex(center, flex-start, column, 15px);
@@ -39,9 +62,20 @@
 
   &_logo {
     @include flex(flex-start, center, row, 25px);
+
+    @include media(medium2){
+      @include flex(center, center, row, 25px);
+      margin-bottom: 20px;
+     }
   }
 
   &_icons {
+
+    @include media(medium2){
+      @include flex(center, center, row, 25px);
+    
+       
+     }
     @include flex(flex-start, center, row, 15px);
     margin-top: 40px;
     cursor: pointer;

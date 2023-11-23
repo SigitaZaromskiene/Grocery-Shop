@@ -43,7 +43,7 @@
       cursor: pointer;
 
       @include media(large){
-        @include flex(center, center, row, 20px);
+        @include flex(center, center, row, 30px);
       }
 
     }
