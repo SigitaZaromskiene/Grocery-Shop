@@ -17,23 +17,22 @@ function MobileNavigation(){
            <NavLink
             className="custom_link"
 
-            // SITA SUTAVRKYTI!!!!
-            to="/"  
+             
             onClick={() => dispatch(uiActions.toggleMobileMenuVisibility())}
           >
             <FontAwesomeIcon className="icon_leave" icon={faX} />
           </NavLink>
           <ul style={{cursor: 'pointer', fontSize: '1.6rem',display: 'flex', justifyContent:'center', gap: '20px', flexDirection: 'column', alignItems:'center'}}>
-            <NavLink className="custom_link" to="/">
+            <NavLink className="custom_link" to="/" onClick={() => dispatch(uiActions.toggleMobileMenuVisibility())}>
               Home
             </NavLink>
-            <NavLink className="custom_link" to="/about">
+            <NavLink className="custom_link" to="/about" onClick={() => dispatch(uiActions.toggleMobileMenuVisibility())}>
               About us
             </NavLink>
-            <NavLink className="custom_link" to="/category">
+            <NavLink className="custom_link" to="/category" onClick={() => dispatch(uiActions.toggleMobileMenuVisibility())}>
               Category
             </NavLink>
-            <NavLink className="custom_link" to="/shop">
+            <NavLink className="custom_link" to="/shop" onClick={() => dispatch(uiActions.toggleMobileMenuVisibility())}>
               Shop
             </NavLink>
           </ul>
