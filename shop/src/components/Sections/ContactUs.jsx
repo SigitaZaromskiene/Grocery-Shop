@@ -26,7 +26,7 @@ function ContactUs() {
   const [message, setMessage] = useState("");
 
   const contactUsFormHandlerCloseHandler = () => {
-    dispatch(uiActions.toggleContactFormVisibility());
+    dispatch(contactUsActions.setFormVisibility());
   };
 
   const contactMessageHandler = () => {
@@ -54,7 +54,8 @@ function ContactUs() {
     } 
     else {
       dispatch(sendContactUsDetails(name, email, message));
-      dispatch(contactUsActions.formSendSuccessFormVisibility());
+      dispatch( contactUsActions.formSendSuccessFormVisibility());
+  
 
       setName("");
       setEmail("");

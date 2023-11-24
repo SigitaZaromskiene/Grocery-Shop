@@ -362,5 +362,8 @@ export const sendOrderData = ({title, price}) => {
 //   };
 // };
 
+
+
+
 export const cartActions = cartSlice.actions;
 export default cartSlice;

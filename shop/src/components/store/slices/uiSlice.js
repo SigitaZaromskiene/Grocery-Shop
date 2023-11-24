@@ -9,9 +9,9 @@ const uiSlice = createSlice({
     toggleCartVisibility(state) {
       state.isCartVisible = !state.isCartVisible;
     },
-    toggleContactFormVisibility(state) {
-        state.isContactFormVisible = !state.isContactFormVisible;
-      },
+    // toggleContactFormVisibility(state) {
+    //     state.isContactFormVisible = !state.isContactFormVisible;
+    //   },
       toggleSignInFormVisibility(state) {
         state.isSignInFormVisible = !state.isSignInFormVisible;
       },
@@ -36,6 +36,8 @@ const uiSlice = createSlice({
   },
   
 });
+
+
 
 
 export const uiActions = uiSlice.actions;

@@ -4,6 +4,13 @@
   background-color: $lightGreen;
   font-size: 1.2rem;
 
+  @include media(medium) {
+    
+    display: flex; 
+    flex-direction: column;
+    gap: 50px;
+  }
+
   &_left {
     @include flex(center, center, row, 10px);
 
@@ -16,6 +23,7 @@
 
       @include media(medium2) {
         font-size: 1.8rem;
+       
       }
     }
     span {
@@ -51,10 +59,22 @@
     &_burger {
       @include media(medium2) {
         display: block;
-        font-size: 2rem;
+        font-size: 1.6rem;
         cursor: pointer;
+        list-style: none;
       }
       display: none;
+
+
+      @include media(medium2) {
+      &_container {
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+      
+        gap: 50px;
+      }
+      }
     }
     ul {
       @include flex(center, center, row, 40px);

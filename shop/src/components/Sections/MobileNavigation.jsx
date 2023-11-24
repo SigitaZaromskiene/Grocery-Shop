@@ -3,18 +3,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX} from "@fortawesome/free-solid-svg-icons";
 import { uiActions } from "../store/slices/uiSlice";
 import { useDispatch } from "react-redux";
+import Nav from "./Nav";
 
 function MobileNavigation(){
 
     const dispatch = useDispatch()
 
     return (
+        <>
+        <Nav/>
         <div className='cart_container'>
            <div className="cart">
            <NavLink
             className="custom_link"
-            to="/"
-            onClick={() => dispatch(uiActions.toggleCartVisibility())}
+
+            // SITA SUTAVRKYTI!!!!
+            to="/"  
+            onClick={() => dispatch(uiActions.toggleMobileMenuVisibility())}
           >
             <FontAwesomeIcon className="icon_leave" icon={faX} />
           </NavLink>
@@ -34,6 +39,7 @@ function MobileNavigation(){
           </ul>
           </div>
      </div>
+     </>
       
     )
 }
