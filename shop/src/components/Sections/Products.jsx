@@ -7,7 +7,7 @@ import ShopInputs from "./ShopInputs";
 function Products() {
   const filter = useSelector((state) => state.filter);
 
-  console.log(filter)
+
 
   const sortProducts = (products, sortBy) => {
     if (sortBy === "Default") {
@@ -27,7 +27,7 @@ function Products() {
   // Filter products based on the category
   const filteredProducts = products.filter((product) => {
 
-    console.log(product)
+
     if (product.category === "All" || product.category === filter.category) {
       return true;
     }

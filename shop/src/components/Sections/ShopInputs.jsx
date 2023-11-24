@@ -3,13 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Btn from "../Buttons/Btn";
 import { cartActions } from "../store/slices/cartSlice";
-import { sendCartData } from "../store/slices/cartSlice";
+
 
 import { useDispatch } from "react-redux";
 
 function ShopInputs({ p }) {
 
-  console.log(p)
+ 
 
 
   const [productQuantities, setProductQuantities] = useState(0);

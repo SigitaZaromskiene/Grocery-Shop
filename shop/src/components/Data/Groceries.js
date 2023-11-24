@@ -32,3 +32,20 @@ export const products = [
     { id: 26,title: "Pineapple", price: 6.99, quantity: 0, totalPrice: 6.99, category:'Fruits'},
     { id: 27,title: "Peach", price: 2.45, quantity: 0, totalPrice: 2.45, category:'Fruits'},
   ];
+
+
+  export const productsShortList = [
+    { id: 1,
+      title: "Apple",
+      price: 1.25,
+      quantity: 0,
+      totalQuantity:1, totalPrice: 1.25,category:'Fruit'
+    },
+    { id: 2,title: "Bread", price: 3.25, quantity: 0, totalPrice: 3.25 , category:'Bakery' },
+    { id: 3,title: "Beef", price: 6.25, quantity: 0,totalPrice: 6.25, category:'Meat' },
+    { id: 4,title: "Milk", price: 2.99, quantity: 0, totalPrice: 2.99, category:'Dairy'},
+    { id: 23,title: "Cupcake", price: 2.09, quantity: 0, totalPrice: 2.09 , category:'Bakery' },
+    { id: 24,title: "Pork", price: 6.25, quantity: 0,totalPrice: 6.25, category:'Meat' },
+    { id: 25,title: "Vegan cheese", price: 2.99, quantity: 0, totalPrice: 2.99, category:'Dairy'},
+    { id: 26,title: "Pineapple", price: 6.99, quantity: 0, totalPrice: 6.99, category:'Fruits'},
+  ]
