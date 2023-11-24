@@ -37,6 +37,8 @@ function Filter() {
         <option value="Meat">Meat</option>
         <option value="Drinks">Drinks</option>
         <option value="Bakery">Bakery</option>
+        <option value="Cans">Cans</option>
+        <option value="Sweets">Sweets</option>
       </select>
       </div>
       <div className="select_filter_by">
