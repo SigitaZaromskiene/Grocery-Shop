@@ -17,6 +17,8 @@ This project is a web-based grocery shop built using modern technologies for fro
 
 - **Backend:**
   - MariaDB for the database
+  - Node.js with Express for the server
+ 
 
 ## Features 🌟
 
