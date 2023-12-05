@@ -8,12 +8,9 @@ function Notification({ title, text, className }) {
   useEffect(() => {
     setTimeout(() => {
       dispatch(uiActions.toggleNotificationVisibility());
-      
     }, [2000]);
   }, [dispatch]);
 
-  
-  
   return (
     <div className={`notification_container + ${className}`}>
       <h4>{title}</h4>

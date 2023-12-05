@@ -16,7 +16,7 @@ const ContactFormSuccess = () => {
           to="/"
           onClick={() => {
             dispatch(contactUsActions.setFormVisibility());
-            dispatch(contactUsActions.toggleErrorNotificationVisibility())
+            dispatch(contactUsActions.toggleErrorNotificationVisibility());
             dispatch(contactUsActions.formSendSuccessFormVisibility());
           }}
         >

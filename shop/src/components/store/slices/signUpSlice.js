@@ -27,11 +27,13 @@ export const sendRegisterData = (name, psw) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name,
-          psw,
-        
-        }, { withCredentials: true }),
+        body: JSON.stringify(
+          {
+            name,
+            psw,
+          },
+          { withCredentials: true }
+        ),
       });
 
       if (!response.ok) {
@@ -42,10 +44,7 @@ export const sendRegisterData = (name, psw) => {
     try {
       await sendRequest();
 
-      
-
-      dispatch(uiActions.toggleRegisterFormVisibility())
-      
+      dispatch(uiActions.toggleRegisterFormVisibility());
     } catch (error) {
       dispatch(
         uiActions.notification({
@@ -57,8 +56,6 @@ export const sendRegisterData = (name, psw) => {
     }
   };
 };
-
-
 
 export const signUpSliceActions = signUpSlice.actions;
 export default signUpSlice;

@@ -14,8 +14,6 @@ function App() {
   const showCart = useSelector((state) => state.ui.isCartVisible);
   const navigationBar = useSelector((state) => state.ui.mobileMenuVisible);
 
-  console.log(showCart)
-  
   const dispatch = useDispatch();
 
   useEffect(() => {

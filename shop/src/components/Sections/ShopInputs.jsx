@@ -4,14 +4,9 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Btn from "../Buttons/Btn";
 import { cartActions } from "../store/slices/cartSlice";
 
-
 import { useDispatch } from "react-redux";
 
 function ShopInputs({ p }) {
-
- 
-
-
   const [productQuantities, setProductQuantities] = useState(0);
   const dispatch = useDispatch();
 
@@ -32,7 +27,7 @@ function ShopInputs({ p }) {
           +
         </button>
         <input
-         className="btns_container_input"
+          className="btns_container_input"
           type="number"
           min="0"
           max="20"
@@ -58,7 +53,6 @@ function ShopInputs({ p }) {
         <button className="btn disabled">Add to cart</button>
       ) : (
         <Btn
-          
           text="Add to cart"
           action={() => {
             setProductQuantities(0);
@@ -69,8 +63,7 @@ function ShopInputs({ p }) {
                 id: p.id,
                 quantity: p.quantity + parseInt(productQuantities),
                 category: p.category,
-                totalPrice: p.totalPrice
-                
+                totalPrice: p.totalPrice,
               })
             );
           }}

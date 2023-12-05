@@ -8,8 +8,6 @@ const mysql = require("mysql");
 
 const app = express();
 const port = 3111;
-// app.use(express.json({ limit: "10mb" }));
-// app.use(express.static("public"));
 
 const con = mysql.createConnection({
   host: "localhost",
@@ -31,7 +29,6 @@ app.use(
   })
 );
 app.use(express.json());
-
 
 app.delete("/cart/:id", (req, res) => {
   const sql = `
@@ -79,90 +76,131 @@ app.get("/cart", (req, res) => {
   });
 });
 
-
 app.post("/order", (req, res) => {
-    const sql = `
+  const sql = `
     INSERT INTO orders (title, price)
     VALUES (?, ?)
   
     `;
-  
-    con.query(sql, [req.body.title, req.body.price], (err) => {
-      if (err) throw err;
-      res.json({});
-    });
+
+  con.query(sql, [req.body.title, req.body.price], (err) => {
+    if (err) throw err;
+    res.json({});
   });
+});
 
-
-  app.post("/cart", (req, res) => {
-    const sql = `
+app.post("/cart", (req, res) => {
+  const sql = `
     INSERT INTO cart ( title, price, quantity, totalPrice, category)
     VALUES ( ?, ?, ?, ?, ?)
   
     `;
-  
-    con.query(sql, [req.body.title, req.body.price, req.body.quantity, req.body.totalPrice, req.body.category], (err) => {
+
+  con.query(
+    sql,
+    [
+      req.body.title,
+      req.body.price,
+      req.body.quantity,
+      req.body.totalPrice,
+      req.body.category,
+    ],
+    (err) => {
       if (err) throw err;
       res.json({});
-    });
-  });
+    }
+  );
+});
 
-
-  app.post("/about", (req, res) => {
-    const sql = `
+app.post("/about", (req, res) => {
+  const sql = `
     INSERT INTO subscribe ( email)
     VALUES ( ?)
   
     `;
-  
-    con.query(sql, [req.body.email], (err) => {
-      if (err) throw err;
-      res.json({});
-    });
+
+  con.query(sql, [req.body.email], (err) => {
+    if (err) throw err;
+    res.json({});
   });
+});
 
-
-
-  app.post("/", (req, res) => {
-    const sql = `
+app.post("/", (req, res) => {
+  const sql = `
     INSERT INTO cart (title, price, quantity, totalPrice, category)
     VALUES (?, ?, ?, ?, ?)
   
     `;
-  
-    con.query(sql, [req.body.title, req.body.price, req.body.quantity, req.body.totalPrice, req.body.category], (err) => {
+
+  con.query(
+    sql,
+    [
+      req.body.title,
+      req.body.price,
+      req.body.quantity,
+      req.body.totalPrice,
+      req.body.category,
+    ],
+    (err) => {
       if (err) throw err;
       res.json({});
-    });
-  });
+    }
+  );
+});
 
-  app.post("/contactus", (req, res) => {
-    const sql = `
+app.post("/contactus", (req, res) => {
+  const sql = `
     INSERT INTO contactus (name, email, message)
     VALUES (?, ?, ?)
   
     `;
-  
-    con.query(sql, [req.body.name, req.body.email, req.body.message], (err) => {
-      if (err) throw err;
-      res.json({});
-    });
+
+  con.query(sql, [req.body.name, req.body.email, req.body.message], (err) => {
+    if (err) throw err;
+    res.json({});
   });
+});
 
-
-  app.post("/register", (req, res) => {
-
-    const session = uuidv4();
-    const sql = `
+app.post("/register", (req, res) => {
+  const session = uuidv4();
+  const sql = `
     INSERT INTO register (session,name,psw)
     VALUES (?, ?, ?)
   
     `;
-  
-    con.query(sql, [session, req.body.name, md5(req.body.psw)],  (err, result) => {
+
+  con.query(sql, [session, req.body.name, md5(req.body.psw)], (err, result) => {
+    if (err) throw err;
+    if (result.affectedRows) {
+      res.cookie("usersSession", session);
+      res.json({
+        status: "ok",
+        name: req.body.name,
+      });
+    } else {
+      res.json({
+        status: "error",
+      });
+    }
+  });
+});
+
+app.post("/login", (req, res) => {
+  const sessionId = uuidv4();
+
+  const sql = `
+          UPDATE register
+          SET session = ?
+          WHERE name = ? AND psw = ?
+      `;
+
+  con.query(
+    sql,
+    [sessionId, req.body.name, md5(req.body.psw)],
+    (err, result) => {
       if (err) throw err;
       if (result.affectedRows) {
-        res.cookie("usersSession", session);
+        res.cookie("usersSession", sessionId);
         res.json({
           status: "ok",
           name: req.body.name,
@@ -174,68 +212,37 @@ app.post("/order", (req, res) => {
       }
     }
   );
+});
 
-  });
-
-  app.post("/login", (req, res) => {
-    const sessionId = uuidv4();
-  
-    const sql = `
-          UPDATE register
-          SET session = ?
-          WHERE name = ? AND psw = ?
-      `;
-  
-    con.query(
-      sql,
-      [sessionId, req.body.name, md5(req.body.psw)],
-      (err, result) => {
-        if (err) throw err;
-        if (result.affectedRows) {
-          res.cookie("usersSession", sessionId);
-          res.json({
-            status: "ok",
-            name: req.body.name,
-          });
-        } else {
-          res.json({
-            status: "error",
-          });
-        }
-      }
-    );
-  });
-  
-  app.get("/login", (req, res) => {
-    const sql = `
+app.get("/login", (req, res) => {
+  const sql = `
           SELECT name
           FROM register
           WHERE session = ?
       `;
-    con.query(sql, [req.cookies.usersSession || ""], (err, result) => {
-      if (err) throw err;
-  
-      if (result.length) {
-        res.json({
-          status: "ok",
-          name: result[0].name,
-        });
-      } else {
-        res.json({
-          status: "error",
-        });
-      }
-    });
-  });
-  
+  con.query(sql, [req.cookies.usersSession || ""], (err, result) => {
+    if (err) throw err;
 
-  app.post("/logout", (req, res) => {
-    res.cookie("usersSession", "");
-    res.json({
-      status: "logout",
-    });
+    if (result.length) {
+      res.json({
+        status: "ok",
+        name: result[0].name,
+      });
+    } else {
+      res.json({
+        status: "error",
+      });
+    }
   });
+});
+
+app.post("/logout", (req, res) => {
+  res.cookie("usersSession", "");
+  res.json({
+    status: "logout",
+  });
+});
 
 app.listen(port, () => {
-    console.log(`LN is on port number: ${port}`);
-  });
+  console.log(`LN is on port number: ${port}`);
+});

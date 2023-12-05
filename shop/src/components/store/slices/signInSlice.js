@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { uiActions } from "./uiSlice";
@@ -7,14 +6,14 @@ const URL = "http://localhost:3111/login";
 
 const signInSlice = createSlice({
   name: "signIn",
-  initialState: { isLogged: false, name:'' },
+  initialState: { isLogged: false, name: "" },
   reducers: {
     isLogged(state) {
       state.isLogged = !state.isLogged;
     },
-    getLoggedPersonName(state, action){
+    getLoggedPersonName(state, action) {
       state.name = action.payload;
-    }
+    },
   },
 });
 
@@ -23,7 +22,6 @@ export const sendAndGetData = (name, psw) => {
     try {
       await dispatch(sendSignInData(name, psw));
       await dispatch(getSignInData());
-
     } catch (error) {
       dispatch(
         uiActions.errorNotification({
@@ -39,7 +37,11 @@ export const sendAndGetData = (name, psw) => {
 export const sendSignInData = (name, psw) => {
   return async () => {
     try {
-      const response = await axios.post(URL, { name, psw }, { withCredentials: true });
+      const response = await axios.post(
+        URL,
+        { name, psw },
+        { withCredentials: true }
+      );
 
       if (response.status !== 200) {
         throw new Error("Cannot login");
@@ -55,16 +57,11 @@ export const getSignInData = () => {
     try {
       const response = await axios.get(URL, { withCredentials: true });
 
-      
-
-      if(response.data.status=== 'error'){
-        throw new Error('NOOOO')
-      }
-
-      else if(response.data.status === "ok") {
-
-        dispatch( signInActions.isLogged())
-        dispatch(signInActions.getLoggedPersonName (response.data.name))
+      if (response.data.status === "error") {
+        throw new Error("Cannot SignIn");
+      } else if (response.data.status === "ok") {
+        dispatch(signInActions.isLogged());
+        dispatch(signInActions.getLoggedPersonName(response.data.name));
         dispatch(
           uiActions.notification({
             title: "Success",

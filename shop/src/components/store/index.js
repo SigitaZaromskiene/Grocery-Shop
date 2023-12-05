@@ -17,7 +17,6 @@ const store = configureStore({
     signIn: signInSlice.reducer,
     contactUs: contactUsSlice.reducer,
     newsLetter: newsLetterSlice.reducer,
-    logout: logoutSlice.reducer,
   },
 });
 

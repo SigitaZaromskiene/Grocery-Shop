@@ -3,11 +3,8 @@ import { categories } from "../Data/Categories";
 import { useDispatch } from "react-redux";
 import { filterSliceActions } from "../store/slices/filterSlice";
 
-
 function Category() {
   const dispatch = useDispatch();
-
-
 
   return (
     <section className="category_container wrapper">
@@ -20,9 +17,9 @@ function Category() {
         {categories.map((c) => (
           <div key={c.id} className="category_container_table">
             <p>{c.title}</p>
-           
-            <img src={c.img}  alt='Category img'></img>
-           
+
+            <img src={c.img} alt="Category img"></img>
+
             <Btn
               to="/shop"
               text="Shop now"

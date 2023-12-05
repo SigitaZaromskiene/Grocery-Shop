@@ -1,6 +1,6 @@
 import logo from "../../UI/Img/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping} from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { uiActions } from "../store/slices/uiSlice";
 import { useDispatch } from "react-redux";
@@ -11,13 +11,10 @@ import MobileFriendlyMenu from "./NavMobileFriendlyMenu";
 function Nav() {
   const dispatch = useDispatch();
 
-  const mobileMenu = useSelector(state=>state.ui.mobileMenuVisible)
-
   const isLogged = useSelector((state) => state.signIn.isLogged);
   const cartArray = useSelector((state) => state.cart.cart);
-  
-  
- const totalCartAmount = cartArray.reduce(
+
+  const totalCartAmount = cartArray.reduce(
     (acc, curr) => acc + curr.quantity,
     0
   );
@@ -51,7 +48,6 @@ function Nav() {
           </ul>
         </div>
         <div className="nav_container_right">
-         
           <ul>
             <NavLink
               to="/cart"
@@ -64,7 +60,7 @@ function Nav() {
                 {totalCartAmount}
               </div>
             </NavLink>
-            {isLogged=== !false ? (
+            {isLogged === !false ? (
               <Logout />
             ) : (
               <NavLink className="custom_link" to="/login">
@@ -73,8 +69,7 @@ function Nav() {
             )}
           </ul>
         </div>
-       <MobileFriendlyMenu/> 
-       
+        <MobileFriendlyMenu />
       </nav>
     </>
   );

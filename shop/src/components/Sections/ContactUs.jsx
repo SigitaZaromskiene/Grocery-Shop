@@ -2,7 +2,6 @@ import Btn from "../Buttons/Btn";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
-import { uiActions } from "../store/slices/uiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import {
@@ -16,11 +15,10 @@ import ContactFormSuccess from "./ContactFormSuccess";
 function ContactUs() {
   const dispatch = useDispatch();
   const notification = useSelector((state) => state.contactUs.formNotification);
-  
+
   const formSuccessMessage = useSelector(
     (state) => state.contactUs.formSuccessMessage
   );
-
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -52,11 +50,9 @@ function ContactUs() {
         })
       );
       return;
-    } 
-    else {
+    } else {
       dispatch(sendContactUsDetails(name, email, message));
-      dispatch( contactUsActions.formSendSuccessFormVisibility());
-      
+      dispatch(contactUsActions.formSendSuccessFormVisibility());
 
       setName("");
       setEmail("");
@@ -89,7 +85,7 @@ function ContactUs() {
         <div className="contact_modal_form_inputs">
           <div>
             <input
-            className={notification ? 'formError' :  null}
+              className={notification ? "formError" : null}
               type="text"
               value={name}
               placeholder="Name"
@@ -101,7 +97,7 @@ function ContactUs() {
         <div className="contact_modal_form_inputs">
           <div>
             <input
-            className={notification  ? 'formError' :  null}
+              className={notification ? "formError" : null}
               type="email"
               value={email}
               placeholder="Email"
@@ -112,15 +108,12 @@ function ContactUs() {
         </div>
         <textarea
           placeholder="Your Message"
-          className={notification ? 'formError' :  null}
+          className={notification ? "formError" : null}
           type="text"
           onChange={(e) => setMessage(e.target.value)}
           value={message}
         />
-        <Btn
-          text="Send Message"
-          action={contactMessageHandler}
-        />
+        <Btn text="Send Message" action={contactMessageHandler} />
       </form>
     </div>
   );

@@ -1,13 +1,12 @@
 import Btn from "../Buttons/Btn";
 import { useDispatch, useSelector } from "react-redux";
-import { cartActions, deleteCart, sendOrderData } from "../store/slices/cartSlice";
+import { cartActions, sendOrderData } from "../store/slices/cartSlice";
 import { uiActions } from "../store/slices/uiSlice";
 
 function CartTotal() {
   const dispatch = useDispatch();
   const cartDataTitle = useSelector((state) => state.cart.cart[0].title);
   const cartDataPrice = useSelector((state) => state.cart.cart[0].price);
-
 
   const getCartPrices = useSelector((state) => state.cart.cart);
 
@@ -17,10 +16,9 @@ function CartTotal() {
   );
 
   const orderHandler = () => {
-  dispatch(sendOrderData({title: cartDataTitle, price:cartDataPrice}))
-    dispatch(uiActions.toggleCartVisibility())
-    dispatch(cartActions.emptyCart())
-    
+    dispatch(sendOrderData({ title: cartDataTitle, price: cartDataPrice }));
+    dispatch(uiActions.toggleCartVisibility());
+    dispatch(cartActions.emptyCart());
   };
 
   return (

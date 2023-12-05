@@ -5,8 +5,7 @@
   font-size: 1.2rem;
 
   @include media(medium) {
-    
-    display: flex; 
+    display: flex;
     flex-direction: column;
     gap: 50px;
     padding-bottom: 40px;
@@ -24,7 +23,6 @@
 
       @include media(medium2) {
         font-size: 1.8rem;
-       
       }
     }
     span {
@@ -66,15 +64,14 @@
       }
       display: none;
 
-
       @include media(medium2) {
-      &_container {
-        display:flex;
-        align-items: center;
-        justify-content: space-between;
-      
-        gap: 50px;
-      }
+        &_container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          gap: 50px;
+        }
       }
     }
     ul {

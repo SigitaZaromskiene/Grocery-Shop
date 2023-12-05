@@ -5,21 +5,16 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { uiActions } from "../store/slices/uiSlice";
 import { useState } from "react";
-import FormErrorNotification from "../Sections/FormErrorNotification";
 import { sendAndGetData } from "../store/slices/signInSlice";
 import { useSelector } from "react-redux";
 import PersonalGreeting from "../Sections/PersonalGreeting";
 import LoginFormNotification from "../Sections/LoginFormNotifications";
-
 
 function LoginPage() {
   const dispatch = useDispatch();
 
   const notification = useSelector((state) => state.ui.errorNotification);
   const isLogged = useSelector((state) => state.signIn.isLogged);
- 
-
-
 
   const registrationStatus = useSelector(
     (state) => state.ui.notification?.status
@@ -27,12 +22,8 @@ function LoginPage() {
 
   const renderRegistrationForm = registrationStatus !== "success";
 
-
-
   const [name, setName] = useState("");
   const [psw, setPsw] = useState("");
-
-
 
   const signInFormHandler = () => {
     dispatch(uiActions.toggleSignInFormVisibility());
@@ -83,13 +74,7 @@ function LoginPage() {
 
   const signInHandler = () => {
     if (!isRegisterFormDetailsValid()) {
-      dispatch(sendAndGetData(name, psw), setName(""),
-      setPsw(""));
-
-    
-
-     
-      
+      dispatch(sendAndGetData(name, psw), setName(""), setPsw(""));
     }
   };
 
@@ -107,11 +92,11 @@ function LoginPage() {
           ) : null}
         </div>
 
-        {isLogged  ? (
+        {isLogged ? (
           <div className="success_message">
-            <PersonalGreeting/>
+            <PersonalGreeting />
             <p>You are logged in</p>
-            <LongBtn to="/" text="Home page" ></LongBtn>
+            <LongBtn to="/" text="Home page"></LongBtn>
           </div>
         ) : (
           <div className="login_container_inputs">
@@ -126,7 +111,11 @@ function LoginPage() {
             <div className="login_container_inputs">
               <div>
                 <input
-                  className={!notification || notification=== null?"login_container_input": "login_container_input + formError"}
+                  className={
+                    !notification || notification === null
+                      ? "login_container_input"
+                      : "login_container_input + formError"
+                  }
                   placeholder="Name"
                   type="text"
                   value={name}
@@ -135,7 +124,11 @@ function LoginPage() {
               </div>
 
               <input
-                className={!notification || notification=== null ?"login_container_input": "login_container_input + formError"}
+                className={
+                  !notification || notification === null
+                    ? "login_container_input"
+                    : "login_container_input + formError"
+                }
                 placeholder="Password"
                 type="number"
                 value={psw}
@@ -144,9 +137,13 @@ function LoginPage() {
             </div>
           </div>
         )}
-        {renderRegistrationForm && !isLogged?(
+        {renderRegistrationForm && !isLogged ? (
           <>
-            <LongBtn text="Sign In" action={signInHandler} to={!isLogged ? "/login": "/" }/>
+            <LongBtn
+              text="Sign In"
+              action={signInHandler}
+              to={!isLogged ? "/login" : "/"}
+            />
             <div className="login_container_input_register">
               <p>Do not have an account?</p>
               <NavLink
@@ -157,7 +154,7 @@ function LoginPage() {
               </NavLink>
             </div>
           </>
-        ): null}
+        ) : null}
       </form>
     </div>
   );

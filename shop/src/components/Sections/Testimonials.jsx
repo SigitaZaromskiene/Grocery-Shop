@@ -12,7 +12,11 @@ function Testimonials() {
     <div className="testimonials wrapper">
       <h2>What our beloved customers say about us</h2>
       <div className="testimonials_container">
-        <div className={`testimonials_container_feedback ${active === 0 ? "active_feedback" : ""}`}>
+        <div
+          className={`testimonials_container_feedback ${
+            active === 0 ? "active_feedback" : ""
+          }`}
+        >
           <div className="testimonials_container_feedback_info">
             <img src={face6} alt="Women" />
             <p>Liza Mandalez</p>
@@ -31,7 +35,11 @@ function Testimonials() {
             <FontAwesomeIcon icon={faStar} />
           </div>
         </div>
-        <div className={`testimonials_container_feedback ${active === 1 ? "active_feedback" : ""}`}>
+        <div
+          className={`testimonials_container_feedback ${
+            active === 1 ? "active_feedback" : ""
+          }`}
+        >
           <div className="testimonials_container_feedback_info ">
             <img src={face7} alt="Men" />
             <p>Farhan Rios</p>
@@ -50,7 +58,11 @@ function Testimonials() {
             <FontAwesomeIcon icon={faStar} />
           </div>
         </div>
-        <div className={`testimonials_container_feedback ${active === 2 ? "active_feedback" : ""}`}>
+        <div
+          className={`testimonials_container_feedback ${
+            active === 2 ? "active_feedback" : ""
+          }`}
+        >
           <div className="testimonials_container_feedback_info">
             <img src={face3} alt="Women" />
             <p>Simona Krilinos</p>

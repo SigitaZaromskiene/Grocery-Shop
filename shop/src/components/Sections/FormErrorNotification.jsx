@@ -10,11 +10,9 @@ function FormErrorNotification({ title, text, className }) {
     (state) => state.contactUs.formNotification?.status
   );
 
-
-
   useEffect(() => {
     setTimeout(() => {
-      if (errorMessageStatus === "error"  ) {
+      if (errorMessageStatus === "error") {
         dispatch(
           contactUsActions.formNotificationToggle({
             title: "",

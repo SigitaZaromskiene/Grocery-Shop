@@ -4,11 +4,9 @@ import ShopInputs from "./ShopInputs";
 import { filterSliceActions } from "../store/slices/filterSlice";
 import { useDispatch } from "react-redux";
 
-
 function LatestProducts() {
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
-  
   return (
     <section className="category_container_latest wrapper">
       <div className="category_container_latest_heading">
@@ -27,8 +25,11 @@ function LatestProducts() {
           </div>
         ))}
       </div>
-      <TransparentBtn text='Show all' to={'/shop'} action={() => dispatch(filterSliceActions.setCategory("All"))}/>
-  
+      <TransparentBtn
+        text="Show all"
+        to={"/shop"}
+        action={() => dispatch(filterSliceActions.setCategory("All"))}
+      />
     </section>
   );
 }

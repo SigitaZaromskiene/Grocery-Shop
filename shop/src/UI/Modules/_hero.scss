@@ -22,10 +22,9 @@
     margin-left: 90px;
 
     h1 {
-
-  @include media(medium) {
-    margin-top: 50px;
-  }
+      @include media(medium) {
+        margin-top: 50px;
+      }
       @include media(medium2) {
         text-align: center;
       }

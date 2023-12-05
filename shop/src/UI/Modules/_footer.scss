@@ -3,8 +3,6 @@
   @include flex(center, center, row, 50px);
   color: black;
 
-  
-
   @include media(medium2) {
     @include flex(center, center, column, 70px);
   }

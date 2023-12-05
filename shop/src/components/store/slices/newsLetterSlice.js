@@ -7,13 +7,7 @@ const URL = "http://localhost:3111/about";
 const newsLetterSlice = createSlice({
   name: "newsLetter",
   initialState: { newsLetterSubscriberEmail: "" },
-  reducers: {
-    // subscribeNewsLetter(state, action){
-    //     action.action.payload=state.newsLetterSubscriberEmail
-    // }
-  },
-
-  
+  reducers: {},
 });
 
 export const sendNewsLetterSubsciberDetails = (email) => {

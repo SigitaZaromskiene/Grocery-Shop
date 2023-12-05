@@ -3,8 +3,7 @@ import { faX, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { uiActions } from "../store/slices/uiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { cartActions} from "../store/slices/cartSlice";
-
+import { cartActions } from "../store/slices/cartSlice";
 
 const CartItem = () => {
   const dispatch = useDispatch();
@@ -23,7 +22,7 @@ const CartItem = () => {
             <header>
               <h3>{i.title}</h3>
               <div className="price">
-                {i.totalPrice.toFixed(2,0)}
+                {i.totalPrice.toFixed(2, 0)}
                 <span>&euro;</span>
               </div>
             </header>
@@ -33,24 +32,34 @@ const CartItem = () => {
                   <span>x {i.quantity}</span>
                 </div>
                 <div className="cart_items_actions">
-                <button
+                  <button
                     onClick={() =>
-                      dispatch(cartActions.addItemToCart({title: i.title,
-                        price: i.price,
-                        id: i.id,
-                        quantity: i.quantity * i.price,
-                        category: i.category, totalPrice: i.totalPrice}))
+                      dispatch(
+                        cartActions.addItemToCart({
+                          title: i.title,
+                          price: i.price,
+                          id: i.id,
+                          quantity: i.quantity * i.price,
+                          category: i.category,
+                          totalPrice: i.totalPrice,
+                        })
+                      )
                     }
                   >
                     +
                   </button>
                   <button
                     onClick={() =>
-                      dispatch(cartActions.removeItemFromCart({title: i.title,
-                        price: i.price,
-                        id: i.id,
-                        quantity: i.quantity * i.price,
-                        category: i.category, totalPrice: i.totalPrice}))
+                      dispatch(
+                        cartActions.removeItemFromCart({
+                          title: i.title,
+                          price: i.price,
+                          id: i.id,
+                          quantity: i.quantity * i.price,
+                          category: i.category,
+                          totalPrice: i.totalPrice,
+                        })
+                      )
                     }
                   >
                     -

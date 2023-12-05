@@ -7,14 +7,13 @@ import Nav from "./Nav";
 import { logoutFromPageHandler } from "../store/slices/logoutSlice";
 import { useSelector } from "react-redux";
 
-
 function MobileNavigation() {
   const dispatch = useDispatch();
   const isLogged = useSelector((state) => state.signIn.isLogged);
 
   const logoutHandler = () => {
     dispatch(logoutFromPageHandler());
-    dispatch(uiActions.toggleMobileMenuVisibility())
+    dispatch(uiActions.toggleMobileMenuVisibility());
   };
 
   return (
@@ -72,7 +71,11 @@ function MobileNavigation() {
                 Logout
               </NavLink>
             ) : (
-              <NavLink className="custom_link" to="/login" onClick={() => dispatch(uiActions.toggleMobileMenuVisibility())}>
+              <NavLink
+                className="custom_link"
+                to="/login"
+                onClick={() => dispatch(uiActions.toggleMobileMenuVisibility())}
+              >
                 Login
               </NavLink>
             )}

@@ -12,15 +12,9 @@ function Footer() {
   const dispatch = useDispatch();
   const isLogged = useSelector((state) => state.signIn.isLogged);
 
-
-  
-  
-    const handleEmailClick = () => {
-      window.open(`mailto:sigitapolekaite@yahoo.com`);
-    };
-  
-
-
+  const handleEmailClick = () => {
+    window.open(`mailto:sigitapolekaite@yahoo.com`);
+  };
 
   const findAddress = () => {
     const address = "Nepriklausomybės a. 14, 44320 Kaunas";
@@ -70,10 +64,18 @@ function Footer() {
           <NavLink className="footer_container_right_link" to={"/category"}>
             Categories
           </NavLink>
-          <NavLink className="footer_container_right_link" to={'/shop'} onClick={() => dispatch(filterSliceActions.setCategory("All"))}>
+          <NavLink
+            className="footer_container_right_link"
+            to={"/shop"}
+            onClick={() => dispatch(filterSliceActions.setCategory("All"))}
+          >
             Shop
           </NavLink>
-          <NavLink className="footer_container_right_link" to={"/cart"} onClick={() => dispatch(uiActions.toggleCartVisibility())}>
+          <NavLink
+            className="footer_container_right_link"
+            to={"/cart"}
+            onClick={() => dispatch(uiActions.toggleCartVisibility())}
+          >
             My cart
           </NavLink>
         </div>
@@ -110,23 +112,30 @@ function Footer() {
         </div>
         <div className="footer_container_right_container">
           <h4>Help</h4>
-          {!isLogged ?  <NavLink className="footer_container_right_link" to={"/register"}>
-            Sign Up
-          </NavLink>: <Logout/>}
-          {!isLogged ?  <NavLink className="footer_container_right_link" to={"/login"}>
-            Sign In
-          </NavLink>: <NavLink onClick={handleEmailClick}
-            className="footer_container_right_link"
-            
-          >
-            Email us
-          </NavLink>}
-         
-          
+          {!isLogged ? (
+            <NavLink className="footer_container_right_link" to={"/register"}>
+              Sign Up
+            </NavLink>
+          ) : (
+            <Logout />
+          )}
+          {!isLogged ? (
+            <NavLink className="footer_container_right_link" to={"/login"}>
+              Sign In
+            </NavLink>
+          ) : (
+            <NavLink
+              onClick={handleEmailClick}
+              className="footer_container_right_link"
+            >
+              Email us
+            </NavLink>
+          )}
+
           <NavLink
             className="footer_container_right_link"
             to={"/contactus"}
-            onClick={()=>dispatch(contactUsActions.setFormVisibility())}
+            onClick={() => dispatch(contactUsActions.setFormVisibility())}
           >
             Contact us
           </NavLink>

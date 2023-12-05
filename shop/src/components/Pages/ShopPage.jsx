@@ -1,10 +1,7 @@
+import Products from "../Sections/Products";
 
-import Products from "../Sections/Products"
-
-function ShopPage (){
-    return (
-       <Products/>
-    )
+function ShopPage() {
+  return <Products />;
 }
 
-export default ShopPage
+export default ShopPage;
