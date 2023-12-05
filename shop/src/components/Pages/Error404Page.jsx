@@ -13,8 +13,8 @@ function Error404Page () {
     }, [navigate])
 
 return (
-    <div>
-        <p>404</p>
+    <div className='no_page_container'>
+        <p className='no_page_container_heading' >404</p>
         <p>Sorry, page not found</p>
         
     </div>
