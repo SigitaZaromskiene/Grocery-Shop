@@ -27,7 +27,7 @@ function LatestProducts() {
           </div>
         ))}
       </div>
-      <TransparentBtn text='Show all' to='/shop' action={() => dispatch(filterSliceActions.setCategory('All'))}/>
+      <TransparentBtn text='Show all' to={'/shop'} action={() => dispatch(filterSliceActions.setCategory("All"))}/>
   
     </section>
   );

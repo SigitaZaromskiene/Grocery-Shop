@@ -69,7 +69,7 @@ function Footer() {
           <NavLink className="footer_container_right_link" to={"/category"}>
             Categories
           </NavLink>
-          <NavLink className="footer_container_right_link" to={"/shop"}>
+          <NavLink className="footer_container_right_link" to={'/shop'} onClick={() => dispatch(filterSliceActions.setCategory("All"))}>
             Shop
           </NavLink>
           <NavLink className="footer_container_right_link" to={"/cart"}>

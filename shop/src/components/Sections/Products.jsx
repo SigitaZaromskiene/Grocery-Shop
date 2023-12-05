@@ -8,6 +8,8 @@ function Products() {
   const filter = useSelector((state) => state.filter);
 
 
+
+
   const sortProducts = (products, sortBy) => {
     if (sortBy === "Default") {
       return products.slice();

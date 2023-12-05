@@ -9,7 +9,6 @@ function PersonalGreeting (){
     return (
         <div className='personal_greeting_container'>
             <p>Hello, {loggedPersonName}</p>
-          
           </div>
       
     )
