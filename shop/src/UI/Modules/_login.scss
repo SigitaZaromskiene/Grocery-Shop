@@ -62,6 +62,10 @@
     padding-bottom: 50px;
     background-color: white;
     position: relative;
+
+    @include media(medium) {
+      width: 400px;
+    }
   }
   &_inputs {
     @include flex(center, center, column, 30px);

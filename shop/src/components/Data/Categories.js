@@ -16,7 +16,7 @@ export const categories = [
   { id: 3, title: "Meat", img: imgMeat },
   { id: 4, title: "Drinks", img: imgDrinks  },
   { id: 5, title: "Dairy", img: imgDairy },
-  { id: 6, title: "Baked goods", img: imgBaked  },
+  { id: 6, title: "Bakery", img: imgBaked  },
   { id: 7, title: "Cans", img: imgCans  },
   { id: 8, title: "Sweets", img: imgSweets },
   { id: 9, title: "Frozen", img: imgFrozen },

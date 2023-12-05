@@ -1,14 +1,25 @@
 .select_filter {
-    @include flex (center, center, row, 50px);
-    margin-bottom: 20px;
-    
+  @include flex(center, center, row, 50px);
+  margin-bottom: 20px;
+  @include media(medium) {
+    @include flex(center, space-between, column, 25px);
+  }
 
-    select {
-        height: 40px;
-        width: 300px;
-        font-size: 1rem;
-        padding: 5px;
-        cursor: pointer;
+  &_by {
+    width: 100%;
+    @include flex(space-between, center, row, 20px);
+    font-size: 1.2rem;
+
+    label {
+      width: 100px;
     }
+  }
 
+  select {
+    height: 40px;
+    width: 300px;
+    font-size: 1rem;
+    padding: 5px;
+    cursor: pointer;
+  }
 }

@@ -2,16 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const uiSlice = createSlice({
   name: "ui",
-  initialState: {  errorNotification: null, notification: null, isCartVisible: false, isContactFormVisible: false, isSignInFormVisible: false, isRegisterFormVisible: false },
+  initialState: {  mobileMenuVisible: false, errorNotification: null, notification: null, isCartVisible: false, isContactFormVisible: false, isSignInFormVisible: false, isRegisterFormVisible: false },
 
   
   reducers: {
     toggleCartVisibility(state) {
       state.isCartVisible = !state.isCartVisible;
     },
-    toggleContactFormVisibility(state) {
-        state.isContactFormVisible = !state.isContactFormVisible;
-      },
+    // toggleContactFormVisibility(state) {
+    //     state.isContactFormVisible = !state.isContactFormVisible;
+    //   },
       toggleSignInFormVisibility(state) {
         state.isSignInFormVisible = !state.isSignInFormVisible;
       },
@@ -29,10 +29,15 @@ const uiSlice = createSlice({
       },
       toggleErrorNotificationVisibility(state){
         state.errorNotification = !state.errorNotification
+      },
+      toggleMobileMenuVisibility(state){
+        state.mobileMenuVisible=!state.mobileMenuVisible
       }
   },
   
 });
+
+
 
 
 export const uiActions = uiSlice.actions;

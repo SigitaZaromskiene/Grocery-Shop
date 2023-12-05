@@ -1,5 +1,5 @@
 import TransparentBtn from "../Buttons/TransparentBtn";
-import { products } from "../Data/Groceries";
+import { products, productsShortList } from "../Data/Groceries";
 import ShopInputs from "./ShopInputs";
 
 function LatestProducts() {
@@ -11,7 +11,7 @@ function LatestProducts() {
         <div className="category_container_latest_border"></div>
       </div>
       <div className="category_container_about_tables">
-        {products.map((p) => (
+        {productsShortList.map((p) => (
           <div key={p.id} className="category_container_latest_table">
             <p className="category_container_latest_table_title">{p.title}</p>
             <div className="category_container_latest_table_price">

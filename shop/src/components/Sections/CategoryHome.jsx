@@ -35,6 +35,7 @@ function CategoryHome() {
           className='category_container_home_icon'
           onClick={() => handleArrowClick('left')}
         />
+        </div>
         <div className='category_container_home_tables'>
           {visibleCategories.map(c => (
             <div className='category_container_table' key={c.id}>
@@ -46,6 +47,7 @@ function CategoryHome() {
             </div>
           ))}
         </div>
+        <div>
         <FontAwesomeIcon
           icon={faArrowRight}
           className='category_container_icon'

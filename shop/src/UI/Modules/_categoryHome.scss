@@ -1,5 +1,4 @@
 .category_container_home {
-  
   color: $mainFontColor;
   @include flex(center, center, column, 20px);
 
@@ -20,39 +19,38 @@
     cursor: pointer;
 
     &:hover {
-        background-color: white;
-        border: 1px solid $lightOrange;
-
+      background-color: white;
+      border: 1px solid $lightOrange;
     }
   }
 
   &_border {
     border-bottom: 3px solid $mainGreen;
     width: 150px;
+    @include media(medium) {
+      width: 120px;
+    }
   }
 
   h2 {
     font-size: 1.8rem;
-    
+    @include media(medium2) {
+      text-align: center;
+    }
   }
 
   &_tables {
+    @include media(medium2) {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 30px;
+    }
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-content: center;
     align-items: center;
     column-gap: 50px;
-    margin-bottom: 40px;
- 
-  }
-  &_table {
-    @include flex(center, center, column, 15px);
-    border: 1px solid $lightGreen;
-    padding: 15px 25px;
-    border-radius: 25px;
 
-    
+    padding: 20px;
+    row-gap: 30px;
   }
 }
-
-

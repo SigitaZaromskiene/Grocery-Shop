@@ -7,23 +7,23 @@ import Cart from "./components/Sections/Cart";
 import { onPageLoad } from "./components/store/slices/cartSlice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import MobileNavigation from "./components/Sections/MobileNavigation";
 
 function App() {
   const showNotification = useSelector((state) => state.ui.notification);
   const showCart = useSelector((state) => state.ui.isCartVisible);
-
-  const cartData = useSelector((state) => state.cart.cart);
+  const navigationBar = useSelector((state) => state.ui.mobileMenuVisible);
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(onPageLoad());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="app_container">
       {showCart && <Cart />}
-
-      <Nav />
+      {navigationBar ? <MobileNavigation /> : <Nav />}
       {showNotification && (
         <Notification
           title={showNotification.title}

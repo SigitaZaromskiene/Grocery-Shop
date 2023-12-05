@@ -18,7 +18,7 @@ function Subscribe (){
                 </div>
                 <div className='subscribe_container_action'>
                     <input placeholder='email@email.com' type='email' value={email} onChange ={(e)=>setEmail(e.target.value)}></input>
-                    <Btn text ='Subscribe' action={()=>{
+                    <Btn text ='Subscribe' action={()=>{ email!== '' &&
                         dispatch(sendNewsLetterSubsciberDetails(email))
                          setEmail('')}}/>
                 </div>

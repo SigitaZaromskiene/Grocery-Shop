@@ -1,18 +1,16 @@
 .transparent_btn {
-    padding: 10px 20px;
-    color: $mainGreen;
-    border: 1px solid $mainGreen;
-    background-color: white;
-    border-radius: 25px;
-    @include flex (center, center, row, 10px);
-    cursor: pointer;
-    text-decoration: none;
+  padding: 10px 20px;
+  color: $mainGreen;
+  border: 1px solid $mainGreen;
+  background-color: white;
+  border-radius: 25px;
+  @include flex(center, center, row, 10px);
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 20px;
 
-    &:hover {
-        border: 1px solid $mainOrange;
-        color: $mainOrange;
-
-    }
-    
-
+  &:hover {
+    border: 1px solid $mainOrange;
+    color: $mainOrange;
+  }
 }

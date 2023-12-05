@@ -27,6 +27,7 @@ function Filter() {
 
   return (
     <div className="select_filter">
+      <div className="select_filter_by">
       <label>Filter</label>
       <select onChange={handleCategoryChange} value={filter.category}>
         <option value="All">All</option>
@@ -36,7 +37,11 @@ function Filter() {
         <option value="Meat">Meat</option>
         <option value="Drinks">Drinks</option>
         <option value="Bakery">Bakery</option>
+        <option value="Cans">Cans</option>
+        <option value="Sweets">Sweets</option>
       </select>
+      </div>
+      <div className="select_filter_by">
       <label>Sort By</label>
       <select onChange={handleSortByChange} value={filter.sortBy}>
       <option value='Default'>Default</option>
@@ -44,6 +49,7 @@ function Filter() {
         <option value='Highest'>Highest Price</option>
         <option value='Name'>Name</option>
       </select>
+      </div>
     </div>
   );
 }

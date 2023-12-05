@@ -16,6 +16,7 @@ import ContactFormSuccess from "./ContactFormSuccess";
 function ContactUs() {
   const dispatch = useDispatch();
   const notification = useSelector((state) => state.contactUs.formNotification);
+  
   const formSuccessMessage = useSelector(
     (state) => state.contactUs.formSuccessMessage
   );
@@ -26,7 +27,7 @@ function ContactUs() {
   const [message, setMessage] = useState("");
 
   const contactUsFormHandlerCloseHandler = () => {
-    dispatch(uiActions.toggleContactFormVisibility());
+    dispatch(contactUsActions.setFormVisibility());
   };
 
   const contactMessageHandler = () => {
@@ -54,7 +55,8 @@ function ContactUs() {
     } 
     else {
       dispatch(sendContactUsDetails(name, email, message));
-      dispatch(contactUsActions.formSendSuccessFormVisibility());
+      dispatch( contactUsActions.formSendSuccessFormVisibility());
+      
 
       setName("");
       setEmail("");
@@ -87,7 +89,7 @@ function ContactUs() {
         <div className="contact_modal_form_inputs">
           <div>
             <input
-            className={notification? 'formError': ''}
+            className={notification ? 'formError' :  null}
               type="text"
               value={name}
               placeholder="Name"
@@ -99,7 +101,7 @@ function ContactUs() {
         <div className="contact_modal_form_inputs">
           <div>
             <input
-            className={notification? 'formError': ''}
+            className={notification  ? 'formError' :  null}
               type="email"
               value={email}
               placeholder="Email"
@@ -110,7 +112,7 @@ function ContactUs() {
         </div>
         <textarea
           placeholder="Your Message"
-          className={notification? 'formError': ''}
+          className={notification ? 'formError' :  null}
           type="text"
           onChange={(e) => setMessage(e.target.value)}
           value={message}

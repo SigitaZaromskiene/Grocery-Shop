@@ -8,6 +8,10 @@
   cursor: pointer;
   text-decoration: none;
 
+  @include media(medium) {
+    text-align: center;
+  }
+
   &:hover {
     background-color: white;
     color: $mainOrange;

@@ -18,7 +18,7 @@ function Category() {
       </div>
       <div className="category_container_tables">
         {categories.map((c) => (
-          <div className="category_container_table">
+          <div key={c.id} className="category_container_table">
             <p>{c.title}</p>
            
             <img src={c.img}  alt='Category img'></img>

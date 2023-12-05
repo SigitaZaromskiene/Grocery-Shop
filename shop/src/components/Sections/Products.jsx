@@ -7,6 +7,8 @@ import ShopInputs from "./ShopInputs";
 function Products() {
   const filter = useSelector((state) => state.filter);
 
+
+
   const sortProducts = (products, sortBy) => {
     if (sortBy === "Default") {
       return products.slice();
@@ -24,6 +26,8 @@ function Products() {
 
   // Filter products based on the category
   const filteredProducts = products.filter((product) => {
+
+
     if (product.category === "All" || product.category === filter.category) {
       return true;
     }
@@ -44,13 +48,8 @@ function Products() {
           <div className="category_container_latest_border"></div>
         </div>
         <Filter />
-        <div
-          style={{
-            display: "grid",
-            gap: "40px",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            justifyContent: "center",
-          }}
+        <div className = "category_container_about_tables"
+          
         >
           {sortedAllProducts.map((p) => (
             <div key={p.id} className="category_container_latest_table">

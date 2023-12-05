@@ -11,10 +11,13 @@ import MobileFriendlyMenu from "./NavMobileFriendlyMenu";
 function Nav() {
   const dispatch = useDispatch();
 
+  const mobileMenu = useSelector(state=>state.ui.mobileMenuVisible)
+
   const isLogged = useSelector((state) => state.signIn.isLogged);
   const cartArray = useSelector((state) => state.cart.cart);
   
-  const totalCartAmount = cartArray.reduce(
+  
+ const totalCartAmount = cartArray.reduce(
     (acc, curr) => acc + curr.quantity,
     0
   );
@@ -70,7 +73,8 @@ function Nav() {
             )}
           </ul>
         </div>
-        <MobileFriendlyMenu/>
+       <MobileFriendlyMenu/> 
+       
       </nav>
     </>
   );
