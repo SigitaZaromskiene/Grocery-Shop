@@ -103,13 +103,12 @@ function LoginPage() {
                 <FontAwesomeIcon className="icon_leave" icon={faX} />
               </NavLink>
             </>
-          ) : (
-            <PersonalGreeting></PersonalGreeting>
-          )}
+          ) : null}
         </div>
 
         {isLogged  ? (
           <div className="success_message">
+            <PersonalGreeting/>
             <p>You are logged in</p>
             <LongBtn to="/" text="Home page"></LongBtn>
           </div>

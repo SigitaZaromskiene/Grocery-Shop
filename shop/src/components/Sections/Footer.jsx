@@ -12,6 +12,14 @@ function Footer() {
   const isLogged = useSelector((state) => state.signIn.isLogged);
 
 
+  
+  
+    const handleEmailClick = () => {
+      window.open(`mailto:sigitapolekaite@yahoo.com`);
+    };
+  
+
+
 
   const findAddress = () => {
     const address = "Nepriklausomybės a. 14, 44320 Kaunas";
@@ -106,7 +114,7 @@ function Footer() {
           </NavLink>: <Logout/>}
           {!isLogged ?  <NavLink className="footer_container_right_link" to={"/login"}>
             Sign In
-          </NavLink>: <NavLink
+          </NavLink>: <NavLink onClick={handleEmailClick}
             className="footer_container_right_link"
             
           >

@@ -8,7 +8,6 @@ function Products() {
   const filter = useSelector((state) => state.filter);
 
 
-
   const sortProducts = (products, sortBy) => {
     if (sortBy === "Default") {
       return products.slice();
@@ -19,12 +18,11 @@ function Products() {
     } else if (sortBy === "Name") {
       return products.slice().sort((a, b) => b.name - a.name);
     } else {
-      // No sorting, return products as is
       return products;
     }
   };
 
-  // Filter products based on the category
+
   const filteredProducts = products.filter((product) => {
 
 
@@ -34,7 +32,7 @@ function Products() {
     return false;
   });
 
-  // Sort the filtered products
+  
   const sortedProducts = sortProducts(filteredProducts, filter.sortBy);
 
   const sortedAllProducts = sortProducts(products, filter.sortBy);
