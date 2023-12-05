@@ -62,16 +62,6 @@ function ShopInputs({ p }) {
           text="Add to cart"
           action={() => {
             setProductQuantities(0);
-            // dispatch(
-            //   sendCartData({
-            //     title: p.title,
-            //     price: p.price,
-            //     id: p.id,
-            //     quantity: p.quantity + parseInt(productQuantities),
-            //     totalPrice: p.totalPrice,
-            //     category: p.category,
-            //   })
-            // );
             dispatch(
               cartActions.addItemToCart({
                 title: p.title,

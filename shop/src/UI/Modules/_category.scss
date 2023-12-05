@@ -55,6 +55,8 @@
     margin-bottom: 20px;
   }
   &_table {
+
+   
     @include flex(center, center, column, 15px);
     border: 2px solid $mainGreen;
     padding: 15px;

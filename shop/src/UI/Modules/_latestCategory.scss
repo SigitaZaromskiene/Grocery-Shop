@@ -35,6 +35,10 @@
 
   h2 {
     font-size: 1.8rem;
+
+    @include media(small) {
+      text-align: center;
+    }
   }
 
   &_tables {
@@ -51,6 +55,7 @@
     @include media(small) {
       padding: 45px;
       @include flex(center, center, column, 25px);
+      width: 350px;
     }
 
     @include flex(center, center, column, 15px);

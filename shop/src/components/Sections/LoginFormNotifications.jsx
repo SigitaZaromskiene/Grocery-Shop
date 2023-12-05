@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { contactUsActions } from "../store/slices/contactusSlice";
 import signInSlice, { signInActions } from "../store/slices/signInSlice";
+import { uiActions } from "../store/slices/uiSlice";
 
 function LoginFormNotification({ title, text, className }) {
   const dispatch = useDispatch();
@@ -9,7 +10,7 @@ function LoginFormNotification({ title, text, className }) {
 
   useEffect(() => {
     setTimeout(() => {
-      dispatch(signInActions.toggleLoginNotificationVisibility(),
+      dispatch(uiActions.toggleErrorNotificationVisibility(),
       
     );
     }, [2000]);

@@ -9,6 +9,7 @@ import {
   sendRegisterData,
   } from "../store/slices/signUpSlice";
 import FormErrorNotification from "../Sections/FormErrorNotification";
+import LoginFormNotification from "../Sections/LoginFormNotifications";
 
 function RegisterPage() {
   const dispatch = useDispatch();
@@ -18,6 +19,8 @@ function RegisterPage() {
   const [psw2, setPsw2] = useState("");
 
   const notification = useSelector((state) => state.ui.errorNotification);
+
+  console.log(notification)
 
   const registrationStatus = useSelector(
     (state) => state.ui.errorNotification?.status
@@ -152,7 +155,7 @@ function RegisterPage() {
         ) : (
           <div className="login_container_inputs">
             {notification ? (
-              <FormErrorNotification
+              <LoginFormNotification
                 title={notification.title}
                 text={notification.message}
                 className={notification.status}
@@ -161,9 +164,8 @@ function RegisterPage() {
             <div>
               <input
                 className={
-                  notification?.status === "error"
-                    ? "login_container_input formError"
-                    : "login_container_input"
+                  !notification || notification=== null ?
+                  "login_container_input": "login_container_input + formError"
                 }
                 placeholder="Name"
                 value={name}
@@ -174,9 +176,9 @@ function RegisterPage() {
             <div>
               <input
                 className={
-                  notification?.status === "error"
-                    ? "login_container_input formError"
-                    : "login_container_input"
+                  !notification || notification=== null
+                  ?
+                  "login_container_input": "login_container_input + formError"
                 }
                 placeholder="Password"
                 value={psw}
@@ -187,9 +189,9 @@ function RegisterPage() {
             <div>
               <input
                 className={
-                  notification?.status === "error"
-                    ? "login_container_input formError"
-                    : "login_container_input"
+                  !notification || notification=== null
+                  ?
+                  "login_container_input": "login_container_input + formError"
                 }
                 placeholder="Repeat Password"
                 onChange={(e) => setPsw2(e.target.value)}

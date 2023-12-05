@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { filterSliceActions } from "../store/slices/filterSlice";
 import { contactUsActions } from "../store/slices/contactusSlice";
 import Logout from "../Pages/Logout";
+import { uiActions } from "../store/slices/uiSlice";
 
 function Footer() {
   const dispatch = useDispatch();
@@ -63,7 +64,7 @@ function Footer() {
       <div className="footer_container_right">
         <div className="footer_container_right_container">
           <h4>About</h4>
-          <NavLink className="footer_container_right_link" to={"/about"}>
+          <NavLink className="footer_container_right_link" to={"/subscribe"}>
             Newsletter
           </NavLink>
           <NavLink className="footer_container_right_link" to={"/category"}>
@@ -72,7 +73,7 @@ function Footer() {
           <NavLink className="footer_container_right_link" to={'/shop'} onClick={() => dispatch(filterSliceActions.setCategory("All"))}>
             Shop
           </NavLink>
-          <NavLink className="footer_container_right_link" to={"/cart"}>
+          <NavLink className="footer_container_right_link" to={"/cart"} onClick={() => dispatch(uiActions.toggleCartVisibility())}>
             My cart
           </NavLink>
         </div>

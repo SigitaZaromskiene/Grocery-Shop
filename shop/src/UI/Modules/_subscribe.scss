@@ -1,6 +1,8 @@
 .subscribe_container {
   background-color: darken($mainGreen, 15%);
   color: white;
+ 
+  @include flex(center, center, column, 10px);
 
   &_heading {
     @include flex(center, center, column, 10px);

@@ -10,6 +10,7 @@ function Subscribe (){
 
 
     return (
+        
         <div className='subscribe_container wrapper'>
             <form>
                 <div className='subscribe_container_heading'>
@@ -24,6 +25,7 @@ function Subscribe (){
                 </div>
             </form>
         </div>
+       
     )
 }
 

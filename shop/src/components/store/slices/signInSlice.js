@@ -55,7 +55,7 @@ export const getSignInData = () => {
     try {
       const response = await axios.get(URL, { withCredentials: true });
 
-      console.log(response, 'tt')
+      
 
       if(response.data.status=== 'error'){
         throw new Error('NOOOO')

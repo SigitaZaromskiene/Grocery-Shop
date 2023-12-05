@@ -9,6 +9,7 @@ import FormErrorNotification from "../Sections/FormErrorNotification";
 import { sendAndGetData } from "../store/slices/signInSlice";
 import { useSelector } from "react-redux";
 import PersonalGreeting from "../Sections/PersonalGreeting";
+import LoginFormNotification from "../Sections/LoginFormNotifications";
 
 
 function LoginPage() {
@@ -18,7 +19,7 @@ function LoginPage() {
   const isLogged = useSelector((state) => state.signIn.isLogged);
  
 
-  console.log(isLogged)
+
 
   const registrationStatus = useSelector(
     (state) => state.ui.notification?.status
@@ -110,12 +111,12 @@ function LoginPage() {
           <div className="success_message">
             <PersonalGreeting/>
             <p>You are logged in</p>
-            <LongBtn to="/" text="Home page"></LongBtn>
+            <LongBtn to="/" text="Home page" ></LongBtn>
           </div>
         ) : (
           <div className="login_container_inputs">
             {notification ? (
-              <FormErrorNotification 
+              <LoginFormNotification
                 title={notification.title}
                 text={notification.message}
                 className={notification.status}
@@ -125,7 +126,7 @@ function LoginPage() {
             <div className="login_container_inputs">
               <div>
                 <input
-                  className={notification || notification=== null?"login_container_input": "login_container_input + formError"}
+                  className={!notification || notification=== null?"login_container_input": "login_container_input + formError"}
                   placeholder="Name"
                   type="text"
                   value={name}
@@ -134,7 +135,7 @@ function LoginPage() {
               </div>
 
               <input
-                className={notification || notification=== null ?"login_container_input": "login_container_input + formError"}
+                className={!notification || notification=== null ?"login_container_input": "login_container_input + formError"}
                 placeholder="Password"
                 type="number"
                 value={psw}

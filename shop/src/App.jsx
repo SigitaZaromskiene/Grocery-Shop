@@ -13,6 +13,8 @@ function App() {
   const showNotification = useSelector((state) => state.ui.notification);
   const showCart = useSelector((state) => state.ui.isCartVisible);
   const navigationBar = useSelector((state) => state.ui.mobileMenuVisible);
+
+  console.log(showCart)
   
   const dispatch = useDispatch();
 
