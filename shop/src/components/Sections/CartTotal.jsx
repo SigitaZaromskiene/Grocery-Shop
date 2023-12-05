@@ -1,23 +1,25 @@
 import Btn from "../Buttons/Btn";
 import { useDispatch, useSelector } from "react-redux";
-import { cartActions, deleteCart, sendOrderData } from "../store/slices/cartSlice";
+import { deleteCart, sendOrderData } from "../store/slices/cartSlice";
 import { uiActions } from "../store/slices/uiSlice";
 
 function CartTotal() {
-
   const dispatch = useDispatch();
-  const cartData = useSelector(state=>state.cart.cart)
-  const totalPrice = useSelector(state=>state.cart.totalPrice)
+  const cartDataTitle = useSelector((state) => state.cart.cart[0].title);
+  const cartDataPrice = useSelector((state) => state.cart.cart[0].price);
 
-  
 
-  
+  const getCartPrices = useSelector((state) => state.cart.cart);
+
+  const totalPrice = getCartPrices.reduce(
+    (acc, cur) => acc + cur.totalPrice,
+    0
+  );
 
   const orderHandler = () => {
-    dispatch(sendOrderData(cartData))
-    dispatch(uiActions.toggleCartVisibility());
+  dispatch(sendOrderData({title: cartDataTitle, price:cartDataPrice}))
+    dispatch(uiActions.toggleCartVisibility())
     dispatch(deleteCart())
-    
   };
 
   return (
@@ -25,11 +27,11 @@ function CartTotal() {
       <div className="cart_items_total">
         <p className="cart_items_total_paragraph"> Total</p>
         <p className="cart_items_total_price">
-          {totalPrice}
+          {totalPrice.toFixed(2, 0)}
           <span>&euro;</span>
         </p>
       </div>
-      <Btn text="Order" to='/' action={orderHandler} />
+      <Btn text="Order" to="/" action={orderHandler} />
     </div>
   );
 }

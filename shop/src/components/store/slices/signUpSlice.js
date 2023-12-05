@@ -30,7 +30,8 @@ export const sendRegisterData = (name, psw) => {
         body: JSON.stringify({
           name,
           psw,
-        }),
+        
+        }, { withCredentials: true }),
       });
 
       if (!response.ok) {
@@ -43,17 +44,11 @@ export const sendRegisterData = (name, psw) => {
 
       
 
-      dispatch(
-        uiActions.errorNotification({
-          title: "Success",
-          message: "Successful registered",
-          status: "success",
-        }),
-      )
+      dispatch(uiActions.toggleRegisterFormVisibility())
       
     } catch (error) {
       dispatch(
-        uiActions.errorNotification({
+        uiActions.notification({
           title: "Error",
           message: "Cannot register",
           status: "error",

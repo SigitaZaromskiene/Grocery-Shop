@@ -1,31 +1,19 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { contactUsActions } from "../store/slices/contactusSlice";
-import { uiActions } from "../store/slices/uiSlice";
-import { useSelector } from "react-redux/es/hooks/useSelector";
+import signInSlice, { signInActions } from "../store/slices/signInSlice";
 
 function FormErrorNotification({ title, text, className }) {
   const dispatch = useDispatch();
-
-  const errorMessageStatus = useSelector(state=>state.ui.errorNotification.status)
-
-  
   
 
   useEffect(() => {
     setTimeout(() => {
-
-      if(errorMessageStatus==='error'){
-        dispatch(uiActions.errorNotification({title: "",
-        message: "",
-        status: ""})
+      dispatch(contactUsActions.toggleErrorNotificationVisibility(),
       
-      );
-
-      }
-      
+    );
     }, [2000]);
-  }, [dispatch, errorMessageStatus]);
+  }, [dispatch]);
 
 
  

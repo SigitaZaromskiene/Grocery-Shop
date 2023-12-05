@@ -1,0 +1,8 @@
+.personal_greeting_container {
+    @include flex (center, center, center, 10px);
+    color:$mainOrange;
+    font-size: 1.5rem;
+    margin-top: 40px;
+
+
+}

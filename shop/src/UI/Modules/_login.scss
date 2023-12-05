@@ -9,15 +9,10 @@
   text-decoration: none;
   color: $mainFontColor;
 
-  
- 
-
-   &_heading {
+  &_heading {
     width: 100%;
     position: relative;
-   
-   }
-
+  }
 
   h2 {
     font-size: 30px;
@@ -28,9 +23,7 @@
     padding: 25px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    
   }
-  
 
   &_input {
     font-size: 18px;
@@ -47,51 +40,37 @@
       color: black;
     }
 
-    
-  
+    &_register {
+      margin-top: 20px;
+      font-size: 1rem;
+      text-align: center;
 
-
-     &_register {
-        margin-top: 20px;
-        font-size: 1rem;
+      &_now {
         text-align: center;
-
-         &_now {
-            text-align: center;
-            text-decoration: none;
-            color: $mainGreen;
-            cursor: pointer;
-         }
-     }
+        text-decoration: none;
+        color: $mainGreen;
+        cursor: pointer;
+      }
+    }
   }
 
   &_form {
     @include flex(center, center, column, 50px);
     width: 500px;
     border-radius: 25px;
-    box-shadow: 0 3px 20px 0 rgba(0,0,0,.1);
+    box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.1);
     padding-bottom: 50px;
     background-color: white;
     position: relative;
-   
-    
-    
-    
-
-    
   }
   &_inputs {
     @include flex(center, center, column, 30px);
-    
   }
 }
 
-
 .formError {
-  
   border: 1px solid red;
   background-color: white;
-  
 
   &::placeholder {
     color: black;

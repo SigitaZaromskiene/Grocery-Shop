@@ -5,6 +5,7 @@ import { filterSliceActions } from "../store/slices/filterSlice";
 
 
 
+
 function Filter() {
   const dispatch = useDispatch();
 
@@ -22,6 +23,8 @@ function Filter() {
    
   };
 
+ 
+
   return (
     <div className="select_filter">
       <label>Filter</label>
@@ -35,10 +38,11 @@ function Filter() {
         <option value="Bakery">Bakery</option>
       </select>
       <label>Sort By</label>
-      <select onChange={handleSortByChange} value={filter.category}>
-        <option>Lowest Price</option>
-        <option>Highest Price</option>
-        <option>Name</option>
+      <select onChange={handleSortByChange} value={filter.sortBy}>
+      <option value='Default'>Default</option>
+        <option value='Lowest'>Lowest Price</option>
+        <option value='Highest'>Highest Price</option>
+        <option value='Name'>Name</option>
       </select>
     </div>
   );

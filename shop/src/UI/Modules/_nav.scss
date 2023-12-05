@@ -1,12 +1,17 @@
 .nav_container {
   @include flex(space-between, center, row, 0px);
-  padding: 10px 40px;
+  padding: 20px 50px;
   background-color: $lightGreen;
   font-size: 1.2rem;
 
+ 
+  
+  
+
   &_left {
     @include flex(center, center, row, 10px);
-    padding: 5px 10px;
+  
+   
 
     &_title {
       font-size: 1.8rem;
@@ -18,7 +23,12 @@
   }
 
   &_middle {
+
+    @include media(medium2){
+      display: none;
+    }
     padding: 5px 25px;
+    cursor: pointer;
     ul {
       @include flex(center, center, row, 60px);
       list-style: none;
@@ -27,11 +37,31 @@
   }
 
   &_right {
+
+    @include media(medium2){
+      display: none;
+    }
     padding: 5px 12px;
+    cursor: pointer;
+
+
+
+    &_burger {
+
+      @include media(medium2){
+        display: block;
+      }
+      display: none;
+
+      
+  }
     ul {
       @include flex(center, center, row, 40px);
       list-style: none;
       cursor: pointer;
+
+
+      
     }
 
     &_cart {

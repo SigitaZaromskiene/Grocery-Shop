@@ -16,16 +16,11 @@ const cartSlice = createSlice({
     totalPrice: 0,
   },
   reducers: {
-
-
-
-
     renderItemsToCart(state, action) {
       const newItem = action.payload;
 
       newItem.forEach((product) => {
         const existingItem = state.cart.find((i) => i.id === product.id);
-        state.totalQuantity++;
 
         if (!existingItem) {
           state.cart.push({
@@ -34,17 +29,17 @@ const cartSlice = createSlice({
             price: product.price,
             title: product.title,
             totalPrice: product.price * product.quantity,
-            category: product.category
-            
+            category: product.category,
           });
+          state.totalQuantity = product.quantity + state.totalQuantity;
         } else {
           existingItem.quantity++;
           existingItem.totalPrice = existingItem.totalPrice + product.price;
+          state.totalQuantity = product.quantity + existingItem.totalQuantity;
         }
       });
     },
- 
-  
+
     deleteItemFromCart(state, action) {
       const productToDelete = action.payload;
 
@@ -56,14 +51,11 @@ const cartSlice = createSlice({
       state.totalQuantity = 0;
     },
 
-
     addItemToCart(state, action) {
       const newItem = action.payload;
 
-      
-
       const existingItem = state.cart.find((i) => i.id === newItem.id);
-     
+
       state.totalQuantity++;
 
       if (!existingItem) {
@@ -72,8 +64,8 @@ const cartSlice = createSlice({
           quantity: newItem.quantity,
           price: newItem.price,
           title: newItem.title,
-          totalPrice: newItem.price,
-          category:newItem.category
+          totalPrice: newItem.price * newItem.quantity,
+          category: newItem.category,
         });
       } else {
         existingItem.quantity++;
@@ -84,10 +76,9 @@ const cartSlice = createSlice({
       const newItem = action.payload;
       const existingItem = state.cart.find((i) => i.id === newItem.id);
       state.totalQuantity--;
-      if (existingItem.quantity === 1 ) {
-       
+
+      if (existingItem.quantity === 1) {
         state.cart = state.cart.filter((i) => i.id !== newItem.id);
-      
       } else {
         existingItem.quantity--;
         existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
@@ -103,7 +94,6 @@ export const onPageLoad = () => {
 
       const cartData = response.data;
 
-
       dispatch(cartActions.renderItemsToCart(cartData));
     } catch (error) {
       dispatch(
@@ -117,78 +107,69 @@ export const onPageLoad = () => {
   };
 };
 
-export const deleteCartItem = ({ id, quantity }) => {
-  return async (dispatch) => {
-    try {
-     
-      const response = await axios.delete(URL1 + "/" + id);
-    
-      
-      
-      dispatch(cartActions.deleteItemFromCart({ id }));
-      dispatch(
-        uiActions.notification({
-          title: "Success",
-          message: "Item was deleted from cart",
-          status: "success",
-        })
-      );
-    } catch (error) {
-      dispatch(
-        uiActions.notification({
-          title: "Error",
-          message: "Cannot delete from cart",
-          status: "error",
-        })
-      );
-    }
-  };
-};
+// export const deleteCartItem = ({ id, quantity }) => {
+//   return async (dispatch) => {
+//     try {
+//       const response = await axios.delete(URL1 + "/" + id);
 
-export const updateCartItem = ({ i }) => {
-  console.log(i);
+//       dispatch(cartActions.deleteItemFromCart({ id }));
+//       dispatch(
+//         uiActions.notification({
+//           title: "Success",
+//           message: "Item was deleted from cart",
+//           status: "success",
+//         })
+//       );
+//     } catch (error) {
+//       dispatch(
+//         uiActions.notification({
+//           title: "Error",
+//           message: "Cannot delete from cart",
+//           status: "error",
+//         })
+//       );
+//     }
+//   };
+// };
 
-  return async (dispatch) => {
-    try {
-      const response = await axios.put(URL1 + "/" + i.id, {
-        quantity: i.quantity+1,
-        id: i.id,
-        totalPrice: i.totalPrice + i.price,
-      });
+// export const updateCartItem = ({ i }) => {
+//   return async (dispatch) => {
+//     try {
+//       const response = await axios.put(URL1 + "/" + i.id, {
+//         quantity: i.quantity + 1,
+//         id: i.id,
+//         totalPrice: i.totalPrice * i.quantity,
 
+//       });
 
-      
-      
+//       dispatch(
+//         cartActions.addItemToCart({
+//           id: i.id,
+//           quantity: i.quantity,
+//           price: i.price,
+//           title: i.title,
+//           totalPrice: i.totalPrice,
+//         })
+//       );
 
-      dispatch(
-        cartActions.addItemToCart(
-          {id: i.id,
-            quantity: i.quantity,
-            price: i.price,
-            title: i.title,
-            totalPrice: i.totalPrice,}
-        ))
-
-       
-      
-      dispatch(
-        uiActions.notification({
-          title: "Success",
-          message: "Product quantity was changed",
-          status: "success",
-        })
-      );
-    } catch (error) {
-      dispatch(
-        uiActions.notification({
-          title: "Error",
-          message: "Cannot change quantity",
-          status: "error",
-        })
-      );
-    }
-  };
-};
+//       dispatch(
+//         uiActions.notification({
+//           title: "Success",
+//           message: "Product quantity was changed",
+//           status: "success",
+//         })
+//       );
+//     } catch (error) {
+//       dispatch(
+//         uiActions.notification({
+//           title: "Error",
+//           message: "Cannot change quantity",
+//           status: "error",
+//         })
+//       );
+//     }
+//   };
+// };
 
 // export const withdrawCartItem = ({ i }) => {
 //   return async (dispatch) => {
@@ -225,55 +206,53 @@ export const updateCartItem = ({ i }) => {
 //   };
 // };
 
-export const withdrawCartItem = ({ i }) => {
-  return async (dispatch) => {
-    try {
-      if (i.quantity > 1) {
-        // If the item's quantity is greater than 1, reduce the quantity and update the total price.
-        const response = await axios.put(URL1 + "/" + i.id, {
-          quantity: i.quantity - 1,
-          id: i.id,
-          totalPrice: i.totalPrice - i.price,
-        });
+// export const withdrawCartItem = ({ i }) => {
+//   return async (dispatch) => {
+//     try {
+//       if (i.quantity > 1) {
+//         // If the item's quantity is greater than 1, reduce the quantity and update the total price.
+//         const response = await axios.put(URL1 + "/" + i.id, {
+//           quantity: i.quantity - 1,
+//           id: i.id,
+//           totalPrice: i.totalPrice - i.price,
+//         });
 
-        dispatch(
-          cartActions.removeItemFromCart({
-            id: i.id,
-            quantity: i.quantity - 1,
-            totalPrice: i.totalPrice - i.price,
-          })
-        );
-      } else {
-        // If the item's quantity is 1, delete it from the database.
+//         dispatch(
+//           cartActions.removeItemFromCart({
+//             id: i.id,
+//             quantity: i.quantity - 1,
+//             totalPrice: i.totalPrice - i.price,
+//           })
+//         );
+//       } else {
+//         // If the item's quantity is 1, delete it from the database.
 
-       
+//         const response = await axios.delete(URL1 + "/" + i.id);
 
-          const response = await axios.delete(URL1 + "/" + i.id);
-        
-      
+//         // Then, remove it from the cart.
+//         dispatch(
+//           cartActions.deleteItemFromCart({ id: i.id, quantity: i.quantity })
+//         );
+//       }
 
-        // Then, remove it from the cart.
-        dispatch(cartActions.deleteItemFromCart({ id: i.id, quantity:i.quantity }));
-      }
-
-      dispatch(
-        uiActions.notification({
-          title: "Success",
-          message: "Product quantity was changed",
-          status: "success",
-        })
-      );
-    } catch (error) {
-      dispatch(
-        uiActions.notification({
-          title: "Error",
-          message: "Cannot change quantity",
-          status: "error",
-        })
-      );
-    }
-  };
-};
+//       dispatch(
+//         uiActions.notification({
+//           title: "Success",
+//           message: "Product quantity was changed",
+//           status: "success",
+//         })
+//       );
+//     } catch (error) {
+//       dispatch(
+//         uiActions.notification({
+//           title: "Error",
+//           message: "Cannot change quantity",
+//           status: "error",
+//         })
+//       );
+//     }
+//   };
+// };
 
 export const deleteCart = () => {
   return async (dispatch) => {
@@ -300,30 +279,20 @@ export const deleteCart = () => {
   };
 };
 
-export const sendOrderData = (cartData) => {
-  return async (dispatch) => {
-    dispatch(uiActions.toggleNotificationVisibility());
+export const sendOrderData = ({title, price}) => {
 
-    const sendRequest = async () => {
-      const response = await fetch(URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: cartData[0].title,
-          price: cartData[0].price,
-        }),
-      });
+
+  return async (dispatch) => {
+    try {
+      const response = axios.post(
+        URL,
+        { title, price},
+        { withCrediantials: true }
+      );
 
       if (!response.ok) {
         throw new Error("Sending cart data failed");
       }
-    };
-
-    try {
-      await sendRequest();
-      dispatch(cartActions.emptyCart());
 
       dispatch(
         uiActions.notification({
@@ -358,7 +327,7 @@ export const sendCartData = (cartData) => {
           quantity: cartData.quantity,
           totalQuantity: cartData.totalQuantity,
           totalPrice: cartData.totalPrice,
-          category: cartData.category
+          category: cartData.category,
         }),
       });
 
