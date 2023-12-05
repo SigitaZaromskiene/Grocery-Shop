@@ -6,7 +6,7 @@ const URL = "http://localhost:3111/contactus";
 
 const contactUsSlice = createSlice({
   name: "contactUs",
-  initialState: { formNotification: null, formVisibility: null, formSuccessMessage: false },
+  initialState: { formNotification: null, formVisibility: false, formSuccessMessage: false },
   reducers: {
     formNotificationToggle(state, action) {
       state.formNotification = {

@@ -119,7 +119,6 @@ function ContactUs() {
         />
         <Btn
           text="Send Message"
-          // to={notification?  "/": "/contactus" }
           action={contactMessageHandler}
         />
       </form>
