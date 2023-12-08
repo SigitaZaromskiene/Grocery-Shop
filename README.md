@@ -2,9 +2,15 @@
 
 Welcome to our Grocery Shop web application project! 🍎🥦🛍️
 
+
+
 ## Overview ℹ️
 
 This project is a web-based grocery shop built using modern technologies for frontend and backend development.
+
+❗️ ❗️ ❗️ Please note that this version does not include a functioning backend, so some buttons or features may not work as expected. Additionally, it does not involve sending or retrieving information from a MariaDB database.
+
+🔗 Check out the live demo: Grocery Shop - Front-end
 
 ### Technologies Used 🛠️
 
