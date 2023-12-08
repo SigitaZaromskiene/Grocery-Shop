@@ -10,7 +10,7 @@ This project is a web-based grocery shop built using modern technologies for fro
 
 ❗️ ❗️ ❗️ Please note that this version does not include a functioning backend, so some buttons or features may not work as expected. Additionally, it does not involve sending or retrieving information from a MariaDB database.
 
-🔗 Check out the live demo: Grocery Shop - Front-end
+🔗 Check out the live demo: [Grocery Shop - Front-end](https://sigitazaromskiene.github.io/Grocery-Shop/)
 
 ### Technologies Used 🛠️
 
