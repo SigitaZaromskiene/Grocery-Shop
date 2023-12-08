@@ -14,23 +14,23 @@ function App() {
   const showCart = useSelector((state) => state.ui.isCartVisible);
   const navigationBar = useSelector((state) => state.ui.mobileMenuVisible);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(onPageLoad());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(onPageLoad());
+  // }, [dispatch]);
 
   return (
     <div className="app_container">
       {showCart && <Cart />}
       {navigationBar ? <MobileNavigation /> : <Nav />}
-      {showNotification && (
+      {/* {showNotification && (
         <Notification
           title={showNotification.title}
           text={showNotification.message}
           className={showNotification.status}
         />
-      )}
+      )} */}
       <PageRoutes />
     </div>
   );
