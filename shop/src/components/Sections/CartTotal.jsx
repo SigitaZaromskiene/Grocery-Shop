@@ -16,7 +16,6 @@ function CartTotal() {
   );
 
   const orderHandler = () => {
-    dispatch(sendOrderData({ title: cartDataTitle, price: cartDataPrice }));
     dispatch(uiActions.toggleCartVisibility());
     dispatch(cartActions.emptyCart());
   };

@@ -31,8 +31,7 @@ export const sendContactUsDetails = (name, email, message) => {
   return async (dispatch) => {
     try {
       axios.post(URL, { name, email, message });
-
-  
+      
     } catch (err) {
       dispatch(
         uiActions.notification({

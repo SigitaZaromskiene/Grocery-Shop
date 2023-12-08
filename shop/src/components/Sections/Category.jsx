@@ -17,9 +17,7 @@ function Category() {
         {categories.map((c) => (
           <div key={c.id} className="category_container_table">
             <p>{c.title}</p>
-
             <img src={c.img} alt="Category img"></img>
-
             <Btn
               to="/shop"
               text="Shop now"

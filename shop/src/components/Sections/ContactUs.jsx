@@ -51,9 +51,8 @@ function ContactUs() {
       );
       return;
     } else {
-      dispatch(sendContactUsDetails(name, email, message));
+    
       dispatch(contactUsActions.formSendSuccessFormVisibility());
-
       setName("");
       setEmail("");
       setMessage("");

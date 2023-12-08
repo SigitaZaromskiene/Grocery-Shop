@@ -46,9 +46,7 @@ function Cart() {
         >
           <FontAwesomeIcon className="icon_leave" icon={faX} />
         </NavLink>
-
         <CartItem />
-
         <CartTotal />
       </div>
     </div>

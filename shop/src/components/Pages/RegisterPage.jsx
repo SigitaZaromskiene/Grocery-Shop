@@ -97,28 +97,9 @@ function RegisterPage() {
 
   const signUpHandler = () => {
     if (!isRegisterFormDetailsValid()) {
-      dispatch(
-        sendRegisterData(name, psw),
-        dispatch(
-          uiActions.notification({
-            title: "Success",
-            message: "Successful registered",
-            status: "success",
-          })
-        ),
-
-        dispatch(
-          uiActions.errorNotification({
-            title: "Success",
-            message: "Successful registered",
-            status: "success",
-          })
-        ),
-
-        setName(""),
-        setPsw(""),
-        setPsw2("")
-      );
+      setName("");
+      setPsw("");
+      setPsw2("");
     }
   };
   return (

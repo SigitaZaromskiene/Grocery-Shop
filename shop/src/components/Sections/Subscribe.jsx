@@ -22,9 +22,10 @@ function Subscribe() {
             onChange={(e) => setEmail(e.target.value)}
           ></input>
           <Btn
+         
             text="Subscribe"
             action={() => {
-              email !== "" && dispatch(sendNewsLetterSubsciberDetails(email));
+              
               setEmail("");
             }}
           />

@@ -74,7 +74,8 @@ function LoginPage() {
 
   const signInHandler = () => {
     if (!isRegisterFormDetailsValid()) {
-      dispatch(sendAndGetData(name, psw), setName(""), setPsw(""));
+      setName("");
+      setPsw("");
     }
   };
 
