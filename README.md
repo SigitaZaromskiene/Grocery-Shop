@@ -1,6 +1,6 @@
 # 🛒 Grocery Shop Project
 
-Welcome to our Grocery Shop web application project! 🍎🥦🛍️
+Welcome to my Grocery Shop web application project! 🍎🥦🛍️
 
 
 
