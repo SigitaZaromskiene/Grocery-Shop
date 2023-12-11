@@ -32,7 +32,7 @@ function PageRoutes() {
       <Route path="/contactus" element={<ContactUs />}></Route>
       <Route path="/subscribe" element={<Subscribe />}></Route>
       <Route path="/cart" element={<Cart />}></Route>
-      <Route path="*" element={<Error404Page />}></Route>
+  
     </Routes>
   );
 }
