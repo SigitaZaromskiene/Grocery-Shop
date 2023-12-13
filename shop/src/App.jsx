@@ -1,13 +1,15 @@
 import "./UI/App.scss";
 import Nav from "./components/Sections/Nav";
 import PageRoutes from "./components/PageRoutes";
-import Notification from "./components/Sections/Notification";
+// import Notification from "./components/Sections/Notification";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import Cart from "./components/Sections/Cart";
-import { onPageLoad } from "./components/store/slices/cartSlice";
+// import { onPageLoad } from "./components/store/slices/cartSlice";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import MobileNavigation from "./components/Sections/MobileNavigation";
+// import HomePage from "./components/Pages/HomePage";
 
 function App() {
   // const showNotification = useSelector((state) => state.ui.notification);
@@ -20,10 +22,17 @@ function App() {
   //   dispatch(onPageLoad());
   // }, [dispatch]);
 
+  const navigate = useNavigate()
+
+  useEffect(()=>{
+    navigate('/')
+  }, [])
+
   return (
     <div className="app_container">
       {showCart && <Cart />}
       {navigationBar ? <MobileNavigation /> : <Nav />}
+     
       {/* {showNotification && (
         <Notification
           title={showNotification.title}
